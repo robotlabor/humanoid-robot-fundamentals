@@ -1,0 +1,1311 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Robotics fundamentals, simulation, reinforcement learning, and Unitree G1 humanoid examples.">
+      
+      
+        <meta name="author" content="Robot Labor">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../fundamentals/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Workspace Setup - Humanoid Robot Fundamentals</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#workspace-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Humanoid Robot Fundamentals" class="md-header__button md-logo" aria-label="Humanoid Robot Fundamentals" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Humanoid Robot Fundamentals
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Workspace Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Workspace Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../fundamentals/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../computer_simulation/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Computer Simulation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../reinforcement_learning/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Reinforcement Learning
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Humanoid Robot Fundamentals" class="md-nav__button md-logo" aria-label="Humanoid Robot Fundamentals" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Humanoid Robot Fundamentals
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workspace Setup
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workspace Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. System requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-basic-system-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Install basic system packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-clone-and-prepare-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Clone and prepare the repository
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-test-the-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Test the setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-check-the-starter-repository-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Check the starter repository structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fundamentals/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../computer_simulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Simulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reinforcement_learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reinforcement Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. System requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-install-basic-system-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Install basic system packages
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-clone-and-prepare-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Clone and prepare the repository
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-test-the-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Test the setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-check-the-starter-repository-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Check the starter repository structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="workspace-setup">Workspace Setup<a class="headerlink" href="#workspace-setup" title="Permanent link">&para;</a></h1>
+<p>This section explains how to prepare the development environment used in the humanoid robotics examples.</p>
+<p>The examples are mainly intended for Linux-based systems. The recommended setup is <strong>Ubuntu 22.04 LTS</strong> or a similar recent Linux distribution.</p>
+<p>The first reinforcement learning examples use <strong>MuJoCo</strong>, <strong>Gymnasium</strong>, and <strong>Stable-Baselines3</strong>. The development path starts with a simplified 3-link throwing arm and then moves toward a full Unitree G1 humanoid model where only one arm is controlled and the rest of the robot is kept fixed.</p>
+<hr />
+<h2 id="1-system-requirements">1. System requirements<a class="headerlink" href="#1-system-requirements" title="Permanent link">&para;</a></h2>
+<p>Recommended operating system:</p>
+<ul>
+<li>Ubuntu 22.04 LTS</li>
+<li>Python 3.10 or newer</li>
+<li>Git</li>
+<li>A working terminal environment</li>
+<li>A dedicated Python virtual environment</li>
+</ul>
+<p>Recommended hardware:</p>
+<ul>
+<li>A modern laptop or desktop computer</li>
+<li>At least 8 GB RAM</li>
+<li>Intel Core i5 or better</li>
+<li>A dedicated GPU is useful for larger learning tasks, but it is not required for the first examples</li>
+</ul>
+<p>The first examples are designed to work on CPU-only systems. For example, an Intel Core i5 platform with Intel Iris Xe graphics is sufficient for the simplified 3-link arm and fixed-body humanoid arm throwing experiments.</p>
+<hr />
+<h2 id="2-install-basic-system-packages">2. Install basic system packages<a class="headerlink" href="#2-install-basic-system-packages" title="Permanent link">&para;</a></h2>
+<p>Update the package list:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</code></pre></div>
+<p>Install the basic development tools:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>unzip<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv<span class="w"> </span>build-essential
+</code></pre></div>
+<p>Install packages commonly needed by MuJoCo and the viewer:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>libgl1<span class="w"> </span>libglfw3<span class="w"> </span>libglew-dev<span class="w"> </span>libosmesa6-dev<span class="w"> </span>mesa-utils<span class="w"> </span>patchelf
+</code></pre></div>
+<p>Check the installed versions:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>--version
+pip3<span class="w"> </span>--version
+git<span class="w"> </span>--version
+</code></pre></div>
+<hr />
+<h2 id="3-clone-and-prepare-the-repository">3. Clone and prepare the repository<a class="headerlink" href="#3-clone-and-prepare-the-repository" title="Permanent link">&para;</a></h2>
+<p>Create a workspace folder:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/humanoid_ws
+<span class="nb">cd</span><span class="w"> </span>~/humanoid_ws
+</code></pre></div>
+<p>Clone the repository:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/robotlabor/humanoid-robot-fundamentals.git
+<span class="nb">cd</span><span class="w"> </span>humanoid-robot-fundamentals
+</code></pre></div>
+<p>Create and activate a Python virtual environment:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<p>Upgrade the Python packaging tools:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip<span class="w"> </span>setuptools<span class="w"> </span>wheel
+</code></pre></div>
+<p>Install the required Python packages:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<p>Check the active Python environment:</p>
+<div class="highlight"><pre><span></span><code>which<span class="w"> </span>python
+which<span class="w"> </span>pip
+</code></pre></div>
+<p>The paths should contain <code>.venv</code>.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>/home/user/humanoid_ws/humanoid-robot-fundamentals/.venv/bin/python
+/home/user/humanoid_ws/humanoid-robot-fundamentals/.venv/bin/pip
+</code></pre></div>
+<hr />
+<h2 id="4-test-the-setup">4. Test the setup<a class="headerlink" href="#4-test-the-setup" title="Permanent link">&para;</a></h2>
+<p>Run the basic Python test:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/test_python_setup.py
+</code></pre></div>
+<p>Run the basic MuJoCo simulation test:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/test_mujoco_setup.py
+</code></pre></div>
+<p>Check that MuJoCo can be imported:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import mujoco; print(mujoco.__version__)&quot;</span>
+</code></pre></div>
+<p>To test graphical rendering, run the random 3-link viewer:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/random_policy_viewer.py
+</code></pre></div>
+<p>If a MuJoCo window appears with a simple arm, ball, and target, the graphical viewer is working.</p>
+<hr />
+<h2 id="5-check-the-starter-repository-structure">5. Check the starter repository structure<a class="headerlink" href="#5-check-the-starter-repository-structure" title="Permanent link">&para;</a></h2>
+<p>After installing the starter files, the repository should contain the main folders for assets, environments, scripts, documentation, logs, and policies.</p>
+<p>From the workspace folder, inspect the structure with:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/humanoid_ws
+tree<span class="w"> </span>humanoid-robot-fundamentals
+</code></pre></div>
+<p>A typical structure after running the 3-link example may look similar to:</p>
+<div class="highlight"><pre><span></span><code>humanoid-robot-fundamentals
+├── assets
+│   ├── README.md
+│   ├── three_link_throw.xml
+│   └── unitree_g1_throw
+│       └── README.md
+├── docs
+│   ├── computer_simulation
+│   │   └── index.md
+│   ├── fundamentals
+│   │   └── index.md
+│   ├── index.md
+│   ├── reinforcement_learning
+│   │   └── index.md
+│   └── workspace_setup
+│       └── index.md
+├── envs
+│   ├── g1_fixed_body_throw_env.py
+│   ├── __init__.py
+│   └── three_link_throw_env.py
+├── external
+├── logs
+├── mkdocs.yml
+├── policies
+├── README.md
+├── requirements.txt
+└── scripts
+    ├── create_g1_throw_scene.py
+    ├── evaluate_g1_throw.py
+    ├── evaluate_throw.py
+    ├── inspect_g1_bodies.py
+    ├── inspect_g1.py
+    ├── play_g1_throw.py
+    ├── play_throw.py
+    ├── random_g1_throw_viewer.py
+    ├── random_policy_viewer.py
+    ├── test_mujoco_setup.py
+    ├── test_python_setup.py
+    ├── train_g1_throw.py
+    ├── train_throw.py
+    └── view_g1.py
+</code></pre></div>
+<p>The folder:</p>
+<div class="highlight"><pre><span></span><code>assets/unitree_g1_throw/
+</code></pre></div>
+<p>is only a placeholder at first. It will later contain the generated G1 throwing scene:</p>
+<div class="highlight"><pre><span></span><code>assets/unitree_g1_throw/scene_throw.xml
+</code></pre></div>
+<p>The folder:</p>
+<div class="highlight"><pre><span></span><code>assets/unitree_g1/
+</code></pre></div>
+<p>is not included initially. It is created only after copying the Unitree G1 model from MuJoCo Menagerie.</p>
+<p>Therefore, if this folder is missing at this stage, that is normal:</p>
+<div class="highlight"><pre><span></span><code>assets/unitree_g1/
+</code></pre></div>
+<p>It will be created later with:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>assets/unitree_g1
+cp<span class="w"> </span>-r<span class="w"> </span>external/mujoco_menagerie/unitree_g1/*<span class="w"> </span>assets/unitree_g1/
+</code></pre></div>
+<p>After training examples, additional generated files may appear, such as:</p>
+<div class="highlight"><pre><span></span><code>logs/
+policies/three_link_throw_ppo.zip
+envs/__pycache__/
+</code></pre></div>
+<p>These are runtime outputs and should normally not be committed to Git.</p>
+<p>If needed, clean generated files with:</p>
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>-rf<span class="w"> </span>logs
+rm<span class="w"> </span>-rf<span class="w"> </span>envs/__pycache__
+</code></pre></div>
+<p>The repository <code>.gitignore</code> should exclude generated folders such as:</p>
+<div class="highlight"><pre><span></span><code>.venv/
+__pycache__/
+logs/
+external/
+policies/*.zip
+</code></pre></div>
+<hr />
+<h1 id="part-a-simplified-3-link-arm-throwing">Part A — Simplified 3-link arm throwing<a class="headerlink" href="#part-a-simplified-3-link-arm-throwing" title="Permanent link">&para;</a></h1>
+<p>The first reinforcement learning task uses a planar 3-link arm that throws a ball toward a fixed target.</p>
+<p>This verifies:</p>
+<ul>
+<li>MuJoCo model loading,</li>
+<li>Gymnasium environment creation,</li>
+<li>PPO training,</li>
+<li>policy saving,</li>
+<li>policy playback,</li>
+<li>ball weld and release logic,</li>
+<li>reward debugging.</li>
+</ul>
+<p>The simplified throwing scene is stored in:</p>
+<div class="highlight"><pre><span></span><code>assets/three_link_throw.xml
+</code></pre></div>
+<p>The corresponding Gymnasium environment is:</p>
+<div class="highlight"><pre><span></span><code>envs/three_link_throw_env.py
+</code></pre></div>
+<hr />
+<h2 id="6-run-the-random-3-link-viewer">6. Run the random 3-link viewer<a class="headerlink" href="#6-run-the-random-3-link-viewer" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/random_policy_viewer.py
+</code></pre></div>
+<p>Expected behavior:</p>
+<div class="highlight"><pre><span></span><code>3-link arm appears
+ball appears
+target appears
+arm moves
+ball releases after the scripted release time
+</code></pre></div>
+<p>This step does not use reinforcement learning yet. It only verifies that the scene, environment, viewer, and release logic are working.</p>
+<hr />
+<h2 id="7-train-the-3-link-throwing-policy">7. Train the 3-link throwing policy<a class="headerlink" href="#7-train-the-3-link-throwing-policy" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/train_throw.py
+</code></pre></div>
+<p>Training runs in the terminal and usually does not open a simulator window.</p>
+<p>Expected saved policy:</p>
+<div class="highlight"><pre><span></span><code>policies/three_link_throw_ppo.zip
+</code></pre></div>
+<p>If you want to stop training early, press:</p>
+<div class="highlight"><pre><span></span><code>Ctrl+C
+</code></pre></div>
+<p>The training script is designed to save the current policy when interrupted.</p>
+<hr />
+<h2 id="8-play-the-trained-3-link-policy">8. Play the trained 3-link policy<a class="headerlink" href="#8-play-the-trained-3-link-policy" title="Permanent link">&para;</a></h2>
+<p>After training, run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/play_throw.py
+</code></pre></div>
+<p>Expected behavior:</p>
+<div class="highlight"><pre><span></span><code>The MuJoCo viewer opens
+The trained arm motion is shown
+The ball releases and moves toward the target
+</code></pre></div>
+<hr />
+<h2 id="9-evaluate-the-3-link-policy">9. Evaluate the 3-link policy<a class="headerlink" href="#9-evaluate-the-3-link-policy" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/evaluate_throw.py
+</code></pre></div>
+<p>The script reports basic numerical results, such as the mean best distance to the target and hit rates.</p>
+<p>A useful first success criterion is:</p>
+<div class="highlight"><pre><span></span><code>Mean best distance below 0.5 m
+</code></pre></div>
+<p>A better result is:</p>
+<div class="highlight"><pre><span></span><code>Hit rate below 30 cm above 50%
+</code></pre></div>
+<hr />
+<h1 id="part-b-unitree-g1-fixed-body-throwing">Part B — Unitree G1 fixed-body throwing<a class="headerlink" href="#part-b-unitree-g1-fixed-body-throwing" title="Permanent link">&para;</a></h1>
+<p>After the 3-link task works, the next step is to use the full Unitree G1 humanoid model while keeping the RL problem simple.</p>
+<p>The goal is:</p>
+<div class="highlight"><pre><span></span><code>Full Unitree G1 model visible in MuJoCo
+Only one arm is controlled by RL
+All other joints are held fixed at nominal values
+Ball is attached to the hand
+Ball is released at a scripted time
+Target is fixed
+</code></pre></div>
+<p>This is not yet full-body humanoid throwing. It is an intermediate step between the simple 3-link arm and a full humanoid controller.</p>
+<hr />
+<h2 id="10-fetch-the-unitree-g1-model">10. Fetch the Unitree G1 model<a class="headerlink" href="#10-fetch-the-unitree-g1-model" title="Permanent link">&para;</a></h2>
+<p>The starter repository contains the simulation scripts and reinforcement learning environments, but it does <strong>not</strong> include the Unitree G1 model assets.</p>
+<p>The Unitree G1 MuJoCo model should be copied from MuJoCo Menagerie into:</p>
+<div class="highlight"><pre><span></span><code>assets/unitree_g1/
+</code></pre></div>
+<p>From the repository root, run:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/humanoid_ws/humanoid-robot-fundamentals
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<p>Clone MuJoCo Menagerie:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>external
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/google-deepmind/mujoco_menagerie.git<span class="w"> </span>external/mujoco_menagerie
+</code></pre></div>
+<p>Copy the Unitree G1 model into the local assets folder:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>assets/unitree_g1
+cp<span class="w"> </span>-r<span class="w"> </span>external/mujoco_menagerie/unitree_g1/*<span class="w"> </span>assets/unitree_g1/
+</code></pre></div>
+<p>Check the copied files:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>assets/unitree_g1
+</code></pre></div>
+<p>Typical files include:</p>
+<div class="highlight"><pre><span></span><code>g1.xml
+scene.xml
+scene_mjx.xml
+assets/
+</code></pre></div>
+<p>The most important file for the next step is:</p>
+<div class="highlight"><pre><span></span><code>assets/unitree_g1/scene.xml
+</code></pre></div>
+<p>If <code>scene.xml</code> is missing, <code>scripts/view_g1.py</code> will stop with an error such as:</p>
+<div class="highlight"><pre><span></span><code>FileNotFoundError: Copy Unitree G1 assets to assets/unitree_g1 first.
+</code></pre></div>
+<p>If you already cloned MuJoCo Menagerie earlier and the folder <code>external/mujoco_menagerie</code> already exists, you do not need to clone it again. Just copy the G1 assets:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>assets/unitree_g1
+cp<span class="w"> </span>-r<span class="w"> </span>external/mujoco_menagerie/unitree_g1/*<span class="w"> </span>assets/unitree_g1/
+</code></pre></div>
+<hr />
+<h2 id="11-view-the-unitree-g1-model">11. View the Unitree G1 model<a class="headerlink" href="#11-view-the-unitree-g1-model" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/view_g1.py
+</code></pre></div>
+<p>If the full G1 humanoid appears in the MuJoCo viewer, the model assets are loaded correctly.</p>
+<p>If you get this error:</p>
+<div class="highlight"><pre><span></span><code>FileNotFoundError: Copy Unitree G1 assets to assets/unitree_g1 first.
+</code></pre></div>
+<p>go back to the previous step and make sure that <code>assets/unitree_g1/scene.xml</code> exists:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>assets/unitree_g1/scene.xml
+</code></pre></div>
+<hr />
+<h2 id="12-inspect-g1-joint-and-actuator-names">12. Inspect G1 joint and actuator names<a class="headerlink" href="#12-inspect-g1-joint-and-actuator-names" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/inspect_g1.py
+</code></pre></div>
+<p>This prints all joint and actuator names in the model.</p>
+<p>Look for the right arm joints. They may have names similar to:</p>
+<div class="highlight"><pre><span></span><code>right_shoulder_pitch_joint
+right_shoulder_roll_joint
+right_shoulder_yaw_joint
+right_elbow_joint
+right_wrist_roll_joint
+right_wrist_pitch_joint
+right_wrist_yaw_joint
+</code></pre></div>
+<p>The exact names depend on the copied G1 model version.</p>
+<hr />
+<h2 id="13-inspect-g1-body-names">13. Inspect G1 body names<a class="headerlink" href="#13-inspect-g1-body-names" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/inspect_g1_bodies.py
+</code></pre></div>
+<p>This prints candidate body names containing words such as:</p>
+<div class="highlight"><pre><span></span><code>right
+wrist
+hand
+</code></pre></div>
+<p>You need one of these body names to attach the ball to the right hand or wrist.</p>
+<p>Example output may include a body such as:</p>
+<div class="highlight"><pre><span></span><code>right_wrist_yaw_link
+</code></pre></div>
+<p>Use the body name that best corresponds to the right hand or wrist.</p>
+<hr />
+<h2 id="14-create-the-g1-throwing-scene">14. Create the G1 throwing scene<a class="headerlink" href="#14-create-the-g1-throwing-scene" title="Permanent link">&para;</a></h2>
+<p>Generate the throwing scene using the selected hand or wrist body:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/create_g1_throw_scene.py<span class="w"> </span>--hand-body<span class="w"> </span>RIGHT_HAND_OR_WRIST_BODY_NAME
+</code></pre></div>
+<p>Replace:</p>
+<div class="highlight"><pre><span></span><code>RIGHT_HAND_OR_WRIST_BODY_NAME
+</code></pre></div>
+<p>with the body name printed by <code>inspect_g1_bodies.py</code>.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/create_g1_throw_scene.py<span class="w"> </span>--hand-body<span class="w"> </span>right_wrist_yaw_link
+</code></pre></div>
+<p>This creates:</p>
+<div class="highlight"><pre><span></span><code>assets/unitree_g1_throw/scene_throw.xml
+</code></pre></div>
+<p>The generated scene contains:</p>
+<div class="highlight"><pre><span></span><code>Full Unitree G1 model
+throw_ball
+throw_target
+hold_throw_ball weld constraint
+</code></pre></div>
+<p>Test the generated XML:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import mujoco; mujoco.MjModel.from_xml_path(&#39;assets/unitree_g1_throw/scene_throw.xml&#39;); print(&#39;G1 throw XML OK&#39;)&quot;</span>
+</code></pre></div>
+<p>Expected output:</p>
+<div class="highlight"><pre><span></span><code>G1 throw XML OK
+</code></pre></div>
+<hr />
+<h2 id="15-run-the-random-g1-throwing-viewer">15. Run the random G1 throwing viewer<a class="headerlink" href="#15-run-the-random-g1-throwing-viewer" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/random_g1_throw_viewer.py
+</code></pre></div>
+<p>Expected behavior:</p>
+<div class="highlight"><pre><span></span><code>Full G1 appears
+Only the selected arm moves
+The ball starts near the hand
+The ball is released after the scripted release time
+The target is visible
+The body and legs remain mostly fixed
+</code></pre></div>
+<p>This step is important before training. If the ball is not attached to the hand or the wrong body moves, fix the scene or joint mapping before continuing.</p>
+<hr />
+<h2 id="16-train-the-g1-fixed-body-throwing-policy">16. Train the G1 fixed-body throwing policy<a class="headerlink" href="#16-train-the-g1-fixed-body-throwing-policy" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/train_g1_throw.py
+</code></pre></div>
+<p>This script trains headlessly. It does not normally open a simulator window.</p>
+<p>Expected saved policy:</p>
+<div class="highlight"><pre><span></span><code>policies/g1_fixed_body_throw_ppo.zip
+</code></pre></div>
+<p>The first version uses:</p>
+<div class="highlight"><pre><span></span><code>scripted release
+fixed target
+right arm actions only
+all other joints held at nominal values
+</code></pre></div>
+<hr />
+<h2 id="17-play-the-trained-g1-policy">17. Play the trained G1 policy<a class="headerlink" href="#17-play-the-trained-g1-policy" title="Permanent link">&para;</a></h2>
+<p>After training, run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/play_g1_throw.py
+</code></pre></div>
+<p>This should open the MuJoCo viewer and show the trained policy.</p>
+<p>Check:</p>
+<div class="highlight"><pre><span></span><code>Does the full G1 load correctly?
+Is the ball attached to the hand at the beginning?
+Does only the selected arm move?
+Does the ball release?
+Does the ball fly toward the target?
+Do the legs and body remain mostly fixed?
+Does the simulation remain stable?
+</code></pre></div>
+<hr />
+<h2 id="18-evaluate-the-trained-g1-policy">18. Evaluate the trained G1 policy<a class="headerlink" href="#18-evaluate-the-trained-g1-policy" title="Permanent link">&para;</a></h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/evaluate_g1_throw.py
+</code></pre></div>
+<p>Suggested first success criterion:</p>
+<div class="highlight"><pre><span></span><code>Mean best distance &lt; 0.8 m
+</code></pre></div>
+<p>Good result:</p>
+<div class="highlight"><pre><span></span><code>Hit rate below 50 cm &gt; 50%
+</code></pre></div>
+<p>Very good result:</p>
+<div class="highlight"><pre><span></span><code>Hit rate below 30 cm &gt; 50%
+</code></pre></div>
+<p>Save a good policy before overwriting it:</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>policies/g1_fixed_body_throw_ppo.zip<span class="w"> </span>policies/g1_fixed_body_throw_scripted_release_good.zip
+</code></pre></div>
+<hr />
+<h1 id="part-c-important-modeling-notes">Part C — Important modeling notes<a class="headerlink" href="#part-c-important-modeling-notes" title="Permanent link">&para;</a></h1>
+<h2 id="controlled-fixed-joints-versus-physically-locked-joints">Controlled fixed joints versus physically locked joints<a class="headerlink" href="#controlled-fixed-joints-versus-physically-locked-joints" title="Permanent link">&para;</a></h2>
+<p>There are two ways to interpret “fixed joints.”</p>
+<h3 id="controlled-fixed-joints">Controlled fixed joints<a class="headerlink" href="#controlled-fixed-joints" title="Permanent link">&para;</a></h3>
+<p>This is the recommended first approach.</p>
+<div class="highlight"><pre><span></span><code>All joints still exist.
+The full humanoid remains in the simulation.
+Non-arm joints are commanded to stay at nominal positions.
+Only the throwing arm receives RL actions.
+</code></pre></div>
+<p>This is easier, more flexible, and usually sufficient for the first humanoid throwing experiment.</p>
+<h3 id="physically-locked-joints">Physically locked joints<a class="headerlink" href="#physically-locked-joints" title="Permanent link">&para;</a></h3>
+<p>This means the joints cannot move at all. This requires more MJCF editing, such as:</p>
+<div class="highlight"><pre><span></span><code>removing joints
+removing the floating base
+adding equality constraints
+using very tight joint ranges
+using very high stiffness and damping
+</code></pre></div>
+<p>For the first G1 throwing task, use controlled fixed joints. If the body falls or moves too much, the floating base or torso can be fixed later.</p>
+<hr />
+<h2 id="scripted-release-versus-learned-release">Scripted release versus learned release<a class="headerlink" href="#scripted-release-versus-learned-release" title="Permanent link">&para;</a></h2>
+<p>The first throwing examples use a scripted ball release.</p>
+<p>This means:</p>
+<div class="highlight"><pre><span></span><code>The ball is welded to the hand at the beginning.
+At a predefined time, the weld is disabled.
+The ball then flies freely.
+</code></pre></div>
+<p>This is easier than learning both the arm motion and the release timing at the same time.</p>
+<p>After the scripted-release version works, the next step is learned release. In that version, the policy action includes a release command.</p>
+<p>The intended progression is:</p>
+<div class="highlight"><pre><span></span><code>scripted release, fixed target
+learned release, fixed target
+learned release, random target
+partially unlocked torso
+full humanoid throwing
+</code></pre></div>
+<hr />
+<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
+<h2 id="modulenotfounderror-no-module-named-mujoco"><code>ModuleNotFoundError: No module named 'mujoco'</code><a class="headerlink" href="#modulenotfounderror-no-module-named-mujoco" title="Permanent link">&para;</a></h2>
+<p>This means MuJoCo is not installed in the currently active Python environment.</p>
+<p>Activate the virtual environment and install dependencies:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import mujoco; print(mujoco.__version__)&quot;</span>
+</code></pre></div>
+<p>If needed, run scripts explicitly with the virtual environment Python:</p>
+<div class="highlight"><pre><span></span><code>.venv/bin/python<span class="w"> </span>scripts/inspect_g1.py
+</code></pre></div>
+<hr />
+<h2 id="wrong-python-environment-is-used">Wrong Python environment is used<a class="headerlink" href="#wrong-python-environment-is-used" title="Permanent link">&para;</a></h2>
+<p>Check which Python executable is currently active:</p>
+<div class="highlight"><pre><span></span><code>which<span class="w"> </span>python
+</code></pre></div>
+<p>If the virtual environment is active, the path should contain <code>.venv</code>.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>/home/user/humanoid_ws/humanoid-robot-fundamentals/.venv/bin/python
+</code></pre></div>
+<hr />
+<h2 id="modulenotfounderror-no-module-named-envs"><code>ModuleNotFoundError: No module named 'envs...'</code><a class="headerlink" href="#modulenotfounderror-no-module-named-envs" title="Permanent link">&para;</a></h2>
+<p>Run scripts from the repository root:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/humanoid_ws/humanoid-robot-fundamentals
+</code></pre></div>
+<p>The provided scripts add the repository root to <code>sys.path</code> automatically.</p>
+<hr />
+<h2 id="filenotfounderror-copy-unitree-g1-assets-to-assetsunitree_g1-first"><code>FileNotFoundError: Copy Unitree G1 assets to assets/unitree_g1 first.</code><a class="headerlink" href="#filenotfounderror-copy-unitree-g1-assets-to-assetsunitree_g1-first" title="Permanent link">&para;</a></h2>
+<p>This means the repository scripts are installed, but the Unitree G1 model files have not been copied yet.</p>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/humanoid_ws/humanoid-robot-fundamentals
+mkdir<span class="w"> </span>-p<span class="w"> </span>external
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/google-deepmind/mujoco_menagerie.git<span class="w"> </span>external/mujoco_menagerie
+
+mkdir<span class="w"> </span>-p<span class="w"> </span>assets/unitree_g1
+cp<span class="w"> </span>-r<span class="w"> </span>external/mujoco_menagerie/unitree_g1/*<span class="w"> </span>assets/unitree_g1/
+</code></pre></div>
+<p>Then verify:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>assets/unitree_g1/scene.xml
+</code></pre></div>
+<p>If this command prints the file path, retry:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/view_g1.py
+</code></pre></div>
+<p>If <code>external/mujoco_menagerie</code> already exists, skip the <code>git clone</code> command and only copy the G1 files:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>assets/unitree_g1
+cp<span class="w"> </span>-r<span class="w"> </span>external/mujoco_menagerie/unitree_g1/*<span class="w"> </span>assets/unitree_g1/
+</code></pre></div>
+<hr />
+<h2 id="mujoco-error-free-joint-can-only-be-used-on-top-level">MuJoCo error: <code>free joint can only be used on top level</code><a class="headerlink" href="#mujoco-error-free-joint-can-only-be-used-on-top-level" title="Permanent link">&para;</a></h2>
+<p>This happens when a body with a <code>freejoint</code> is nested inside another moving body.</p>
+<p>For throwing tasks, the ball must be a top-level body under <code>&lt;worldbody&gt;</code> and temporarily attached to the hand with a weld equality constraint.</p>
+<p>Correct concept:</p>
+<div class="highlight"><pre><span></span><code>worldbody
+├── robot
+├── throw_ball with freejoint
+└── throw_target
+</code></pre></div>
+<p>Incorrect concept:</p>
+<div class="highlight"><pre><span></span><code>robot
+└── hand
+    └── throw_ball with freejoint
+</code></pre></div>
+<hr />
+<h2 id="xml-parse-error-on-line-1">XML parse error on line 1<a class="headerlink" href="#xml-parse-error-on-line-1" title="Permanent link">&para;</a></h2>
+<p>If MuJoCo reports an XML parse error on line 1, the XML file may contain invalid copied text, markdown backticks, or invisible characters.</p>
+<p>Check the first lines:</p>
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span>assets/three_link_throw.xml
+</code></pre></div>
+<p>The first line should start directly with:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;mujoco</span><span class="w"> </span><span class="na">model=</span><span class="s">&quot;...&quot;</span><span class="nt">&gt;</span>
+</code></pre></div>
+<hr />
+<h2 id="training-script-does-not-open-a-simulator-window">Training script does not open a simulator window<a class="headerlink" href="#training-script-does-not-open-a-simulator-window" title="Permanent link">&para;</a></h2>
+<p>This is normal.</p>
+<p>Training scripts usually run headlessly:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/train_throw.py
+python3<span class="w"> </span>scripts/train_g1_throw.py
+</code></pre></div>
+<p>Viewer scripts are used separately:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/random_policy_viewer.py
+python3<span class="w"> </span>scripts/random_g1_throw_viewer.py
+python3<span class="w"> </span>scripts/play_throw.py
+python3<span class="w"> </span>scripts/play_g1_throw.py
+</code></pre></div>
+<p>This is faster and more practical, especially on CPU-only systems.</p>
+<hr />
+<h2 id="training-does-not-stop-immediately-after-reducing-total_timesteps">Training does not stop immediately after reducing <code>total_timesteps</code><a class="headerlink" href="#training-does-not-stop-immediately-after-reducing-total_timesteps" title="Permanent link">&para;</a></h2>
+<p>PPO collects full rollout batches. For example, with:</p>
+<div class="highlight"><pre><span></span><code><span class="n">num_envs</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">128</span>
+</code></pre></div>
+<p>one rollout contains:</p>
+<div class="highlight"><pre><span></span><code>4 x 128 = 512 timesteps
+</code></pre></div>
+<p>Therefore, very small values such as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
+<p>may still run for at least one rollout.</p>
+<p>For a quick debug run, use smaller rollout settings:</p>
+<div class="highlight"><pre><span></span><code><span class="n">num_envs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">model</span><span class="o">.</span><span class="n">learn</span><span class="p">(</span><span class="n">total_timesteps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<h2 id="ball-is-not-attached-to-the-hand">Ball is not attached to the hand<a class="headerlink" href="#ball-is-not-attached-to-the-hand" title="Permanent link">&para;</a></h2>
+<p>The weld constraint probably uses the wrong body name.</p>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/inspect_g1_bodies.py
+</code></pre></div>
+<p>Then regenerate the scene:</p>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>scripts/create_g1_throw_scene.py<span class="w"> </span>--hand-body<span class="w"> </span>RIGHT_HAND_OR_WRIST_BODY_NAME
+</code></pre></div>
+<hr />
+<h2 id="robot-body-falls-during-g1-throwing">Robot body falls during G1 throwing<a class="headerlink" href="#robot-body-falls-during-g1-throwing" title="Permanent link">&para;</a></h2>
+<p>Possible causes:</p>
+<div class="highlight"><pre><span></span><code>floating base is not fixed
+lower-body actuators are not strong enough
+nominal pose is unstable
+</code></pre></div>
+<p>Possible solutions:</p>
+<div class="highlight"><pre><span></span><code>increase non-arm actuator stiffness
+use a better keyframe or nominal pose
+fix the pelvis or torso for the first throwing experiment
+remove the root freejoint in a copied XML
+add a weld constraint from torso or pelvis to the world
+</code></pre></div>
+<p>For the first fixed-body throwing task, it is acceptable to fix the base.</p>
+<hr />
+<h2 id="arm-barely-moves">Arm barely moves<a class="headerlink" href="#arm-barely-moves" title="Permanent link">&para;</a></h2>
+<p>Increase the action scale in both training and playback scripts.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">action_scale</span><span class="o">=</span><span class="mf">0.5</span>
+</code></pre></div>
+<p>can be changed to:</p>
+<div class="highlight"><pre><span></span><code><span class="n">action_scale</span><span class="o">=</span><span class="mf">0.8</span>
+</code></pre></div>
+<p>Then retrain the policy.</p>
+<hr />
+<h2 id="ball-releases-too-early-or-too-late">Ball releases too early or too late<a class="headerlink" href="#ball-releases-too-early-or-too-late" title="Permanent link">&para;</a></h2>
+<p>Tune the scripted release time.</p>
+<p>Example values:</p>
+<div class="highlight"><pre><span></span><code><span class="n">scripted_release_time</span><span class="o">=</span><span class="mf">0.45</span>
+<span class="n">scripted_release_time</span><span class="o">=</span><span class="mf">0.55</span>
+<span class="n">scripted_release_time</span><span class="o">=</span><span class="mf">0.65</span>
+<span class="n">scripted_release_time</span><span class="o">=</span><span class="mf">0.75</span>
+</code></pre></div>
+<p>After changing the release time, retrain the policy.</p>
+<hr />
+<h1 id="recommended-learning-path">Recommended learning path<a class="headerlink" href="#recommended-learning-path" title="Permanent link">&para;</a></h1>
+<div class="highlight"><pre><span></span><code>1. Verify Python and MuJoCo installation
+2. Run a minimal MuJoCo simulation
+3. Run the 3-link random throwing viewer
+4. Train the 3-link scripted-release throwing policy
+5. Play and evaluate the 3-link policy
+6. Load and inspect the Unitree G1 model
+7. Add a ball and target to the G1 scene
+8. Weld the ball to the right hand or wrist
+9. Run the random G1 throwing viewer
+10. Train the G1 fixed-body scripted-release throwing policy
+11. Play and evaluate the G1 policy
+12. Save a successful policy checkpoint
+13. Switch from scripted release to learned release
+14. Add random target positions
+15. Gradually unlock additional humanoid joints
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

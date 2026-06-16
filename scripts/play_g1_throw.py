@@ -7,7 +7,7 @@ import time, mujoco, mujoco.viewer
 from stable_baselines3 import PPO
 from envs.g1_fixed_body_throw_env import G1FixedBodyThrowEnv
 if __name__=='__main__':
-    env=G1FixedBodyThrowEnv(xml_path=str(ROOT/'assets'/'unitree_g1_throw'/'scene_throw.xml'))
+    env=G1FixedBodyThrowEnv(xml_path=str(ROOT/'assets'/'unitree_g1'/'scene_throw.xml'))
     path=ROOT/'policies'/'g1_fixed_body_throw_ppo.zip'
     if not path.exists(): raise FileNotFoundError('Train first with: python scripts/train_g1_throw.py')
     model=PPO.load(str(path)); obs,info=env.reset()

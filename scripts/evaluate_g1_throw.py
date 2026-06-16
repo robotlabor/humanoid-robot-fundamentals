@@ -7,7 +7,7 @@ import numpy as np
 from stable_baselines3 import PPO
 from envs.g1_fixed_body_throw_env import G1FixedBodyThrowEnv
 if __name__=='__main__':
-    env=G1FixedBodyThrowEnv(xml_path=str(ROOT/'assets'/'unitree_g1_throw'/'scene_throw.xml')); model=PPO.load(str(ROOT/'policies'/'g1_fixed_body_throw_ppo.zip'))
+    env=G1FixedBodyThrowEnv(xml_path=str(ROOT/'assets'/'unitree_g1'/'scene_throw.xml')); model=PPO.load(str(ROOT/'policies'/'g1_fixed_body_throw_ppo.zip'))
     best=[]; final=[]
     for _ in range(50):
         obs,_=env.reset(); done=False; info={}

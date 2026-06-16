@@ -9,7 +9,7 @@ from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
 from envs.g1_fixed_body_throw_env import G1FixedBodyThrowEnv
 
 def make_env(rank, learned_release=False):
-    def _init(): return G1FixedBodyThrowEnv(xml_path=str(ROOT/'assets'/'unitree_g1_throw'/'scene_throw.xml'), learned_release=learned_release)
+    def _init(): return G1FixedBodyThrowEnv(xml_path=str(ROOT/'assets'/'unitree_g1'/'scene_throw.xml'), learned_release=learned_release)
     return _init
 if __name__=='__main__':
     test_env=make_env(0)(); check_env(test_env,warn=True); print('Detected right arm joints:'); [print('  ',n) for n in test_env.arm_joint_names]

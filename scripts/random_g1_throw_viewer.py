@@ -6,7 +6,7 @@ sys.path.insert(0,str(ROOT))
 import time, numpy as np, mujoco, mujoco.viewer
 from envs.g1_fixed_body_throw_env import G1FixedBodyThrowEnv
 if __name__ == '__main__':
-    env=G1FixedBodyThrowEnv(xml_path=str(ROOT/'assets'/'unitree_g1_throw'/'scene_throw.xml'))
+    env=G1FixedBodyThrowEnv(xml_path=str(ROOT/'assets'/'unitree_g1'/'scene_throw.xml'))
     print('Detected right arm joints:'); [print('  ',n) for n in env.arm_joint_names]
     obs,info=env.reset()
     with mujoco.viewer.launch_passive(env.model,env.data) as viewer:

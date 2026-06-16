@@ -1,6 +1,7 @@
 
 from __future__ import annotations
 from pathlib import Path
+import xml.etree.ElementTree as ET
 import gymnasium as gym
 import mujoco
 import numpy as np
@@ -11,15 +12,18 @@ class G1FixedBodyThrowEnv(gym.Env):
     def __init__(self, xml_path=None, episode_time=1.8, control_dt=0.02, action_scale=0.5, learned_release=False, scripted_release_time=0.65, target_pos=(2.0,-0.25,1.0)):
         super().__init__()
         if xml_path is None: xml_path=Path(__file__).resolve().parents[1]/'assets'/'unitree_g1_throw'/'scene_throw.xml'
-        self.model=mujoco.MjModel.from_xml_path(str(xml_path)); self.data=mujoco.MjData(self.model)
+        self.xml_path=Path(xml_path)
+        self.model=mujoco.MjModel.from_xml_path(str(self.xml_path)); self.data=mujoco.MjData(self.model)
         self.episode_time=float(episode_time); self.control_dt=float(control_dt); self.frame_skip=max(1,int(round(self.control_dt/self.model.opt.timestep)))
         self.action_scale=float(action_scale); self.learned_release=bool(learned_release); self.scripted_release_time=float(scripted_release_time); self.target_pos=np.array(target_pos,dtype=np.float64)
-        self.ball_body_id=mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_BODY,'throw_ball'); self.target_body_id=mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_BODY,'throw_target'); self.hold_eq_id=mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_EQUALITY,'hold_throw_ball')
+        self.ball_body_id=mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_BODY,'throw_ball'); self.target_body_id=mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_BODY,'throw_target'); self.hold_eq_id=mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_EQUALITY,'hold_throw_ball'); self.ball_joint_id=mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_JOINT,'throw_ball_free')
         missing=[]
         if self.ball_body_id<0: missing.append('throw_ball')
         if self.target_body_id<0: missing.append('throw_target')
         if self.hold_eq_id<0: missing.append('hold_throw_ball')
+        if self.ball_joint_id<0: missing.append('throw_ball_free')
         if missing: raise RuntimeError('Missing from G1 throwing scene: '+', '.join(missing)+'. Run scripts/create_g1_throw_scene.py first.')
+        self.hold_body_id=int(self.model.eq_obj1id[self.hold_eq_id]); self.ball_qpos_adr=int(self.model.jnt_qposadr[self.ball_joint_id]); self.ball_qvel_adr=int(self.model.jnt_dofadr[self.ball_joint_id]); self.hold_relpose=self._load_hold_relpose()
         self.arm_joint_names=self._find_right_arm_joint_names()
         if not self.arm_joint_names: raise RuntimeError('Could not find right arm joints. Run scripts/inspect_g1.py and edit envs/g1_fixed_body_throw_env.py.')
         self.arm_joint_ids=[mujoco.mj_name2id(self.model,mujoco.mjtObj.mjOBJ_JOINT,n) for n in self.arm_joint_names]
@@ -57,13 +61,24 @@ class G1FixedBodyThrowEnv(gym.Env):
             if trnid>=0:
                 qadr=self.model.jnt_qposadr[trnid]
                 if qadr<self.model.nq: self.nominal_ctrl[aid]=self.data.qpos[qadr]
+    def _load_hold_relpose(self):
+        root=ET.parse(self.xml_path).getroot(); weld=root.find("./equality/weld[@name='hold_throw_ball']")
+        if weld is None: raise RuntimeError('Could not find hold_throw_ball weld in throwing scene XML.')
+        relpose=np.fromstring(weld.attrib.get('relpose','0 0 0 1 0 0 0'),sep=' ',dtype=np.float64)
+        if relpose.shape!=(7,): raise RuntimeError('hold_throw_ball relpose must have 7 numbers.')
+        return relpose
+    def _place_ball_in_hand(self):
+        hand_pos=self.data.xpos[self.hold_body_id].copy(); hand_mat=self.data.xmat[self.hold_body_id].reshape(3,3)
+        ball_pos=hand_pos+hand_mat@self.hold_relpose[:3]; ball_quat=np.empty(4,dtype=np.float64)
+        mujoco.mju_mulQuat(ball_quat,self.data.xquat[self.hold_body_id],self.hold_relpose[3:7])
+        self.data.qpos[self.ball_qpos_adr:self.ball_qpos_adr+3]=ball_pos; self.data.qpos[self.ball_qpos_adr+3:self.ball_qpos_adr+7]=ball_quat; self.data.qvel[self.ball_qvel_adr:self.ball_qvel_adr+6]=0
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
         if self.model.nkey>0: mujoco.mj_resetDataKeyframe(self.model,self.data,0)
         else: mujoco.mj_resetData(self.model,self.data); self.data.qpos[:]=self.nominal_qpos
         self.data.ctrl[:]=self.nominal_ctrl; self.data.qpos[self.arm_qpos_adr]+=self.np_random.uniform(-0.03,0.03,self.n_arm)
         if self.hold_eq_id>=0: self.data.eq_active[self.hold_eq_id]=1
-        self.model.body_pos[self.target_body_id]=self.target_pos; mujoco.mj_forward(self.model,self.data)
+        mujoco.mj_forward(self.model,self.data); self._place_ball_in_hand(); self.model.body_pos[self.target_body_id]=self.target_pos; mujoco.mj_forward(self.model,self.data)
         self.step_count=0; self.released=False; self.release_time=None; self.best_dist=np.inf; self.prev_action=np.zeros(self.n_arm+1)
         return self._get_obs(), {}
     def step(self, action):

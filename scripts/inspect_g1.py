@@ -4,7 +4,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import mujoco
-xml_path=ROOT/'assets'/'unitree_g1'/'scene.xml'
+xml_path=ROOT/'assets'/'unitree_g1'/'scene_with_hands.xml'
 if not xml_path.exists(): raise FileNotFoundError('Copy Unitree G1 assets to assets/unitree_g1 first.')
 model=mujoco.MjModel.from_xml_path(str(xml_path))
 print('\nJoints:')

@@ -22,12 +22,12 @@ def main():
     parser.add_argument(
         "--hand-body",
         required=True,
-        help="Right hand or wrist body name from inspect_g1_bodies.py",
+        help="Right hand or wrist body/frame name from inspect_g1_bodies.py",
     )
     parser.add_argument(
         "--source",
-        default=str(ROOT / "assets" / "unitree_g1" / "scene.xml"),
-        help="Original Unitree G1 scene.xml",
+        default=str(ROOT / "assets" / "unitree_g1" / "scene_with_hands.xml"),
+        help="Original Unitree G1 scene XML",
     )
     parser.add_argument(
         "--output",
@@ -66,7 +66,7 @@ def main():
     <weld name="hold_throw_ball"
           body1="{args.hand_body}"
           body2="throw_ball"
-          relpose="0.08 0 0 1 0 0 0"
+                    relpose="0 0 0 1 0 0 0"
           active="true"
           solref="0.002 1"
           solimp="0.95 0.99 0.001"/>

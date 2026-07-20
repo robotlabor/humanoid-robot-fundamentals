@@ -800,10 +800,10 @@ numpy
 <li>has a maximum angle of 2.1 rad.</li>
 </ul>
 <p>Convert the maximum to degrees:</p>
-<p>$
+<div class="arithmatex">\[
 2.1\,\text{rad} \cdot \frac{180^\circ}{\pi\,\text{rad}}
 \approx 120.3^\circ
-$</p>
+\]</div>
 <hr />
 <h2 id="13-the-floating-base">13. The floating base<a class="headerlink" href="#13-the-floating-base" title="Permanent link">&para;</a></h2>
 <p>The pelvis has a free joint:</p>
@@ -828,9 +828,9 @@ $</p>
 <li>4 quaternion coordinates.</li>
 </ul>
 <p>Therefore:</p>
-<p>$
+<div class="arithmatex">\[
 n_{q,\mathrm{free}} = 3 + 4 = 7
-$</p>
+\]</div>
 <h3 id="velocity-representation">Velocity representation<a class="headerlink" href="#velocity-representation" title="Permanent link">&para;</a></h3>
 <p>The free joint velocity uses:</p>
 <ul>
@@ -838,9 +838,9 @@ $</p>
 <li>3 angular velocities.</li>
 </ul>
 <p>Therefore:</p>
-<p>$
+<div class="arithmatex">\[
 n_{v,\mathrm{free}} = 3 + 3 = 6
-$</p>
+\]</div>
 <p>The teaching humanoid has:</p>
 <ul>
 <li>one free joint;</li>
@@ -871,9 +871,9 @@ n_v = 6 + 12 = 18
 </code></pre></div>
 <p>A box <code>size</code> specifies half-dimensions.</p>
 <p>Therefore, this foot has approximate full dimensions:</p>
-<p>$
+<div class="arithmatex">\[
 0.24 \times 0.10 \times 0.06\ \text{m}
-$</p>
+\]</div>
 <hr />
 <h2 id="15-sites">15. Sites<a class="headerlink" href="#15-sites" title="Permanent link">&para;</a></h2>
 <p>A site is a reference location or volume.</p>
@@ -1121,20 +1121,20 @@ right_ankle_roll
 <span class="p">]</span>
 </code></pre></div>
 <p>For each leg:</p>
-<p>$
+<div class="arithmatex">\[
 q_\mathrm{hip}+q_{\mathrm{knee}}+q_{\mathrm{ankle}}=-0.45 + 0.90 - 0.45 = 0
-$</p>
+\]</div>
 <p>This helps keep the foot approximately parallel to the floor.</p>
 <hr />
 <h2 id="29-linear-interpolation">29. Linear interpolation<a class="headerlink" href="#29-linear-interpolation" title="Permanent link">&para;</a></h2>
 <p>The simplest interpolation is:</p>
-<p>$
+<div class="arithmatex">\[
 q_{\mathrm{ref}}(u)=q_{\mathrm{start}}+u\left(q_{\mathrm{goal}}-q_{\mathrm{start}}\right)
-$</p>
+\]</div>
 <p>where:</p>
-<p>$
+<div class="arithmatex">\[
 0 \leq u \leq 1
-$</p>
+\]</div>
 <p>Python:</p>
 <div class="highlight"><pre><span></span><code><span class="n">q_ref</span> <span class="o">=</span> <span class="n">q_start</span> <span class="o">+</span> <span class="n">u</span> <span class="o">*</span> <span class="p">(</span><span class="n">q_goal</span> <span class="o">-</span> <span class="n">q_start</span><span class="p">)</span>
 </code></pre></div>
@@ -1142,26 +1142,26 @@ $</p>
 <hr />
 <h2 id="30-smoothstep-interpolation">30. Smoothstep interpolation<a class="headerlink" href="#30-smoothstep-interpolation" title="Permanent link">&para;</a></h2>
 <p>The workshop uses:</p>
-<p>$
+<div class="arithmatex">\[
 s(u)=3u^2-2u^3
-$</p>
+\]</div>
 <p>Then:</p>
-<p>$
+<div class="arithmatex">\[
 q_{\mathrm{ref}}(u)=q_{\mathrm{start}}+s(u)\left(q_{\mathrm{goal}}-q_{\mathrm{start}}\right)
-$</p>
+\]</div>
 <p>Properties:</p>
-<p>$
+<div class="arithmatex">\[
 s(0)=0
-$</p>
-<p>$
+\]</div>
+<div class="arithmatex">\[
 s(1)=1
-$</p>
-<p>$
+\]</div>
+<div class="arithmatex">\[
 s'(0)=0
-$</p>
-<p>$
+\]</div>
+<div class="arithmatex">\[
 s'(1)=0
-$</p>
+\]</div>
 <p>Python:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">smoothstep</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
@@ -1363,13 +1363,13 @@ $</p>
 <span class="w">            </span><span class="na">body=</span><span class="s">&quot;pelvis&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>The sensor returns:</p>
-<p>$
-p_{\mathrm{CoM}}=\begin{bmatrix}x_{\mathrm{CoM}}\y_{\mathrm{CoM}}\z_{\mathrm{CoM}}\end{bmatrix}
-$</p>
+<div class="arithmatex">\[
+p_{\mathrm{CoM}}=\begin{bmatrix}x_{\mathrm{CoM}}\\y_{\mathrm{CoM}}\\z_{\mathrm{CoM}}\end{bmatrix}
+\]</div>
 <p>For a basic balance interpretation, use the horizontal projection:</p>
-<p>$
-p_{\mathrm{CoM,xy}}=\begin{bmatrix}x_{\mathrm{CoM}}\y_{\mathrm{CoM}}\end{bmatrix}
-$</p>
+<div class="arithmatex">\[
+p_{\mathrm{CoM,xy}}=\begin{bmatrix}x_{\mathrm{CoM}}\\y_{\mathrm{CoM}}\end{bmatrix}
+\]</div>
 <p>For static balance, the projected centre of mass should normally remain inside the support region formed by the contacting feet.</p>
 <p>This is only an introductory approximation. Dynamic balance also depends on:</p>
 <ul>
@@ -1532,19 +1532,19 @@ push_duration = 0.15 s
 <h2 id="50-force-and-impulse">50. Force and impulse<a class="headerlink" href="#50-force-and-impulse" title="Permanent link">&para;</a></h2>
 <p>Force magnitude alone does not fully describe the disturbance.</p>
 <p>Impulse is:</p>
-<p>$
+<div class="arithmatex">\[
 J = F \Delta t
-$</p>
+\]</div>
 <p>For a 30 N force applied for 0.15 s:</p>
-<p>$
+<div class="arithmatex">\[
 J = 30 \cdot 0.15
   = 4.5\ \mathrm{N\,s}
-$</p>
+\]</div>
 <p>For 40 N:</p>
-<p>$
+<div class="arithmatex">\[
 J = 40 \cdot 0.15
   = 6.0\ \mathrm{N\,s}
-$</p>
+\]</div>
 <hr />
 <h2 id="51-student-task-force-sweep">51. Student task: force sweep<a class="headerlink" href="#51-student-task-force-sweep" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
@@ -1642,22 +1642,22 @@ python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>-
 <div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">=</span> <span class="n">rotation</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 </code></pre></div>
 <p>For an upright torso:</p>
-<p>$
+<div class="arithmatex">\[
 z_{\mathrm{up}} \approx 1
-$</p>
+\]</div>
 <p>For a horizontal torso:</p>
-<p>$
+<div class="arithmatex">\[
 z_{\mathrm{up}} \approx 0
-$</p>
+\]</div>
 <p>A threshold of:</p>
 <div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.65</span>
 </code></pre></div>
 <p>corresponds approximately to:</p>
-<p>$
+<div class="arithmatex">\[
 \theta &gt;
 \cos^{-1}(0.65)
 \approx 49.5^\circ
-$</p>
+\]</div>
 <hr />
 <h2 id="54-combined-fall-criterion">54. Combined fall criterion<a class="headerlink" href="#54-combined-fall-criterion" title="Permanent link">&para;</a></h2>
 <p>Use:</p>
@@ -1678,20 +1678,20 @@ $</p>
 <div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.85</span>
 </code></pre></div>
 <p>This corresponds to:</p>
-<p>$
+<div class="arithmatex">\[
 \theta &gt;
 \cos^{-1}(0.85)
 \approx 31.8^\circ
-$</p>
+\]</div>
 <p>Then try:</p>
 <div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.30</span>
 </code></pre></div>
 <p>This corresponds to:</p>
-<p>$
+<div class="arithmatex">\[
 \theta &gt;
 \cos^{-1}(0.30)
 \approx 72.5^\circ
-$</p>
+\]</div>
 <p>Discuss:</p>
 <ul>
 <li>false positives;</li>
@@ -1707,10 +1707,10 @@ $</p>
 <span class="w">    </span>--headless
 </code></pre></div>
 <p>Impulse:</p>
-<p>$
+<div class="arithmatex">\[
 J = 40 \cdot 0.10
   = 4.0\ \mathrm{N\,s}
-$</p>
+\]</div>
 <p>Then:</p>
 <div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--force<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
@@ -1718,10 +1718,10 @@ $</p>
 <span class="w">    </span>--headless
 </code></pre></div>
 <p>Impulse:</p>
-<p>$
+<div class="arithmatex">\[
 J = 20 \cdot 0.20
   = 4.0\ \mathrm{N\,s}
-$</p>
+\]</div>
 <p>Ask:</p>
 <blockquote>
 <p>Will the resulting motion be identical?</p>

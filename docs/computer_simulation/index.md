@@ -1,43 +1,7 @@
 # Computer Simulation
 
-what is the folder that should be unzipped?
 
-Unzip this file:
-
-mujoco_humanoid_workshop.zip
-
-After extraction, it should create the folder:
-
-mujoco_humanoid_workshop/
-
-Run:
-
-unzip mujoco_humanoid_workshop.zip
-cd mujoco_humanoid_workshop
-
-The folder should contain:
-
-README.md
-requirements.txt
-common.py
-exercise_01_inspect.py
-exercise_02_pose.py
-exercise_03_contacts.py
-exercise_04_push_test.py
-models/
-
-Download it here:
-
-exercise_01_inspect.py crashes with seg fault
-
-I found a race-condition bug in the supplied scripts. exercise_01_inspect.py changed viewer.opt immediately after launching the passive viewer, without using viewer.lock(). MuJoCo requires passive-viewer state changes to be protected by that lock.
-
-Download the corrected package:MuJoCo workshop](sandbox:/mnt/data/mujoco_humanoid_workshop_fixed.zip)
-
-Replace your existing folder, then recreate the environment:
-
-unzip mujoco_humanoid_workshop_fixed.zip
-cd mujoco_humanoid_workshop
+## Initial steps
 
 rm -rf .venv
 python3 -m venv .venv
@@ -57,41 +21,6 @@ Simulation completed at t=0.10 s
 Then test the standalone MuJoCo viewer:
 
 python -m mujoco.viewer --mjcf=models/simple_humanoid.xml
-
-Finally run the corrected exercise:
-
-python exercise_01_inspect.py
-
-The essential correction in Exercise 1 is that this unsafe line was removed:
-
-viewer.opt.flags[mujoco.mjtVisFlag.mjVIS_CONTACTPOINT] = True
-
-Exercises 3 and 4 now use the required locking pattern:
-
-with viewer.lock():
-    viewer.opt.flags[mujoco.mjtVisFlag.mjVIS_CONTACTPOINT] = True
-    viewer.opt.flags[mujoco.mjtVisFlag.mjVIS_CONTACTFORCE] = True
-
-viewer.sync()
-
-I verified the corrected XML and all four scripts in headless mode with MuJoCo 3.10.0. I could not verify the graphical window in this execution environment because it does not provide a usable desktop display.
-
-If the standalone viewer command also segfaults, the workshop code is no longer the likely cause; that indicates an OpenGL/GLFW or mixed-environment problem. MuJoCo provides its interactive viewer through the Python package, while launch_passive uses a separate viewer thread. In that case, run:
-
-python -X faulthandler exercise_01_inspect.py
-
-and avoid mixing Conda-provided GLFW/OpenGL libraries with a pip-installed MuJoCo environment.
-
-can you make a downloadable .md file out of this?
-
-
-not the segfault fix, the tutorial
-
-
-Library
-/
-ADC Prep
-/mujoco_humanoid_workshop_tutorial.md
 
 # Humanoid Robotics in MuJoCo
 

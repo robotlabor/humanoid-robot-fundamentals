@@ -652,18 +652,18 @@ numpy
 <div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </code></pre></div>
 <p>Upgrade <code>pip</code>:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
 </code></pre></div>
 <p>Install the requirements:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
 <p>Verify MuJoCo:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import mujoco; print(mujoco.__version__)&quot;</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import mujoco; print(mujoco.__version__)&quot;</span>
 </code></pre></div>
 <hr />
 <h2 id="6-test-the-model-without-graphics">6. Test the model without graphics<a class="headerlink" href="#6-test-the-model-without-graphics" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless<span class="w"> </span>--duration<span class="w"> </span><span class="m">0</span>.1
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless<span class="w"> </span>--duration<span class="w"> </span><span class="m">0</span>.1
 </code></pre></div>
 <p>Expected final output:</p>
 <div class="highlight"><pre><span></span><code>Simulation completed at t=0.10 s
@@ -677,7 +677,7 @@ numpy
 <hr />
 <h2 id="7-test-the-graphical-viewer">7. Test the graphical viewer<a class="headerlink" href="#7-test-the-graphical-viewer" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span>--mjcf<span class="o">=</span>models/simple_humanoid.xml
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span>--mjcf<span class="o">=</span>models/simple_humanoid.xml
 </code></pre></div>
 <p>A humanoid model should appear above the floor.</p>
 <p>Close the viewer before continuing.</p>
@@ -741,7 +741,7 @@ numpy
 <span class="w">        </span><span class="na">gravity=</span><span class="s">&quot;0 0 -9.81&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>A timestep of <code>0.002</code> seconds corresponds to:</p>
-<p>$f = \frac{1}{0.002} = 500\,\text{Hz}$</p>
+<p><span class="arithmatex">\(f = \frac{1}{0.002} = 500\,\text{Hz}\)</span></p>
 <hr />
 <h1 id="part-iii-the-humanoid-model">Part III — The humanoid model<a class="headerlink" href="#part-iii-the-humanoid-model" title="Permanent link">&para;</a></h1>
 <h2 id="10-main-mjcf-sections">10. Main MJCF sections<a class="headerlink" href="#10-main-mjcf-sections" title="Permanent link">&para;</a></h2>
@@ -795,7 +795,7 @@ numpy
 </code></pre></div>
 <p>This joint:</p>
 <ul>
-<li>rotates around the local (y)-axis;</li>
+<li>rotates around the local <span class="arithmatex">\(y\)</span>-axis;</li>
 <li>has a minimum angle of 0 rad;</li>
 <li>has a maximum angle of 2.1 rad.</li>
 </ul>
@@ -811,9 +811,9 @@ $</p>
 </code></pre></div>
 <p>A free joint allows:</p>
 <ul>
-<li>translation in (x);</li>
-<li>translation in (y);</li>
-<li>translation in (z);</li>
+<li>translation in <span class="arithmatex">\(x\)</span>;</li>
+<li>translation in <span class="arithmatex">\(y\)</span>;</li>
+<li>translation in <span class="arithmatex">\(z\)</span>;</li>
 <li>rotation around all three axes.</li>
 </ul>
 <p>A free joint occupies:</p>
@@ -847,12 +847,12 @@ $</p>
 <li>twelve hinge joints.</li>
 </ul>
 <p>Therefore:</p>
-<p>[
+<div class="arithmatex">\[
 n_q = 7 + 12 = 19
-]</p>
-<p>[
+\]</div>
+<div class="arithmatex">\[
 n_v = 6 + 12 = 18
-]</p>
+\]</div>
 <hr />
 <h2 id="14-geoms">14. Geoms<a class="headerlink" href="#14-geoms" title="Permanent link">&para;</a></h2>
 <p>A geom can provide:</p>
@@ -987,7 +987,7 @@ $</p>
 <h2 id="19-objective">19. Objective<a class="headerlink" href="#19-objective" title="Permanent link">&para;</a></h2>
 <p>Understand how an MJCF description becomes an indexed numerical model.</p>
 <h2 id="20-run-the-exercise">20. Run the exercise<a class="headerlink" href="#20-run-the-exercise" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_01_inspect.py
 </code></pre></div>
 <p>The script prints:</p>
 <ul>
@@ -1060,7 +1060,7 @@ right_ankle_roll
 <span class="w">          </span><span class="na">rgba=</span><span class="s">&quot;0.8 0.2 0.8 1&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>Restart:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_01_inspect.py
 </code></pre></div>
 <p>The model is compiled when loaded. XML changes do not affect a model that is already running.</p>
 <hr />
@@ -1092,7 +1092,7 @@ right_ankle_roll
 <h2 id="26-objective">26. Objective<a class="headerlink" href="#26-objective" title="Permanent link">&para;</a></h2>
 <p>Command the humanoid to move smoothly between standing and crouching poses.</p>
 <h2 id="27-run-the-exercise">27. Run the exercise<a class="headerlink" href="#27-run-the-exercise" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_02_pose.py
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_02_pose.py
 </code></pre></div>
 <p>The robot should repeatedly move:</p>
 <div class="highlight"><pre><span></span><code>standing → crouching → standing
@@ -1176,7 +1176,7 @@ $</p>
 <div class="highlight"><pre><span></span><code><span class="k">return</span> <span class="n">value</span>
 </code></pre></div>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_02_pose.py
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_02_pose.py
 </code></pre></div>
 <p>Compare:</p>
 <ul>
@@ -1305,7 +1305,7 @@ $</p>
 <h2 id="36-objective">36. Objective<a class="headerlink" href="#36-objective" title="Permanent link">&para;</a></h2>
 <p>Observe floor contact, foot forces, centre of mass, slipping, and load transfer.</p>
 <h2 id="37-run-the-default-experiment">37. Run the default experiment<a class="headerlink" href="#37-run-the-default-experiment" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.9
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.9
 </code></pre></div>
 <p>The script:</p>
 <ol>
@@ -1409,13 +1409,13 @@ $</p>
 <hr />
 <h2 id="43-student-task-friction-experiment">43. Student task: friction experiment<a class="headerlink" href="#43-student-task-friction-experiment" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.9
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.9
 </code></pre></div>
 <p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.3
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.3
 </code></pre></div>
 <p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.05
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.05
 </code></pre></div>
 <p>Record:</p>
 <table>
@@ -1457,12 +1457,12 @@ $</p>
 <hr />
 <h2 id="44-student-task-modify-the-lateral-disturbance">44. Student task: modify the lateral disturbance<a class="headerlink" href="#44-student-task-modify-the-lateral-disturbance" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--friction<span class="w"> </span><span class="m">0</span>.3<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--lateral-force<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--friction<span class="w"> </span><span class="m">0</span>.3<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--lateral-force<span class="w"> </span><span class="m">40</span>
 </code></pre></div>
@@ -1493,7 +1493,7 @@ $</p>
 <h2 id="46-objective">46. Objective<a class="headerlink" href="#46-objective" title="Permanent link">&para;</a></h2>
 <p>Apply a repeatable external disturbance and measure whether the humanoid falls.</p>
 <h2 id="47-run-the-push-test">47. Run the push test<a class="headerlink" href="#47-run-the-push-test" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">30</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">30</span>
 </code></pre></div>
 <p>The script applies a horizontal force to the torso.</p>
 <hr />
@@ -1504,7 +1504,7 @@ $</p>
 <p>Each body receives a six-component spatial force:</p>
 <div class="highlight"><pre><span></span><code>Fx Fy Fz Tx Ty Tz
 </code></pre></div>
-<p>Apply a force in the world (x)-direction:</p>
+<p>Apply a force in the world <span class="arithmatex">\(x\)</span>-direction:</p>
 <div class="highlight"><pre><span></span><code><span class="n">torso_id</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_name2id</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
     <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtObj</span><span class="o">.</span><span class="n">mjOBJ_BODY</span><span class="p">,</span>
@@ -1548,11 +1548,11 @@ $</p>
 <hr />
 <h2 id="51-student-task-force-sweep">51. Student task: force sweep<a class="headerlink" href="#51-student-task-force-sweep" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">20</span><span class="w"> </span>--headless
-python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">25</span><span class="w"> </span>--headless
-python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">30</span><span class="w"> </span>--headless
-python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">35</span><span class="w"> </span>--headless
-python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">40</span><span class="w"> </span>--headless
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">20</span><span class="w"> </span>--headless
+python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">25</span><span class="w"> </span>--headless
+python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">30</span><span class="w"> </span>--headless
+python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">35</span><span class="w"> </span>--headless
+python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">40</span><span class="w"> </span>--headless
 </code></pre></div>
 <p>Record:</p>
 <table>
@@ -1637,7 +1637,7 @@ python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--
 <p>Reshape it:</p>
 <div class="highlight"><pre><span></span><code><span class="n">rotation</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xmat</span><span class="p">[</span><span class="n">torso_id</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<p>The local torso (z)-axis expressed in world coordinates is the third column.</p>
+<p>The local torso <span class="arithmatex">\(z\)</span>-axis expressed in world coordinates is the third column.</p>
 <p>For the workshop model:</p>
 <div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">=</span> <span class="n">rotation</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 </code></pre></div>
@@ -1701,7 +1701,7 @@ $</p>
 <hr />
 <h2 id="56-student-task-compare-equal-impulses">56. Student task: compare equal impulses<a class="headerlink" href="#56-student-task-compare-equal-impulses" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--force<span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--push-duration<span class="w"> </span><span class="m">0</span>.10<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--headless
@@ -1712,7 +1712,7 @@ J = 40 \cdot 0.10
   = 4.0\ \mathrm{N\,s}
 $</p>
 <p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--force<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--push-duration<span class="w"> </span><span class="m">0</span>.20<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--headless
@@ -1738,13 +1738,13 @@ $</p>
 <hr />
 <h2 id="57-student-task-compare-friction-during-the-push">57. Student task: compare friction during the push<a class="headerlink" href="#57-student-task-compare-friction-during-the-push" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--force<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--friction<span class="w"> </span><span class="m">0</span>.9<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--headless
 </code></pre></div>
 <p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--force<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--friction<span class="w"> </span><span class="m">0</span>.1<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--headless
@@ -1843,7 +1843,7 @@ $</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/google-deepmind/mujoco_menagerie.git
 </code></pre></div>
 <p>Open the G1 model:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mjcf<span class="w"> </span>mujoco_menagerie/unitree_g1/scene.xml
 </code></pre></div>
 <hr />
@@ -1884,18 +1884,18 @@ $</p>
 <div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </code></pre></div>
 <p>Install:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
 <hr />
 <h2 id="2-test-without-graphics">2. Test without graphics<a class="headerlink" href="#2-test-without-graphics" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless<span class="w"> </span>--duration<span class="w"> </span><span class="m">0</span>.1
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless<span class="w"> </span>--duration<span class="w"> </span><span class="m">0</span>.1
 </code></pre></div>
 <p>If this works, the model and physics engine are functioning.</p>
 <hr />
 <h2 id="3-viewer-segmentation-fault">3. Viewer segmentation fault<a class="headerlink" href="#3-viewer-segmentation-fault" title="Permanent link">&para;</a></h2>
 <p>First test the standalone viewer:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mjcf<span class="o">=</span>models/simple_humanoid.xml
 </code></pre></div>
 <p>If the standalone viewer also crashes, the issue is likely related to:</p>
@@ -1915,7 +1915,7 @@ $</p>
 <li>pip MuJoCo installations.</li>
 </ul>
 <p>Run with fault reporting:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-X<span class="w"> </span>faulthandler<span class="w"> </span>exercise_01_inspect.py
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-X<span class="w"> </span>faulthandler<span class="w"> </span>exercise_01_inspect.py
 </code></pre></div>
 <hr />
 <h2 id="4-viewer-state-changes">4. Viewer-state changes<a class="headerlink" href="#4-viewer-state-changes" title="Permanent link">&para;</a></h2>
@@ -1933,7 +1933,7 @@ $</p>
 <hr />
 <h2 id="5-xml-parse-error">5. XML parse error<a class="headerlink" href="#5-xml-parse-error" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless
+<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless
 </code></pre></div>
 <p>MuJoCo normally reports the XML line containing the problem.</p>
 <p>Common causes:</p>
@@ -2035,6 +2035,10 @@ $</p>
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

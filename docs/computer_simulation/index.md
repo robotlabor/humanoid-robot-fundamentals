@@ -336,10 +336,10 @@ This joint:
 
 Convert the maximum to degrees:
 
-$
+$$
 2.1\,\text{rad} \cdot \frac{180^\circ}{\pi\,\text{rad}}
 \approx 120.3^\circ
-$
+$$
 
 ---
 
@@ -372,9 +372,9 @@ The free joint position uses:
 
 Therefore:
 
-$
+$$
 n_{q,\mathrm{free}} = 3 + 4 = 7
-$
+$$
 
 ### Velocity representation
 
@@ -385,9 +385,9 @@ The free joint velocity uses:
 
 Therefore:
 
-$
+$$
 n_{v,\mathrm{free}} = 3 + 3 = 6
-$
+$$
 
 The teaching humanoid has:
 
@@ -429,9 +429,9 @@ A box `size` specifies half-dimensions.
 
 Therefore, this foot has approximate full dimensions:
 
-$
+$$
 0.24 \times 0.10 \times 0.06\ \text{m}
-$
+$$
 
 ---
 
@@ -787,9 +787,9 @@ crouch = [
 
 For each leg:
 
-$
+$$
 q_\mathrm{hip}+q_{\mathrm{knee}}+q_{\mathrm{ankle}}=-0.45 + 0.90 - 0.45 = 0
-$
+$$
 
 This helps keep the foot approximately parallel to the floor.
 
@@ -799,15 +799,15 @@ This helps keep the foot approximately parallel to the floor.
 
 The simplest interpolation is:
 
-$
+$$
 q_{\mathrm{ref}}(u)=q_{\mathrm{start}}+u\left(q_{\mathrm{goal}}-q_{\mathrm{start}}\right)
-$
+$$
 
 where:
 
-$
+$$
 0 \leq u \leq 1
-$
+$$
 
 Python:
 
@@ -823,33 +823,33 @@ This creates a constant desired velocity during the segment, but the desired vel
 
 The workshop uses:
 
-$
+$$
 s(u)=3u^2-2u^3
-$
+$$
 
 Then:
 
-$
+$$
 q_{\mathrm{ref}}(u)=q_{\mathrm{start}}+s(u)\left(q_{\mathrm{goal}}-q_{\mathrm{start}}\right)
-$
+$$
 
 Properties:
 
-$
+$$
 s(0)=0
-$
+$$
 
-$
+$$
 s(1)=1
-$
+$$
 
-$
+$$
 s'(0)=0
-$
+$$
 
-$
+$$
 s'(1)=0
-$
+$$
 
 Python:
 
@@ -1103,15 +1103,15 @@ The XML contains:
 
 The sensor returns:
 
-$
+$$
 p_{\mathrm{CoM}}=\begin{bmatrix}x_{\mathrm{CoM}}\\y_{\mathrm{CoM}}\\z_{\mathrm{CoM}}\end{bmatrix}
-$
+$$
 
 For a basic balance interpretation, use the horizontal projection:
 
-$
+$$
 p_{\mathrm{CoM,xy}}=\begin{bmatrix}x_{\mathrm{CoM}}\\y_{\mathrm{CoM}}\end{bmatrix}
-$
+$$
 
 For static balance, the projected centre of mass should normally remain inside the support region formed by the contacting feet.
 
@@ -1326,23 +1326,23 @@ Force magnitude alone does not fully describe the disturbance.
 
 Impulse is:
 
-$
+$$
 J = F \Delta t
-$
+$$
 
 For a 30 N force applied for 0.15 s:
 
-$
+$$
 J = 30 \cdot 0.15
   = 4.5\ \mathrm{N\,s}
-$
+$$
 
 For 40 N:
 
-$
+$$
 J = 40 \cdot 0.15
   = 6.0\ \mathrm{N\,s}
-$
+$$
 
 ---
 
@@ -1428,15 +1428,15 @@ torso_up_z = rotation[2, 2]
 
 For an upright torso:
 
-$
+$$
 z_{\mathrm{up}} \approx 1
-$
+$$
 
 For a horizontal torso:
 
-$
+$$
 z_{\mathrm{up}} \approx 0
-$
+$$
 
 A threshold of:
 
@@ -1446,11 +1446,11 @@ torso_up_z < 0.65
 
 corresponds approximately to:
 
-$
+$$
 \theta >
 \cos^{-1}(0.65)
 \approx 49.5^\circ
-$
+$$
 
 ---
 
@@ -1484,11 +1484,11 @@ torso_up_z < 0.85
 
 This corresponds to:
 
-$
+$$
 \theta >
 \cos^{-1}(0.85)
 \approx 31.8^\circ
-$
+$$
 
 Then try:
 
@@ -1498,11 +1498,11 @@ torso_up_z < 0.30
 
 This corresponds to:
 
-$
+$$
 \theta >
 \cos^{-1}(0.30)
 \approx 72.5^\circ
-$
+$$
 
 Discuss:
 
@@ -1525,10 +1525,10 @@ python3 exercise_04_push_test.py \
 
 Impulse:
 
-$
+$$
 J = 40 \cdot 0.10
   = 4.0\ \mathrm{N\,s}
-$
+$$
 
 Then:
 
@@ -1541,10 +1541,10 @@ python3 exercise_04_push_test.py \
 
 Impulse:
 
-$
+$$
 J = 20 \cdot 0.20
   = 4.0\ \mathrm{N\,s}
-$
+$$
 
 Ask:
 

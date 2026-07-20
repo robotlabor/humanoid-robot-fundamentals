@@ -71,11 +71,11 @@ numpy
 
 ## 4. Extract the workshop package
 
-Unzip the workshop archive:
+Clone the workshop archive:
 
 ```bash
 git clone https://github.com/robotlabor/humanoid-robot-fundamentals.git
-cd /docs/computer_simulation/mujoco_humanoid_workshop
+cd humanoid-robot-fundamentals/docs/computer_simulation/mujoco_humanoid_workshop
 ```
 
 The folder should contain:
@@ -112,19 +112,19 @@ source .venv/bin/activate
 Upgrade `pip`:
 
 ```bash
-python -m pip install --upgrade pip
+python3 -m pip install --upgrade pip
 ```
 
 Install the requirements:
 
 ```bash
-python -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 Verify MuJoCo:
 
 ```bash
-python -c "import mujoco; print(mujoco.__version__)"
+python3 -c "import mujoco; print(mujoco.__version__)"
 ```
 
 ---
@@ -134,7 +134,7 @@ python -c "import mujoco; print(mujoco.__version__)"
 Run:
 
 ```bash
-python exercise_01_inspect.py --headless --duration 0.1
+python3 exercise_01_inspect.py --headless --duration 0.1
 ```
 
 Expected final output:
@@ -156,7 +156,7 @@ This confirms that:
 Run:
 
 ```bash
-python -m mujoco.viewer --mjcf=models/simple_humanoid.xml
+python3 -m mujoco.viewer --mjcf=models/simple_humanoid.xml
 ```
 
 A humanoid model should appear above the floor.
@@ -593,7 +593,7 @@ Understand how an MJCF description becomes an indexed numerical model.
 ## 20. Run the exercise
 
 ```bash
-python exercise_01_inspect.py
+python3 exercise_01_inspect.py
 ```
 
 The script prints:
@@ -690,7 +690,7 @@ Change it to:
 Restart:
 
 ```bash
-python exercise_01_inspect.py
+python3 exercise_01_inspect.py
 ```
 
 The model is compiled when loaded. XML changes do not affect a model that is already running.
@@ -744,7 +744,7 @@ Command the humanoid to move smoothly between standing and crouching poses.
 ## 27. Run the exercise
 
 ```bash
-python exercise_02_pose.py
+python3 exercise_02_pose.py
 ```
 
 The robot should repeatedly move:
@@ -878,7 +878,7 @@ return value
 Run:
 
 ```bash
-python exercise_02_pose.py
+python3 exercise_02_pose.py
 ```
 
 Compare:
@@ -1023,7 +1023,7 @@ Observe floor contact, foot forces, centre of mass, slipping, and load transfer.
 ## 37. Run the default experiment
 
 ```bash
-python exercise_03_contacts.py --friction 0.9
+python3 exercise_03_contacts.py --friction 0.9
 ```
 
 The script:
@@ -1172,19 +1172,19 @@ For this workshop, the first value is the most important.
 Run:
 
 ```bash
-python exercise_03_contacts.py --friction 0.9
+python3 exercise_03_contacts.py --friction 0.9
 ```
 
 Then:
 
 ```bash
-python exercise_03_contacts.py --friction 0.3
+python3 exercise_03_contacts.py --friction 0.3
 ```
 
 Then:
 
 ```bash
-python exercise_03_contacts.py --friction 0.05
+python3 exercise_03_contacts.py --friction 0.05
 ```
 
 Record:
@@ -1208,7 +1208,7 @@ Expected trend:
 Run:
 
 ```bash
-python exercise_03_contacts.py \
+python3 exercise_03_contacts.py \
     --friction 0.3 \
     --lateral-force 10
 ```
@@ -1216,7 +1216,7 @@ python exercise_03_contacts.py \
 Then:
 
 ```bash
-python exercise_03_contacts.py \
+python3 exercise_03_contacts.py \
     --friction 0.3 \
     --lateral-force 40
 ```
@@ -1259,7 +1259,7 @@ Apply a repeatable external disturbance and measure whether the humanoid falls.
 ## 47. Run the push test
 
 ```bash
-python exercise_04_push_test.py --force 30
+python3 exercise_04_push_test.py --force 30
 ```
 
 The script applies a horizontal force to the torso.
@@ -1351,11 +1351,11 @@ $
 Run:
 
 ```bash
-python exercise_04_push_test.py --force 20 --headless
-python exercise_04_push_test.py --force 25 --headless
-python exercise_04_push_test.py --force 30 --headless
-python exercise_04_push_test.py --force 35 --headless
-python exercise_04_push_test.py --force 40 --headless
+python3 exercise_04_push_test.py --force 20 --headless
+python3 exercise_04_push_test.py --force 25 --headless
+python3 exercise_04_push_test.py --force 30 --headless
+python3 exercise_04_push_test.py --force 35 --headless
+python3 exercise_04_push_test.py --force 40 --headless
 ```
 
 Record:
@@ -1517,7 +1517,7 @@ Discuss:
 Run:
 
 ```bash
-python exercise_04_push_test.py \
+python3 exercise_04_push_test.py \
     --force 40 \
     --push-duration 0.10 \
     --headless
@@ -1533,7 +1533,7 @@ $
 Then:
 
 ```bash
-python exercise_04_push_test.py \
+python3 exercise_04_push_test.py \
     --force 20 \
     --push-duration 0.20 \
     --headless
@@ -1567,7 +1567,7 @@ Even with equal impulse:
 Run:
 
 ```bash
-python exercise_04_push_test.py \
+python3 exercise_04_push_test.py \
     --force 30 \
     --friction 0.9 \
     --headless
@@ -1576,7 +1576,7 @@ python exercise_04_push_test.py \
 Then:
 
 ```bash
-python exercise_04_push_test.py \
+python3 exercise_04_push_test.py \
     --force 30 \
     --friction 0.1 \
     --headless
@@ -1651,7 +1651,7 @@ git clone https://github.com/google-deepmind/mujoco_menagerie.git
 Open the G1 model:
 
 ```bash
-python -m mujoco.viewer \
+python3 -m mujoco.viewer \
     --mjcf mujoco_menagerie/unitree_g1/scene.xml
 ```
 
@@ -1712,7 +1712,7 @@ source .venv/bin/activate
 Install:
 
 ```bash
-python -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 ---
@@ -1722,7 +1722,7 @@ python -m pip install -r requirements.txt
 Run:
 
 ```bash
-python exercise_01_inspect.py --headless --duration 0.1
+python3 exercise_01_inspect.py --headless --duration 0.1
 ```
 
 If this works, the model and physics engine are functioning.
@@ -1734,7 +1734,7 @@ If this works, the model and physics engine are functioning.
 First test the standalone viewer:
 
 ```bash
-python -m mujoco.viewer \
+python3 -m mujoco.viewer \
     --mjcf=models/simple_humanoid.xml
 ```
 
@@ -1758,7 +1758,7 @@ Avoid mixing:
 Run with fault reporting:
 
 ```bash
-python -X faulthandler exercise_01_inspect.py
+python3 -X faulthandler exercise_01_inspect.py
 ```
 
 ---
@@ -1789,7 +1789,7 @@ viewer.sync()
 Run:
 
 ```bash
-python exercise_01_inspect.py --headless
+python3 exercise_01_inspect.py --headless
 ```
 
 MuJoCo normally reports the XML line containing the problem.

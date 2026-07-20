@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#computer-simulation" class="md-skip">
+        <a href="#humanoid-robotics-in-mujoco" class="md-skip">
           Skip to content
         </a>
       
@@ -396,6 +396,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Simulation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -412,6 +430,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-workshop-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Workshop purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Learning outcomes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -464,6 +523,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-workshop-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Workshop purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Learning outcomes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -479,20 +568,7 @@
 
 
 
-<h1 id="computer-simulation">Computer Simulation<a class="headerlink" href="#computer-simulation" title="Permanent link">&para;</a></h1>
-<p>rm -rf .venv
-python3 -m venv .venv
-source .venv/bin/activate</p>
-<p>python -m pip install --upgrade pip
-python -m pip install -r requirements.txt</p>
-<p>First test without graphics:</p>
-<p>python exercise_01_inspect.py --headless --duration 0.1</p>
-<p>This should finish with:</p>
-<p>Simulation completed at t=0.10 s</p>
-<p>Then test the standalone MuJoCo viewer:</p>
-<p>python -m mujoco.viewer --mjcf=models/simple_humanoid.xml</p>
 <h1 id="humanoid-robotics-in-mujoco">Humanoid Robotics in MuJoCo<a class="headerlink" href="#humanoid-robotics-in-mujoco" title="Permanent link">&para;</a></h1>
-<h2 id="two-hour-hands-on-workshop-tutorial">Two-Hour Hands-On Workshop Tutorial<a class="headerlink" href="#two-hour-hands-on-workshop-tutorial" title="Permanent link">&para;</a></h2>
 <h2 id="1-workshop-purpose">1. Workshop purpose<a class="headerlink" href="#1-workshop-purpose" title="Permanent link">&para;</a></h2>
 <p>This workshop introduces the simulation concepts needed for humanoid robotics using MuJoCo.</p>
 <p>The workshop focuses entirely on the simulator. It does not use:</p>
@@ -502,7 +578,7 @@ python -m pip install -r requirements.txt</p>
 <li>Gymnasium;</li>
 <li>Stable-Baselines3;</li>
 <li>ROS;</li>
-<li>trajectory optimization.</li>
+<li>task optimization.</li>
 </ul>
 <p>The main topics are:</p>
 <ul>
@@ -517,7 +593,7 @@ python -m pip install -r requirements.txt</p>
 <li>external disturbances;</li>
 <li>fall detection.</li>
 </ul>
-<p>The workshop uses a simplified humanoid model first. A Unitree G1 model can be shown at the end as a more realistic example.</p>
+<p>The workshop uses a simplified humanoid model first. A Unitree G1 model can be imported at the end as a more realistic example.</p>
 <hr />
 <h2 id="2-learning-outcomes">2. Learning outcomes<a class="headerlink" href="#2-learning-outcomes" title="Permanent link">&para;</a></h2>
 <p>At the end of the workshop, students should be able to:</p>
@@ -536,48 +612,8 @@ python -m pip install -r requirements.txt</p>
 <li>explain why a valid humanoid pose is not necessarily dynamically stable.</li>
 </ol>
 <hr />
-<h2 id="3-recommended-workshop-structure">3. Recommended workshop structure<a class="headerlink" href="#3-recommended-workshop-structure" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Time</th>
-<th>Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">0–10 min</td>
-<td>Introduction and demonstration</td>
-</tr>
-<tr>
-<td style="text-align: right;">10–30 min</td>
-<td>Exercise 1: Inspect the humanoid</td>
-</tr>
-<tr>
-<td style="text-align: right;">30–55 min</td>
-<td>Exercise 2: Scripted posture control</td>
-</tr>
-<tr>
-<td style="text-align: right;">55–65 min</td>
-<td>Discussion and short break</td>
-</tr>
-<tr>
-<td style="text-align: right;">65–90 min</td>
-<td>Exercise 3: Contact, CoM, and friction</td>
-</tr>
-<tr>
-<td style="text-align: right;">90–115 min</td>
-<td>Exercise 4: Push test and fall detection</td>
-</tr>
-<tr>
-<td style="text-align: right;">115–120 min</td>
-<td>Unitree G1 comparison and conclusions</td>
-</tr>
-</tbody>
-</table>
-<hr />
 <h1 id="part-i-installation-and-preparation">Part I — Installation and preparation<a class="headerlink" href="#part-i-installation-and-preparation" title="Permanent link">&para;</a></h1>
-<h2 id="4-recommended-environment">4. Recommended environment<a class="headerlink" href="#4-recommended-environment" title="Permanent link">&para;</a></h2>
+<h2 id="3-recommended-environment">3. Recommended environment<a class="headerlink" href="#3-recommended-environment" title="Permanent link">&para;</a></h2>
 <p>Recommended system:</p>
 <ul>
 <li>Ubuntu 22.04 or newer;</li>
@@ -590,10 +626,10 @@ python -m pip install -r requirements.txt</p>
 numpy
 </code></pre></div>
 <hr />
-<h2 id="5-extract-the-workshop-package">5. Extract the workshop package<a class="headerlink" href="#5-extract-the-workshop-package" title="Permanent link">&para;</a></h2>
-<p>Unzip the workshop archive:</p>
-<div class="highlight"><pre><span></span><code>unzip<span class="w"> </span>mujoco_humanoid_workshop_fixed.zip
-<span class="nb">cd</span><span class="w"> </span>mujoco_humanoid_workshop
+<h2 id="4-extract-the-workshop-package">4. Extract the workshop package<a class="headerlink" href="#4-extract-the-workshop-package" title="Permanent link">&para;</a></h2>
+<p>Clone the workshop archive:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/robotlabor/humanoid-robot-fundamentals.git
+<span class="nb">cd</span><span class="w"> </span>humanoid-robot-fundamentals/docs/computer_simulation/mujoco_humanoid_workshop
 </code></pre></div>
 <p>The folder should contain:</p>
 <div class="highlight"><pre><span></span><code>mujoco_humanoid_workshop/
@@ -608,7 +644,7 @@ numpy
     └── simple_humanoid.xml
 </code></pre></div>
 <hr />
-<h2 id="6-create-a-python-virtual-environment">6. Create a Python virtual environment<a class="headerlink" href="#6-create-a-python-virtual-environment" title="Permanent link">&para;</a></h2>
+<h2 id="5-create-a-python-virtual-environment">5. Create a Python virtual environment<a class="headerlink" href="#5-create-a-python-virtual-environment" title="Permanent link">&para;</a></h2>
 <p>Create the environment:</p>
 <div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
 </code></pre></div>
@@ -625,7 +661,7 @@ numpy
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import mujoco; print(mujoco.__version__)&quot;</span>
 </code></pre></div>
 <hr />
-<h2 id="7-test-the-model-without-graphics">7. Test the model without graphics<a class="headerlink" href="#7-test-the-model-without-graphics" title="Permanent link">&para;</a></h2>
+<h2 id="6-test-the-model-without-graphics">6. Test the model without graphics<a class="headerlink" href="#6-test-the-model-without-graphics" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless<span class="w"> </span>--duration<span class="w"> </span><span class="m">0</span>.1
 </code></pre></div>
@@ -639,7 +675,7 @@ numpy
 <li>the physics loop works.</li>
 </ul>
 <hr />
-<h2 id="8-test-the-graphical-viewer">8. Test the graphical viewer<a class="headerlink" href="#8-test-the-graphical-viewer" title="Permanent link">&para;</a></h2>
+<h2 id="7-test-the-graphical-viewer">7. Test the graphical viewer<a class="headerlink" href="#7-test-the-graphical-viewer" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span>--mjcf<span class="o">=</span>models/simple_humanoid.xml
 </code></pre></div>
@@ -647,7 +683,7 @@ numpy
 <p>Close the viewer before continuing.</p>
 <hr />
 <h1 id="part-ii-fundamental-mujoco-concepts">Part II — Fundamental MuJoCo concepts<a class="headerlink" href="#part-ii-fundamental-mujoco-concepts" title="Permanent link">&para;</a></h1>
-<h2 id="9-mjmodel-and-mjdata">9. <code>MjModel</code> and <code>MjData</code><a class="headerlink" href="#9-mjmodel-and-mjdata" title="Permanent link">&para;</a></h2>
+<h2 id="8-mjmodel-and-mjdata">8. <code>MjModel</code> and <code>MjData</code><a class="headerlink" href="#8-mjmodel-and-mjdata" title="Permanent link">&para;</a></h2>
 <p>A basic MuJoCo program begins with:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">mujoco</span>
 
@@ -683,7 +719,7 @@ numpy
 <li>simulation time.</li>
 </ul>
 <hr />
-<h2 id="10-the-simulation-loop">10. The simulation loop<a class="headerlink" href="#10-the-simulation-loop" title="Permanent link">&para;</a></h2>
+<h2 id="9-the-simulation-loop">9. The simulation loop<a class="headerlink" href="#9-the-simulation-loop" title="Permanent link">&para;</a></h2>
 <p>A simple loop is:</p>
 <div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="n">simulation_is_running</span><span class="p">:</span>
     <span class="n">data</span><span class="o">.</span><span class="n">ctrl</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">control_command</span>
@@ -705,12 +741,10 @@ numpy
 <span class="w">        </span><span class="na">gravity=</span><span class="s">&quot;0 0 -9.81&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>A timestep of <code>0.002</code> seconds corresponds to:</p>
-<p>[
-f = \frac{1}{0.002} = 500\ \text{Hz}
-]</p>
+<p>$f = \frac{1}{0.002} = 500\,\text{Hz}$</p>
 <hr />
 <h1 id="part-iii-the-humanoid-model">Part III — The humanoid model<a class="headerlink" href="#part-iii-the-humanoid-model" title="Permanent link">&para;</a></h1>
-<h2 id="11-main-mjcf-sections">11. Main MJCF sections<a class="headerlink" href="#11-main-mjcf-sections" title="Permanent link">&para;</a></h2>
+<h2 id="10-main-mjcf-sections">10. Main MJCF sections<a class="headerlink" href="#10-main-mjcf-sections" title="Permanent link">&para;</a></h2>
 <p>Open:</p>
 <div class="highlight"><pre><span></span><code>models/simple_humanoid.xml
 </code></pre></div>
@@ -727,7 +761,7 @@ f = \frac{1}{0.002} = 500\ \text{Hz}
 <span class="nt">&lt;/mujoco&gt;</span>
 </code></pre></div>
 <hr />
-<h2 id="12-bodies">12. Bodies<a class="headerlink" href="#12-bodies" title="Permanent link">&para;</a></h2>
+<h2 id="11-bodies">11. Bodies<a class="headerlink" href="#11-bodies" title="Permanent link">&para;</a></h2>
 <p>A body represents a rigid coordinate frame in the kinematic tree.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;body</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pelvis&quot;</span><span class="w"> </span><span class="na">pos=</span><span class="s">&quot;0 0 0.92&quot;</span><span class="nt">&gt;</span>
@@ -751,7 +785,7 @@ f = \frac{1}{0.002} = 500\ \text{Hz}
         └── right_foot
 </code></pre></div>
 <hr />
-<h2 id="13-joints">13. Joints<a class="headerlink" href="#13-joints" title="Permanent link">&para;</a></h2>
+<h2 id="12-joints">12. Joints<a class="headerlink" href="#12-joints" title="Permanent link">&para;</a></h2>
 <p>A joint defines relative motion between a body and its parent.</p>
 <p>Example hinge joint:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_knee&quot;</span>
@@ -766,12 +800,12 @@ f = \frac{1}{0.002} = 500\ \text{Hz}
 <li>has a maximum angle of 2.1 rad.</li>
 </ul>
 <p>Convert the maximum to degrees:</p>
-<p>[
-2.1 \cdot \frac{180}{\pi}
+<p>$
+2.1\,\text{rad} \cdot \frac{180^\circ}{\pi\,\text{rad}}
 \approx 120.3^\circ
-]</p>
+$</p>
 <hr />
-<h2 id="14-the-floating-base">14. The floating base<a class="headerlink" href="#14-the-floating-base" title="Permanent link">&para;</a></h2>
+<h2 id="13-the-floating-base">13. The floating base<a class="headerlink" href="#13-the-floating-base" title="Permanent link">&para;</a></h2>
 <p>The pelvis has a free joint:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;freejoint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;root&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
@@ -794,9 +828,9 @@ f = \frac{1}{0.002} = 500\ \text{Hz}
 <li>4 quaternion coordinates.</li>
 </ul>
 <p>Therefore:</p>
-<p>[
+<p>$
 n_{q,\mathrm{free}} = 3 + 4 = 7
-]</p>
+$</p>
 <h3 id="velocity-representation">Velocity representation<a class="headerlink" href="#velocity-representation" title="Permanent link">&para;</a></h3>
 <p>The free joint velocity uses:</p>
 <ul>
@@ -804,9 +838,9 @@ n_{q,\mathrm{free}} = 3 + 4 = 7
 <li>3 angular velocities.</li>
 </ul>
 <p>Therefore:</p>
-<p>[
+<p>$
 n_{v,\mathrm{free}} = 3 + 3 = 6
-]</p>
+$</p>
 <p>The teaching humanoid has:</p>
 <ul>
 <li>one free joint;</li>
@@ -820,7 +854,7 @@ n_q = 7 + 12 = 19
 n_v = 6 + 12 = 18
 ]</p>
 <hr />
-<h2 id="15-geoms">15. Geoms<a class="headerlink" href="#15-geoms" title="Permanent link">&para;</a></h2>
+<h2 id="14-geoms">14. Geoms<a class="headerlink" href="#14-geoms" title="Permanent link">&para;</a></h2>
 <p>A geom can provide:</p>
 <ul>
 <li>visual shape;</li>
@@ -837,11 +871,11 @@ n_v = 6 + 12 = 18
 </code></pre></div>
 <p>A box <code>size</code> specifies half-dimensions.</p>
 <p>Therefore, this foot has approximate full dimensions:</p>
-<p>[
+<p>$
 0.24 \times 0.10 \times 0.06\ \text{m}
-]</p>
+$</p>
 <hr />
-<h2 id="16-sites">16. Sites<a class="headerlink" href="#16-sites" title="Permanent link">&para;</a></h2>
+<h2 id="15-sites">15. Sites<a class="headerlink" href="#15-sites" title="Permanent link">&para;</a></h2>
 <p>A site is a reference location or volume.</p>
 <p>Sites are often used for:</p>
 <ul>
@@ -857,7 +891,7 @@ n_v = 6 + 12 = 18
 <span class="w">      </span><span class="na">size=</span><span class="s">&quot;0.12 0.05 0.015&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <hr />
-<h2 id="17-actuators">17. Actuators<a class="headerlink" href="#17-actuators" title="Permanent link">&para;</a></h2>
+<h2 id="16-actuators">16. Actuators<a class="headerlink" href="#16-actuators" title="Permanent link">&para;</a></h2>
 <p>The workshop uses position actuators.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;position</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_knee_act&quot;</span>
@@ -881,7 +915,7 @@ n_v = 6 + 12 = 18
 <li>timestep.</li>
 </ul>
 <hr />
-<h2 id="18-keyframes">18. Keyframes<a class="headerlink" href="#18-keyframes" title="Permanent link">&para;</a></h2>
+<h2 id="17-keyframes">17. Keyframes<a class="headerlink" href="#17-keyframes" title="Permanent link">&para;</a></h2>
 <p>Keyframes store predefined simulation states.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;keyframe&gt;</span>
@@ -911,7 +945,7 @@ n_v = 6 + 12 = 18
 </code></pre></div>
 <p><code>mj_forward</code> recalculates derived quantities after manually changing the state.</p>
 <hr />
-<h2 id="19-pelvis-weld">19. Pelvis weld<a class="headerlink" href="#19-pelvis-weld" title="Permanent link">&para;</a></h2>
+<h2 id="18-pelvis-weld">18. Pelvis weld<a class="headerlink" href="#18-pelvis-weld" title="Permanent link">&para;</a></h2>
 <p>The model includes an equality constraint:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;equality&gt;</span>
 <span class="w">    </span><span class="nt">&lt;weld</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pelvis_weld&quot;</span>
@@ -950,9 +984,9 @@ n_v = 6 + 12 = 18
 </ul>
 <hr />
 <h1 id="part-iv-exercise-1-inspect-the-humanoid">Part IV — Exercise 1: Inspect the humanoid<a class="headerlink" href="#part-iv-exercise-1-inspect-the-humanoid" title="Permanent link">&para;</a></h1>
-<h2 id="20-objective">20. Objective<a class="headerlink" href="#20-objective" title="Permanent link">&para;</a></h2>
+<h2 id="19-objective">19. Objective<a class="headerlink" href="#19-objective" title="Permanent link">&para;</a></h2>
 <p>Understand how an MJCF description becomes an indexed numerical model.</p>
-<h2 id="21-run-the-exercise">21. Run the exercise<a class="headerlink" href="#21-run-the-exercise" title="Permanent link">&para;</a></h2>
+<h2 id="20-run-the-exercise">20. Run the exercise<a class="headerlink" href="#20-run-the-exercise" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py
 </code></pre></div>
 <p>The script prints:</p>
@@ -971,7 +1005,7 @@ n_v = 6 + 12 = 18
 <li>sensor names.</li>
 </ul>
 <hr />
-<h2 id="22-student-task-inspect-the-model-dimensions">22. Student task: inspect the model dimensions<a class="headerlink" href="#22-student-task-inspect-the-model-dimensions" title="Permanent link">&para;</a></h2>
+<h2 id="21-student-task-inspect-the-model-dimensions">21. Student task: inspect the model dimensions<a class="headerlink" href="#21-student-task-inspect-the-model-dimensions" title="Permanent link">&para;</a></h2>
 <p>Expected values are approximately:</p>
 <div class="highlight"><pre><span></span><code>Bodies:               12
 Joints:               13
@@ -989,7 +1023,7 @@ Equality constraints: 1
 <li>Which joint represents the floating base?</li>
 </ol>
 <hr />
-<h2 id="23-student-task-inspect-joint-names">23. Student task: inspect joint names<a class="headerlink" href="#23-student-task-inspect-joint-names" title="Permanent link">&para;</a></h2>
+<h2 id="22-student-task-inspect-joint-names">22. Student task: inspect joint names<a class="headerlink" href="#22-student-task-inspect-joint-names" title="Permanent link">&para;</a></h2>
 <p>A typical inspection loop is:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">joint_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">njnt</span><span class="p">):</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_id2name</span><span class="p">(</span>
@@ -1016,7 +1050,7 @@ right_ankle_pitch
 right_ankle_roll
 </code></pre></div>
 <hr />
-<h2 id="24-student-task-modify-a-material">24. Student task: modify a material<a class="headerlink" href="#24-student-task-modify-a-material" title="Permanent link">&para;</a></h2>
+<h2 id="23-student-task-modify-a-material">23. Student task: modify a material<a class="headerlink" href="#23-student-task-modify-a-material" title="Permanent link">&para;</a></h2>
 <p>Find:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_mat&quot;</span>
 <span class="w">          </span><span class="na">rgba=</span><span class="s">&quot;0.25 0.65 0.35 1&quot;</span><span class="nt">/&gt;</span>
@@ -1030,7 +1064,7 @@ right_ankle_roll
 </code></pre></div>
 <p>The model is compiled when loaded. XML changes do not affect a model that is already running.</p>
 <hr />
-<h2 id="25-student-task-modify-one-joint-limit">25. Student task: modify one joint limit<a class="headerlink" href="#25-student-task-modify-one-joint-limit" title="Permanent link">&para;</a></h2>
+<h2 id="24-student-task-modify-one-joint-limit">24. Student task: modify one joint limit<a class="headerlink" href="#24-student-task-modify-one-joint-limit" title="Permanent link">&para;</a></h2>
 <p>Find:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_knee&quot;</span>
 <span class="w">       </span><span class="na">range=</span><span class="s">&quot;0 2.1&quot;</span><span class="nt">/&gt;</span>
@@ -1042,7 +1076,7 @@ right_ankle_roll
 <p>Restart the simulation and observe whether the crouching keyframe or commanded posture remains feasible.</p>
 <p>Restore the original value afterward.</p>
 <hr />
-<h2 id="26-exercise-1-discussion">26. Exercise 1 discussion<a class="headerlink" href="#26-exercise-1-discussion" title="Permanent link">&para;</a></h2>
+<h2 id="25-exercise-1-discussion">25. Exercise 1 discussion<a class="headerlink" href="#25-exercise-1-discussion" title="Permanent link">&para;</a></h2>
 <p>Ask:</p>
 <ul>
 <li>Which parts are visual only?</li>
@@ -1055,9 +1089,9 @@ right_ankle_roll
 <p>The XML is a human-readable model description. MuJoCo compiles it into numerical arrays used by the physics engine.</p>
 <hr />
 <h1 id="part-v-exercise-2-scripted-posture-control">Part V — Exercise 2: Scripted posture control<a class="headerlink" href="#part-v-exercise-2-scripted-posture-control" title="Permanent link">&para;</a></h1>
-<h2 id="27-objective">27. Objective<a class="headerlink" href="#27-objective" title="Permanent link">&para;</a></h2>
+<h2 id="26-objective">26. Objective<a class="headerlink" href="#26-objective" title="Permanent link">&para;</a></h2>
 <p>Command the humanoid to move smoothly between standing and crouching poses.</p>
-<h2 id="28-run-the-exercise">28. Run the exercise<a class="headerlink" href="#28-run-the-exercise" title="Permanent link">&para;</a></h2>
+<h2 id="27-run-the-exercise">27. Run the exercise<a class="headerlink" href="#27-run-the-exercise" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_02_pose.py
 </code></pre></div>
 <p>The robot should repeatedly move:</p>
@@ -1065,7 +1099,7 @@ right_ankle_roll
 </code></pre></div>
 <p>The pelvis is fixed during this exercise.</p>
 <hr />
-<h2 id="29-actuator-order">29. Actuator order<a class="headerlink" href="#29-actuator-order" title="Permanent link">&para;</a></h2>
+<h2 id="28-actuator-order">28. Actuator order<a class="headerlink" href="#28-actuator-order" title="Permanent link">&para;</a></h2>
 <p>The control vector contains 12 values:</p>
 <div class="highlight"><pre><span></span><code>0  left hip yaw
 1  left hip roll
@@ -1087,78 +1121,54 @@ right_ankle_roll
 <span class="p">]</span>
 </code></pre></div>
 <p>For each leg:</p>
-<p>[
-q_{\mathrm{hip}}
-+
-q_{\mathrm{knee}}
-+
-q_{\mathrm{ankle}}
-=
--0.45 + 0.90 - 0.45 = 0
-]</p>
+<p>$
+q_\mathrm{hip}+q_{\mathrm{knee}}+q_{\mathrm{ankle}}=-0.45 + 0.90 - 0.45 = 0
+$</p>
 <p>This helps keep the foot approximately parallel to the floor.</p>
 <hr />
-<h2 id="30-linear-interpolation">30. Linear interpolation<a class="headerlink" href="#30-linear-interpolation" title="Permanent link">&para;</a></h2>
+<h2 id="29-linear-interpolation">29. Linear interpolation<a class="headerlink" href="#29-linear-interpolation" title="Permanent link">&para;</a></h2>
 <p>The simplest interpolation is:</p>
-<p>[
-q_{\mathrm{ref}}(u)
-=
-q_{\mathrm{start}}
-+
-u
-\left(
-q_{\mathrm{goal}}
--
-q_{\mathrm{start}}
-\right)
-]</p>
+<p>$
+q_{\mathrm{ref}}(u)=q_{\mathrm{start}}+u\left(q_{\mathrm{goal}}-q_{\mathrm{start}}\right)
+$</p>
 <p>where:</p>
-<p>[
+<p>$
 0 \leq u \leq 1
-]</p>
+$</p>
 <p>Python:</p>
 <div class="highlight"><pre><span></span><code><span class="n">q_ref</span> <span class="o">=</span> <span class="n">q_start</span> <span class="o">+</span> <span class="n">u</span> <span class="o">*</span> <span class="p">(</span><span class="n">q_goal</span> <span class="o">-</span> <span class="n">q_start</span><span class="p">)</span>
 </code></pre></div>
 <p>This creates a constant desired velocity during the segment, but the desired velocity changes abruptly at the beginning and end.</p>
 <hr />
-<h2 id="31-smoothstep-interpolation">31. Smoothstep interpolation<a class="headerlink" href="#31-smoothstep-interpolation" title="Permanent link">&para;</a></h2>
+<h2 id="30-smoothstep-interpolation">30. Smoothstep interpolation<a class="headerlink" href="#30-smoothstep-interpolation" title="Permanent link">&para;</a></h2>
 <p>The workshop uses:</p>
-<p>[
+<p>$
 s(u)=3u^2-2u^3
-]</p>
+$</p>
 <p>Then:</p>
-<p>[
-q_{\mathrm{ref}}(u)
-=
-q_{\mathrm{start}}
-+
-s(u)
-\left(
-q_{\mathrm{goal}}
--
-q_{\mathrm{start}}
-\right)
-]</p>
+<p>$
+q_{\mathrm{ref}}(u)=q_{\mathrm{start}}+s(u)\left(q_{\mathrm{goal}}-q_{\mathrm{start}}\right)
+$</p>
 <p>Properties:</p>
-<p>[
+<p>$
 s(0)=0
-]</p>
-<p>[
+$</p>
+<p>$
 s(1)=1
-]</p>
-<p>[
+$</p>
+<p>$
 s'(0)=0
-]</p>
-<p>[
+$</p>
+<p>$
 s'(1)=0
-]</p>
+$</p>
 <p>Python:</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">smoothstep</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
     <span class="k">return</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">value</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">value</span><span class="o">**</span><span class="mi">3</span>
 </code></pre></div>
 <hr />
-<h2 id="32-student-task-compare-linear-and-smooth-motion">32. Student task: compare linear and smooth motion<a class="headerlink" href="#32-student-task-compare-linear-and-smooth-motion" title="Permanent link">&para;</a></h2>
+<h2 id="31-student-task-compare-linear-and-smooth-motion">31. Student task: compare linear and smooth motion<a class="headerlink" href="#31-student-task-compare-linear-and-smooth-motion" title="Permanent link">&para;</a></h2>
 <p>Replace:</p>
 <div class="highlight"><pre><span></span><code><span class="k">return</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">value</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">value</span><span class="o">**</span><span class="mi">3</span>
 </code></pre></div>
@@ -1178,7 +1188,7 @@ s'(1)=0
 </ul>
 <p>Restore the smoothstep function afterward.</p>
 <hr />
-<h2 id="33-student-task-modify-actuator-gain">33. Student task: modify actuator gain<a class="headerlink" href="#33-student-task-modify-actuator-gain" title="Permanent link">&para;</a></h2>
+<h2 id="32-student-task-modify-actuator-gain">32. Student task: modify actuator gain<a class="headerlink" href="#32-student-task-modify-actuator-gain" title="Permanent link">&para;</a></h2>
 <p>Find the position actuator default:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;position</span><span class="w"> </span><span class="na">kp=</span><span class="s">&quot;140&quot;</span>
 <span class="w">          </span><span class="na">ctrllimited=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
@@ -1238,7 +1248,7 @@ s'(1)=0
 <li>greater numerical sensitivity.</li>
 </ul>
 <hr />
-<h2 id="34-student-task-modify-joint-damping">34. Student task: modify joint damping<a class="headerlink" href="#34-student-task-modify-joint-damping" title="Permanent link">&para;</a></h2>
+<h2 id="33-student-task-modify-joint-damping">33. Student task: modify joint damping<a class="headerlink" href="#33-student-task-modify-joint-damping" title="Permanent link">&para;</a></h2>
 <p>Find:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">damping=</span><span class="s">&quot;3&quot;</span>
 <span class="w">       </span><span class="na">armature=</span><span class="s">&quot;0.02&quot;</span>
@@ -1265,7 +1275,7 @@ s'(1)=0
 <li>stronger resistance to rapid changes.</li>
 </ul>
 <hr />
-<h2 id="35-exercise-2-discussion">35. Exercise 2 discussion<a class="headerlink" href="#35-exercise-2-discussion" title="Permanent link">&para;</a></h2>
+<h2 id="34-exercise-2-discussion">34. Exercise 2 discussion<a class="headerlink" href="#34-exercise-2-discussion" title="Permanent link">&para;</a></h2>
 <p>Ask:</p>
 <ol>
 <li>Does <code>data.ctrl</code> directly set <code>qpos</code>?</li>
@@ -1278,7 +1288,7 @@ s'(1)=0
 <p>An actuator command creates force. It does not directly replace the simulated joint state.</p>
 <hr />
 <h1 id="part-vi-discussion-and-short-break">Part VI — Discussion and short break<a class="headerlink" href="#part-vi-discussion-and-short-break" title="Permanent link">&para;</a></h1>
-<h2 id="36-suggested-questions">36. Suggested questions<a class="headerlink" href="#36-suggested-questions" title="Permanent link">&para;</a></h2>
+<h2 id="35-suggested-questions">35. Suggested questions<a class="headerlink" href="#35-suggested-questions" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Why did we fix the pelvis during the first two exercises?</li>
 <li>What changes when the floating base is released?</li>
@@ -1292,9 +1302,9 @@ s'(1)=0
 </blockquote>
 <hr />
 <h1 id="part-vii-exercise-3-contact-centre-of-mass-and-friction">Part VII — Exercise 3: Contact, centre of mass, and friction<a class="headerlink" href="#part-vii-exercise-3-contact-centre-of-mass-and-friction" title="Permanent link">&para;</a></h1>
-<h2 id="37-objective">37. Objective<a class="headerlink" href="#37-objective" title="Permanent link">&para;</a></h2>
+<h2 id="36-objective">36. Objective<a class="headerlink" href="#36-objective" title="Permanent link">&para;</a></h2>
 <p>Observe floor contact, foot forces, centre of mass, slipping, and load transfer.</p>
-<h2 id="38-run-the-default-experiment">38. Run the default experiment<a class="headerlink" href="#38-run-the-default-experiment" title="Permanent link">&para;</a></h2>
+<h2 id="37-run-the-default-experiment">37. Run the default experiment<a class="headerlink" href="#37-run-the-default-experiment" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.9
 </code></pre></div>
 <p>The script:</p>
@@ -1308,7 +1318,7 @@ s'(1)=0
 <li>measures foot displacement.</li>
 </ol>
 <hr />
-<h2 id="39-viewer-locking">39. Viewer locking<a class="headerlink" href="#39-viewer-locking" title="Permanent link">&para;</a></h2>
+<h2 id="38-viewer-locking">38. Viewer locking<a class="headerlink" href="#38-viewer-locking" title="Permanent link">&para;</a></h2>
 <p>When using the passive viewer, modify viewer state while holding the viewer lock:</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">viewer</span><span class="o">.</span><span class="n">lock</span><span class="p">():</span>
     <span class="n">viewer</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span>
@@ -1323,7 +1333,7 @@ s'(1)=0
 </code></pre></div>
 <p>This avoids race conditions between the simulation thread and the viewer thread.</p>
 <hr />
-<h2 id="40-foot-touch-sensors">40. Foot touch sensors<a class="headerlink" href="#40-foot-touch-sensors" title="Permanent link">&para;</a></h2>
+<h2 id="39-foot-touch-sensors">39. Foot touch sensors<a class="headerlink" href="#39-foot-touch-sensors" title="Permanent link">&para;</a></h2>
 <p>The XML contains:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;touch</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_foot_force&quot;</span>
 <span class="w">       </span><span class="na">site=</span><span class="s">&quot;left_foot_touch_site&quot;</span><span class="nt">/&gt;</span>
@@ -1347,30 +1357,19 @@ s'(1)=0
 <span class="p">]</span>
 </code></pre></div>
 <hr />
-<h2 id="41-centre-of-mass-sensor">41. Centre-of-mass sensor<a class="headerlink" href="#41-centre-of-mass-sensor" title="Permanent link">&para;</a></h2>
+<h2 id="40-centre-of-mass-sensor">40. Centre-of-mass sensor<a class="headerlink" href="#40-centre-of-mass-sensor" title="Permanent link">&para;</a></h2>
 <p>The XML contains:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;subtreecom</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;humanoid_com&quot;</span>
 <span class="w">            </span><span class="na">body=</span><span class="s">&quot;pelvis&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>The sensor returns:</p>
-<p>[
-p_{\mathrm{CoM}}
-=
-\begin{bmatrix}
-x_{\mathrm{CoM}}\
-y_{\mathrm{CoM}}\
-z_{\mathrm{CoM}}
-\end{bmatrix}
-]</p>
+<p>$
+p_{\mathrm{CoM}}=\begin{bmatrix}x_{\mathrm{CoM}}\y_{\mathrm{CoM}}\z_{\mathrm{CoM}}\end{bmatrix}
+$</p>
 <p>For a basic balance interpretation, use the horizontal projection:</p>
-<p>[
-p_{\mathrm{CoM,xy}}
-=
-\begin{bmatrix}
-x_{\mathrm{CoM}}\
-y_{\mathrm{CoM}}
-\end{bmatrix}
-]</p>
+<p>$
+p_{\mathrm{CoM,xy}}=\begin{bmatrix}x_{\mathrm{CoM}}\y_{\mathrm{CoM}}\end{bmatrix}
+$</p>
 <p>For static balance, the projected centre of mass should normally remain inside the support region formed by the contacting feet.</p>
 <p>This is only an introductory approximation. Dynamic balance also depends on:</p>
 <ul>
@@ -1381,7 +1380,7 @@ y_{\mathrm{CoM}}
 <li>future motion.</li>
 </ul>
 <hr />
-<h2 id="42-student-task-compare-left-and-right-foot-force">42. Student task: compare left and right foot force<a class="headerlink" href="#42-student-task-compare-left-and-right-foot-force" title="Permanent link">&para;</a></h2>
+<h2 id="41-student-task-compare-left-and-right-foot-force">41. Student task: compare left and right foot force<a class="headerlink" href="#41-student-task-compare-left-and-right-foot-force" title="Permanent link">&para;</a></h2>
 <p>Before the disturbance:</p>
 <div class="highlight"><pre><span></span><code>left force ≈ right force
 </code></pre></div>
@@ -1396,7 +1395,7 @@ y_{\mathrm{CoM}}
 </ul>
 <p>The answer to the last question is no. Contact force and body velocity are related through dynamics, but they are not the same quantity.</p>
 <hr />
-<h2 id="43-friction-parameters">43. Friction parameters<a class="headerlink" href="#43-friction-parameters" title="Permanent link">&para;</a></h2>
+<h2 id="42-friction-parameters">42. Friction parameters<a class="headerlink" href="#42-friction-parameters" title="Permanent link">&para;</a></h2>
 <p>The floor geom contains:</p>
 <div class="highlight"><pre><span></span><code>friction=&quot;0.9<span class="w"> </span>0.005<span class="w"> </span>0.0001&quot;
 </code></pre></div>
@@ -1408,7 +1407,7 @@ y_{\mathrm{CoM}}
 </ol>
 <p>For this workshop, the first value is the most important.</p>
 <hr />
-<h2 id="44-student-task-friction-experiment">44. Student task: friction experiment<a class="headerlink" href="#44-student-task-friction-experiment" title="Permanent link">&para;</a></h2>
+<h2 id="43-student-task-friction-experiment">43. Student task: friction experiment<a class="headerlink" href="#43-student-task-friction-experiment" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.9
 </code></pre></div>
@@ -1456,7 +1455,7 @@ y_{\mathrm{CoM}}
 <li>very low friction may produce sliding before strong body tilt.</li>
 </ul>
 <hr />
-<h2 id="45-student-task-modify-the-lateral-disturbance">45. Student task: modify the lateral disturbance<a class="headerlink" href="#45-student-task-modify-the-lateral-disturbance" title="Permanent link">&para;</a></h2>
+<h2 id="44-student-task-modify-the-lateral-disturbance">44. Student task: modify the lateral disturbance<a class="headerlink" href="#44-student-task-modify-the-lateral-disturbance" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--friction<span class="w"> </span><span class="m">0</span>.3<span class="w"> </span><span class="se">\</span>
@@ -1476,7 +1475,7 @@ y_{\mathrm{CoM}}
 <li>whole-body translation.</li>
 </ul>
 <hr />
-<h2 id="46-contact-versus-stability">46. Contact versus stability<a class="headerlink" href="#46-contact-versus-stability" title="Permanent link">&para;</a></h2>
+<h2 id="45-contact-versus-stability">45. Contact versus stability<a class="headerlink" href="#45-contact-versus-stability" title="Permanent link">&para;</a></h2>
 <p>A humanoid can have both feet touching the floor and still be unstable.</p>
 <p>Possible situations include:</p>
 <ul>
@@ -1491,14 +1490,14 @@ y_{\mathrm{CoM}}
 <p>Contact is not simply “on” or “off.” It has geometry, forces, friction, and motion.</p>
 <hr />
 <h1 id="part-viii-exercise-4-push-test-and-fall-detection">Part VIII — Exercise 4: Push test and fall detection<a class="headerlink" href="#part-viii-exercise-4-push-test-and-fall-detection" title="Permanent link">&para;</a></h1>
-<h2 id="47-objective">47. Objective<a class="headerlink" href="#47-objective" title="Permanent link">&para;</a></h2>
+<h2 id="46-objective">46. Objective<a class="headerlink" href="#46-objective" title="Permanent link">&para;</a></h2>
 <p>Apply a repeatable external disturbance and measure whether the humanoid falls.</p>
-<h2 id="48-run-the-push-test">48. Run the push test<a class="headerlink" href="#48-run-the-push-test" title="Permanent link">&para;</a></h2>
+<h2 id="47-run-the-push-test">47. Run the push test<a class="headerlink" href="#47-run-the-push-test" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">30</span>
 </code></pre></div>
 <p>The script applies a horizontal force to the torso.</p>
 <hr />
-<h2 id="49-external-force-array">49. External force array<a class="headerlink" href="#49-external-force-array" title="Permanent link">&para;</a></h2>
+<h2 id="48-external-force-array">48. External force array<a class="headerlink" href="#48-external-force-array" title="Permanent link">&para;</a></h2>
 <p>MuJoCo provides:</p>
 <div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">xfrc_applied</span>
 </code></pre></div>
@@ -1518,7 +1517,7 @@ y_{\mathrm{CoM}}
 <div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">xfrc_applied</span><span class="p">[</span><span class="n">torso_id</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span>
 </code></pre></div>
 <hr />
-<h2 id="50-push-timing">50. Push timing<a class="headerlink" href="#50-push-timing" title="Permanent link">&para;</a></h2>
+<h2 id="49-push-timing">49. Push timing<a class="headerlink" href="#49-push-timing" title="Permanent link">&para;</a></h2>
 <p>The force is applied only during a defined interval:</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">push_start</span> <span class="o">&lt;=</span> <span class="n">data</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;</span> <span class="n">push_start</span> <span class="o">+</span> <span class="n">push_duration</span><span class="p">:</span>
     <span class="n">data</span><span class="o">.</span><span class="n">xfrc_applied</span><span class="p">[</span><span class="n">torso_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">push_force</span>
@@ -1530,24 +1529,24 @@ y_{\mathrm{CoM}}
 push_duration = 0.15 s
 </code></pre></div>
 <hr />
-<h2 id="51-force-and-impulse">51. Force and impulse<a class="headerlink" href="#51-force-and-impulse" title="Permanent link">&para;</a></h2>
+<h2 id="50-force-and-impulse">50. Force and impulse<a class="headerlink" href="#50-force-and-impulse" title="Permanent link">&para;</a></h2>
 <p>Force magnitude alone does not fully describe the disturbance.</p>
 <p>Impulse is:</p>
-<p>[
+<p>$
 J = F \Delta t
-]</p>
+$</p>
 <p>For a 30 N force applied for 0.15 s:</p>
-<p>[
+<p>$
 J = 30 \cdot 0.15
   = 4.5\ \mathrm{N\,s}
-]</p>
+$</p>
 <p>For 40 N:</p>
-<p>[
+<p>$
 J = 40 \cdot 0.15
   = 6.0\ \mathrm{N\,s}
-]</p>
+$</p>
 <hr />
-<h2 id="52-student-task-force-sweep">52. Student task: force sweep<a class="headerlink" href="#52-student-task-force-sweep" title="Permanent link">&para;</a></h2>
+<h2 id="51-student-task-force-sweep">51. Student task: force sweep<a class="headerlink" href="#51-student-task-force-sweep" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">20</span><span class="w"> </span>--headless
 python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">25</span><span class="w"> </span>--headless
@@ -1605,7 +1604,7 @@ python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--
 </tbody>
 </table>
 <hr />
-<h2 id="53-fall-criterion-based-on-pelvis-height">53. Fall criterion based on pelvis height<a class="headerlink" href="#53-fall-criterion-based-on-pelvis-height" title="Permanent link">&para;</a></h2>
+<h2 id="52-fall-criterion-based-on-pelvis-height">52. Fall criterion based on pelvis height<a class="headerlink" href="#52-fall-criterion-based-on-pelvis-height" title="Permanent link">&para;</a></h2>
 <p>Get the pelvis position:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pelvis_id</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_name2id</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
@@ -1631,7 +1630,7 @@ python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--
 <li>body orientation is ignored.</li>
 </ul>
 <hr />
-<h2 id="54-fall-criterion-based-on-torso-orientation">54. Fall criterion based on torso orientation<a class="headerlink" href="#54-fall-criterion-based-on-torso-orientation" title="Permanent link">&para;</a></h2>
+<h2 id="53-fall-criterion-based-on-torso-orientation">53. Fall criterion based on torso orientation<a class="headerlink" href="#53-fall-criterion-based-on-torso-orientation" title="Permanent link">&para;</a></h2>
 <p>The body rotation matrix is stored in:</p>
 <div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">xmat</span><span class="p">[</span><span class="n">torso_id</span><span class="p">]</span>
 </code></pre></div>
@@ -1643,24 +1642,24 @@ python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--
 <div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">=</span> <span class="n">rotation</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 </code></pre></div>
 <p>For an upright torso:</p>
-<p>[
+<p>$
 z_{\mathrm{up}} \approx 1
-]</p>
+$</p>
 <p>For a horizontal torso:</p>
-<p>[
+<p>$
 z_{\mathrm{up}} \approx 0
-]</p>
+$</p>
 <p>A threshold of:</p>
 <div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.65</span>
 </code></pre></div>
 <p>corresponds approximately to:</p>
-<p>[
+<p>$
 \theta &gt;
 \cos^{-1}(0.65)
 \approx 49.5^\circ
-]</p>
+$</p>
 <hr />
-<h2 id="55-combined-fall-criterion">55. Combined fall criterion<a class="headerlink" href="#55-combined-fall-criterion" title="Permanent link">&para;</a></h2>
+<h2 id="54-combined-fall-criterion">54. Combined fall criterion<a class="headerlink" href="#54-combined-fall-criterion" title="Permanent link">&para;</a></h2>
 <p>Use:</p>
 <div class="highlight"><pre><span></span><code><span class="n">fallen</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">pelvis_height</span> <span class="o">&lt;</span> <span class="mf">0.55</span>
@@ -1674,25 +1673,25 @@ z_{\mathrm{up}} \approx 0
 </ul>
 <p>It is more robust than either condition alone.</p>
 <hr />
-<h2 id="56-student-task-change-the-fall-threshold">56. Student task: change the fall threshold<a class="headerlink" href="#56-student-task-change-the-fall-threshold" title="Permanent link">&para;</a></h2>
+<h2 id="55-student-task-change-the-fall-threshold">55. Student task: change the fall threshold<a class="headerlink" href="#55-student-task-change-the-fall-threshold" title="Permanent link">&para;</a></h2>
 <p>Try:</p>
 <div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.85</span>
 </code></pre></div>
 <p>This corresponds to:</p>
-<p>[
+<p>$
 \theta &gt;
 \cos^{-1}(0.85)
 \approx 31.8^\circ
-]</p>
+$</p>
 <p>Then try:</p>
 <div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.30</span>
 </code></pre></div>
 <p>This corresponds to:</p>
-<p>[
+<p>$
 \theta &gt;
 \cos^{-1}(0.30)
 \approx 72.5^\circ
-]</p>
+$</p>
 <p>Discuss:</p>
 <ul>
 <li>false positives;</li>
@@ -1700,7 +1699,7 @@ z_{\mathrm{up}} \approx 0
 <li>how the experimental definition changes the reported result.</li>
 </ul>
 <hr />
-<h2 id="57-student-task-compare-equal-impulses">57. Student task: compare equal impulses<a class="headerlink" href="#57-student-task-compare-equal-impulses" title="Permanent link">&para;</a></h2>
+<h2 id="56-student-task-compare-equal-impulses">56. Student task: compare equal impulses<a class="headerlink" href="#56-student-task-compare-equal-impulses" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--force<span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="se">\</span>
@@ -1708,10 +1707,10 @@ z_{\mathrm{up}} \approx 0
 <span class="w">    </span>--headless
 </code></pre></div>
 <p>Impulse:</p>
-<p>[
+<p>$
 J = 40 \cdot 0.10
   = 4.0\ \mathrm{N\,s}
-]</p>
+$</p>
 <p>Then:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--force<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
@@ -1719,10 +1718,10 @@ J = 40 \cdot 0.10
 <span class="w">    </span>--headless
 </code></pre></div>
 <p>Impulse:</p>
-<p>[
+<p>$
 J = 20 \cdot 0.20
   = 4.0\ \mathrm{N\,s}
-]</p>
+$</p>
 <p>Ask:</p>
 <blockquote>
 <p>Will the resulting motion be identical?</p>
@@ -1737,7 +1736,7 @@ J = 20 \cdot 0.20
 <li>the model is nonlinear.</li>
 </ul>
 <hr />
-<h2 id="58-student-task-compare-friction-during-the-push">58. Student task: compare friction during the push<a class="headerlink" href="#58-student-task-compare-friction-during-the-push" title="Permanent link">&para;</a></h2>
+<h2 id="57-student-task-compare-friction-during-the-push">57. Student task: compare friction during the push<a class="headerlink" href="#57-student-task-compare-friction-during-the-push" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--force<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
@@ -1758,7 +1757,7 @@ J = 20 \cdot 0.20
 <li>a combination of these.</li>
 </ul>
 <hr />
-<h2 id="59-final-engineering-challenge">59. Final engineering challenge<a class="headerlink" href="#59-final-engineering-challenge" title="Permanent link">&para;</a></h2>
+<h2 id="58-final-engineering-challenge">58. Final engineering challenge<a class="headerlink" href="#58-final-engineering-challenge" title="Permanent link">&para;</a></h2>
 <p>Find the largest horizontal push that the humanoid can survive for five seconds.</p>
 <p>Students may modify:</p>
 <ul>
@@ -1826,7 +1825,7 @@ J = 20 \cdot 0.20
 </table>
 <hr />
 <h1 id="part-ix-unitree-g1-demonstration">Part IX — Unitree G1 demonstration<a class="headerlink" href="#part-ix-unitree-g1-demonstration" title="Permanent link">&para;</a></h1>
-<h2 id="60-purpose">60. Purpose<a class="headerlink" href="#60-purpose" title="Permanent link">&para;</a></h2>
+<h2 id="59-purpose">59. Purpose<a class="headerlink" href="#59-purpose" title="Permanent link">&para;</a></h2>
 <p>The G1 demonstration shows that the same concepts transfer to a detailed commercial humanoid model.</p>
 <p>The detailed model still contains:</p>
 <ul>
@@ -1839,7 +1838,7 @@ J = 20 \cdot 0.20
 <li>floating-base coordinates.</li>
 </ul>
 <hr />
-<h2 id="61-obtain-mujoco-menagerie">61. Obtain MuJoCo Menagerie<a class="headerlink" href="#61-obtain-mujoco-menagerie" title="Permanent link">&para;</a></h2>
+<h2 id="60-obtain-mujoco-menagerie">60. Obtain MuJoCo Menagerie<a class="headerlink" href="#60-obtain-mujoco-menagerie" title="Permanent link">&para;</a></h2>
 <p>Clone the repository:</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/google-deepmind/mujoco_menagerie.git
 </code></pre></div>
@@ -1848,7 +1847,7 @@ J = 20 \cdot 0.20
 <span class="w">    </span>--mjcf<span class="w"> </span>mujoco_menagerie/unitree_g1/scene.xml
 </code></pre></div>
 <hr />
-<h2 id="62-student-observation-tasks">62. Student observation tasks<a class="headerlink" href="#62-student-observation-tasks" title="Permanent link">&para;</a></h2>
+<h2 id="61-student-observation-tasks">61. Student observation tasks<a class="headerlink" href="#61-student-observation-tasks" title="Permanent link">&para;</a></h2>
 <p>Ask students to identify:</p>
 <ol>
 <li>pelvis or trunk root;</li>
@@ -1863,7 +1862,7 @@ J = 20 \cdot 0.20
 <li>differences from the simplified model.</li>
 </ol>
 <hr />
-<h2 id="63-discussion">63. Discussion<a class="headerlink" href="#63-discussion" title="Permanent link">&para;</a></h2>
+<h2 id="62-discussion">62. Discussion<a class="headerlink" href="#62-discussion" title="Permanent link">&para;</a></h2>
 <p>Ask:</p>
 <ul>
 <li>Why is the G1 XML much longer?</li>
@@ -1876,39 +1875,8 @@ J = 20 \cdot 0.20
 <h3 id="main-takeaway_3">Main takeaway<a class="headerlink" href="#main-takeaway_3" title="Permanent link">&para;</a></h3>
 <p>A realistic humanoid is more complex, but it is built from the same simulator concepts.</p>
 <hr />
-<h1 id="part-x-suggested-instructor-script">Part X — Suggested instructor script<a class="headerlink" href="#part-x-suggested-instructor-script" title="Permanent link">&para;</a></h1>
-<h2 id="64-opening-explanation">64. Opening explanation<a class="headerlink" href="#64-opening-explanation" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>In this workshop, we will not design an intelligent controller. Our goal is to understand what a humanoid simulator actually represents. We will inspect the model, command the joints, release the floating base, observe contact, change friction, and finally apply a controlled push.</p>
-</blockquote>
-<hr />
-<h2 id="65-before-exercise-1">65. Before Exercise 1<a class="headerlink" href="#65-before-exercise-1" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>The XML file is the human-readable description. MuJoCo compiles it into indexed arrays. The simulator does not repeatedly search for a joint by name during every dynamics calculation.</p>
-</blockquote>
-<hr />
-<h2 id="66-before-exercise-2">66. Before Exercise 2<a class="headerlink" href="#66-before-exercise-2" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>A position actuator does not teleport a joint. It creates force according to the difference between the command and the simulated state. The motion still depends on physics.</p>
-</blockquote>
-<hr />
-<h2 id="67-before-exercise-3">67. Before Exercise 3<a class="headerlink" href="#67-before-exercise-3" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Until now, the pelvis was fixed. This separated joint actuation from whole-body balance. We will now release the root and let the robot interact freely with the floor.</p>
-</blockquote>
-<hr />
-<h2 id="68-before-exercise-4">68. Before Exercise 4<a class="headerlink" href="#68-before-exercise-4" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>A push test is only useful if it is repeatable. We must define the force, duration, application point, friction, initial state, and fall criterion.</p>
-</blockquote>
-<hr />
-<h2 id="69-final-conclusion">69. Final conclusion<a class="headerlink" href="#69-final-conclusion" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>A valid pose is not automatically stable. A joint controller does not directly control the floating base. Humanoid simulation is the interaction of model structure, actuation, contacts, and measurable evaluation criteria.</p>
-</blockquote>
-<hr />
-<h1 id="part-xi-troubleshooting">Part XI — Troubleshooting<a class="headerlink" href="#part-xi-troubleshooting" title="Permanent link">&para;</a></h1>
-<h2 id="70-mujoco-is-not-installed">70. MuJoCo is not installed<a class="headerlink" href="#70-mujoco-is-not-installed" title="Permanent link">&para;</a></h2>
+<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
+<h2 id="1-mujoco-is-not-installed">1. MuJoCo is not installed<a class="headerlink" href="#1-mujoco-is-not-installed" title="Permanent link">&para;</a></h2>
 <p>Error:</p>
 <div class="highlight"><pre><span></span><code>ModuleNotFoundError: No module named &#39;mujoco&#39;
 </code></pre></div>
@@ -1919,13 +1887,13 @@ J = 20 \cdot 0.20
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
 <hr />
-<h2 id="71-test-without-graphics">71. Test without graphics<a class="headerlink" href="#71-test-without-graphics" title="Permanent link">&para;</a></h2>
+<h2 id="2-test-without-graphics">2. Test without graphics<a class="headerlink" href="#2-test-without-graphics" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless<span class="w"> </span>--duration<span class="w"> </span><span class="m">0</span>.1
 </code></pre></div>
 <p>If this works, the model and physics engine are functioning.</p>
 <hr />
-<h2 id="72-viewer-segmentation-fault">72. Viewer segmentation fault<a class="headerlink" href="#72-viewer-segmentation-fault" title="Permanent link">&para;</a></h2>
+<h2 id="3-viewer-segmentation-fault">3. Viewer segmentation fault<a class="headerlink" href="#3-viewer-segmentation-fault" title="Permanent link">&para;</a></h2>
 <p>First test the standalone viewer:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mjcf<span class="o">=</span>models/simple_humanoid.xml
@@ -1950,7 +1918,7 @@ J = 20 \cdot 0.20
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>-X<span class="w"> </span>faulthandler<span class="w"> </span>exercise_01_inspect.py
 </code></pre></div>
 <hr />
-<h2 id="73-viewer-state-changes">73. Viewer-state changes<a class="headerlink" href="#73-viewer-state-changes" title="Permanent link">&para;</a></h2>
+<h2 id="4-viewer-state-changes">4. Viewer-state changes<a class="headerlink" href="#4-viewer-state-changes" title="Permanent link">&para;</a></h2>
 <p>When using:</p>
 <div class="highlight"><pre><span></span><code><span class="n">mujoco</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">launch_passive</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 </code></pre></div>
@@ -1963,7 +1931,7 @@ J = 20 \cdot 0.20
 <span class="n">viewer</span><span class="o">.</span><span class="n">sync</span><span class="p">()</span>
 </code></pre></div>
 <hr />
-<h2 id="74-xml-parse-error">74. XML parse error<a class="headerlink" href="#74-xml-parse-error" title="Permanent link">&para;</a></h2>
+<h2 id="5-xml-parse-error">5. XML parse error<a class="headerlink" href="#5-xml-parse-error" title="Permanent link">&para;</a></h2>
 <p>Run:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless
 </code></pre></div>
@@ -1977,13 +1945,13 @@ J = 20 \cdot 0.20
 <li>invalid body reference.</li>
 </ul>
 <hr />
-<h2 id="75-humanoid-immediately-falls">75. Humanoid immediately falls<a class="headerlink" href="#75-humanoid-immediately-falls" title="Permanent link">&para;</a></h2>
+<h2 id="6-humanoid-immediately-falls">6. Humanoid immediately falls<a class="headerlink" href="#6-humanoid-immediately-falls" title="Permanent link">&para;</a></h2>
 <p>Check which exercise is running.</p>
 <p>Exercises 1 and 2 should use the pelvis weld.</p>
 <p>Exercises 3 and 4 should release the pelvis.</p>
 <p>A released humanoid without whole-body balance control may eventually fall even when no push is applied.</p>
 <hr />
-<h2 id="76-violent-oscillation">76. Violent oscillation<a class="headerlink" href="#76-violent-oscillation" title="Permanent link">&para;</a></h2>
+<h2 id="7-violent-oscillation">7. Violent oscillation<a class="headerlink" href="#7-violent-oscillation" title="Permanent link">&para;</a></h2>
 <p>Restore reasonable values:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;option</span><span class="w"> </span><span class="na">timestep=</span><span class="s">&quot;0.002&quot;</span>
 <span class="w">        </span><span class="na">integrator=</span><span class="s">&quot;implicitfast&quot;</span><span class="nt">/&gt;</span>
@@ -1995,7 +1963,7 @@ J = 20 \cdot 0.20
 </code></pre></div>
 <p>Very high gain and low damping can create oscillation and large contact forces.</p>
 <hr />
-<h2 id="77-friction-change-has-little-visible-effect">77. Friction change has little visible effect<a class="headerlink" href="#77-friction-change-has-little-visible-effect" title="Permanent link">&para;</a></h2>
+<h2 id="8-friction-change-has-little-visible-effect">8. Friction change has little visible effect<a class="headerlink" href="#8-friction-change-has-little-visible-effect" title="Permanent link">&para;</a></h2>
 <p>Ensure friction is changed for:</p>
 <ul>
 <li>the floor;</li>
@@ -2004,7 +1972,7 @@ J = 20 \cdot 0.20
 </ul>
 <p>Also increase the lateral force if the disturbance is too small.</p>
 <hr />
-<h2 id="78-touch-sensor-always-reads-zero">78. Touch sensor always reads zero<a class="headerlink" href="#78-touch-sensor-always-reads-zero" title="Permanent link">&para;</a></h2>
+<h2 id="9-touch-sensor-always-reads-zero">9. Touch sensor always reads zero<a class="headerlink" href="#9-touch-sensor-always-reads-zero" title="Permanent link">&para;</a></h2>
 <p>Check:</p>
 <ul>
 <li>whether the site overlaps the contact region;</li>
@@ -2014,1645 +1982,6 @@ J = 20 \cdot 0.20
 <li>whether the pelvis weld holds the feet slightly above the floor.</li>
 </ul>
 <hr />
-<h1 id="part-xii-assessment-questions">Part XII — Assessment questions<a class="headerlink" href="#part-xii-assessment-questions" title="Permanent link">&para;</a></h1>
-<h2 id="79-short-questions">79. Short questions<a class="headerlink" href="#79-short-questions" title="Permanent link">&para;</a></h2>
-<ol>
-<li>What is the difference between <code>MjModel</code> and <code>MjData</code>?</li>
-<li>Why does a free joint use 7 position values and 6 velocity values?</li>
-<li>What is the purpose of <code>mj_forward</code>?</li>
-<li>What does <code>data.ctrl</code> contain?</li>
-<li>Why is a position actuator not equivalent to assigning <code>qpos</code>?</li>
-<li>What does a touch sensor measure?</li>
-<li>Why does low friction increase slipping?</li>
-<li>Why is projected centre of mass only a static approximation?</li>
-<li>How can an external force be applied to a body?</li>
-<li>Why must a fall criterion be defined by the experimenter?</li>
-</ol>
-<hr />
-<h2 id="80-practical-assessment">80. Practical assessment<a class="headerlink" href="#80-practical-assessment" title="Permanent link">&para;</a></h2>
-<p>Ask students to:</p>
-<ol>
-<li>load the standing keyframe;</li>
-<li>command a crouching posture;</li>
-<li>release the pelvis weld;</li>
-<li>set friction to 0.2;</li>
-<li>apply a 25 N push for 0.2 s;</li>
-<li>report:</li>
-<li>whether the robot fell;</li>
-<li>maximum torso tilt;</li>
-<li>minimum pelvis height;</li>
-<li>left and right foot force;</li>
-<li>approximate foot displacement.</li>
-</ol>
-<hr />
-<h1 id="part-xiii-core-conclusions">Part XIII — Core conclusions<a class="headerlink" href="#part-xiii-core-conclusions" title="Permanent link">&para;</a></h1>
-<p>The workshop should end with these statements:</p>
-<ol>
-<li>
-<p><strong>A valid humanoid pose is not automatically dynamically stable.</strong></p>
-</li>
-<li>
-<p><strong>Joint commands create actuator forces; they do not directly replace the physical state.</strong></p>
-</li>
-<li>
-<p><strong>A floating base makes whole-body balance fundamentally different from fixed-base joint control.</strong></p>
-</li>
-<li>
-<p><strong>Contact includes geometry, normal forces, friction, and possible sliding.</strong></p>
-</li>
-<li>
-<p><strong>Simulation results depend on both the physical model and the experimental definition.</strong></p>
-</li>
-<li>
-<p><strong>A fall detector is an engineering criterion, not an automatic truth supplied by the simulator.</strong></p>
-</li>
-<li>
-<p><strong>The same principles apply to simplified humanoids and detailed models such as the Unitree G1.</strong></p>
-</li>
-</ol>
-<p>Library
-/
-ADC Prep
-/mujoco_humanoid_workshop_tutorial.md</p>
-<h1 id="humanoid-robotics-in-mujoco_1">Humanoid Robotics in MuJoCo<a class="headerlink" href="#humanoid-robotics-in-mujoco_1" title="Permanent link">&para;</a></h1>
-<h2 id="two-hour-hands-on-workshop-tutorial_1">Two-Hour Hands-On Workshop Tutorial<a class="headerlink" href="#two-hour-hands-on-workshop-tutorial_1" title="Permanent link">&para;</a></h2>
-<h2 id="1-workshop-purpose_1">1. Workshop purpose<a class="headerlink" href="#1-workshop-purpose_1" title="Permanent link">&para;</a></h2>
-<p>This workshop introduces the simulation concepts needed for humanoid robotics using MuJoCo.</p>
-<p>The workshop focuses entirely on the simulator. It does not use:</p>
-<ul>
-<li>machine learning;</li>
-<li>reinforcement learning;</li>
-<li>Gymnasium;</li>
-<li>Stable-Baselines3;</li>
-<li>ROS;</li>
-<li>trajectory optimization.</li>
-</ul>
-<p>The main topics are:</p>
-<ul>
-<li>MJCF model structure;</li>
-<li>floating-base humanoids;</li>
-<li>generalized coordinates;</li>
-<li>joint actuators;</li>
-<li>scripted posture changes;</li>
-<li>contact forces;</li>
-<li>friction;</li>
-<li>centre of mass;</li>
-<li>external disturbances;</li>
-<li>fall detection.</li>
-</ul>
-<p>The workshop uses a simplified humanoid model first. A Unitree G1 model can be shown at the end as a more realistic example.</p>
-<hr />
-<h2 id="2-learning-outcomes_1">2. Learning outcomes<a class="headerlink" href="#2-learning-outcomes_1" title="Permanent link">&para;</a></h2>
-<p>At the end of the workshop, students should be able to:</p>
-<ol>
-<li>load an MJCF humanoid model;</li>
-<li>identify bodies, joints, geoms, sites, actuators, sensors, and keyframes;</li>
-<li>explain the difference between <code>MjModel</code> and <code>MjData</code>;</li>
-<li>inspect <code>qpos</code>, <code>qvel</code>, and <code>ctrl</code>;</li>
-<li>reset a simulation using a keyframe;</li>
-<li>command position actuators;</li>
-<li>generate a smooth scripted posture;</li>
-<li>visualize and measure foot contact;</li>
-<li>modify friction parameters;</li>
-<li>apply an external force;</li>
-<li>define a simple fall criterion;</li>
-<li>explain why a valid humanoid pose is not necessarily dynamically stable.</li>
-</ol>
-<hr />
-<h2 id="3-recommended-workshop-structure_1">3. Recommended workshop structure<a class="headerlink" href="#3-recommended-workshop-structure_1" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Time</th>
-<th>Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">0–10 min</td>
-<td>Introduction and demonstration</td>
-</tr>
-<tr>
-<td style="text-align: right;">10–30 min</td>
-<td>Exercise 1: Inspect the humanoid</td>
-</tr>
-<tr>
-<td style="text-align: right;">30–55 min</td>
-<td>Exercise 2: Scripted posture control</td>
-</tr>
-<tr>
-<td style="text-align: right;">55–65 min</td>
-<td>Discussion and short break</td>
-</tr>
-<tr>
-<td style="text-align: right;">65–90 min</td>
-<td>Exercise 3: Contact, CoM, and friction</td>
-</tr>
-<tr>
-<td style="text-align: right;">90–115 min</td>
-<td>Exercise 4: Push test and fall detection</td>
-</tr>
-<tr>
-<td style="text-align: right;">115–120 min</td>
-<td>Unitree G1 comparison and conclusions</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h1 id="part-i-installation-and-preparation_1">Part I — Installation and preparation<a class="headerlink" href="#part-i-installation-and-preparation_1" title="Permanent link">&para;</a></h1>
-<h2 id="4-recommended-environment_1">4. Recommended environment<a class="headerlink" href="#4-recommended-environment_1" title="Permanent link">&para;</a></h2>
-<p>Recommended system:</p>
-<ul>
-<li>Ubuntu 22.04 or newer;</li>
-<li>Python 3.10 or newer;</li>
-<li>working OpenGL desktop environment;</li>
-<li>one computer per student or student pair.</li>
-</ul>
-<p>The workshop requires only:</p>
-<div class="highlight"><pre><span></span><code>mujoco
-numpy
-</code></pre></div>
-<hr />
-<h2 id="5-extract-the-workshop-package_1">5. Extract the workshop package<a class="headerlink" href="#5-extract-the-workshop-package_1" title="Permanent link">&para;</a></h2>
-<p>Unzip the workshop archive:</p>
-<div class="highlight"><pre><span></span><code>unzip<span class="w"> </span>mujoco_humanoid_workshop_fixed.zip
-<span class="nb">cd</span><span class="w"> </span>mujoco_humanoid_workshop
-</code></pre></div>
-<p>The folder should contain:</p>
-<div class="highlight"><pre><span></span><code>mujoco_humanoid_workshop/
-├── README.md
-├── requirements.txt
-├── common.py
-├── exercise_01_inspect.py
-├── exercise_02_pose.py
-├── exercise_03_contacts.py
-├── exercise_04_push_test.py
-└── models/
-    └── simple_humanoid.xml
-</code></pre></div>
-<hr />
-<h2 id="6-create-a-python-virtual-environment_1">6. Create a Python virtual environment<a class="headerlink" href="#6-create-a-python-virtual-environment_1" title="Permanent link">&para;</a></h2>
-<p>Create the environment:</p>
-<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-</code></pre></div>
-<p>Activate it:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-</code></pre></div>
-<p>Upgrade <code>pip</code>:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
-</code></pre></div>
-<p>Install the requirements:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</code></pre></div>
-<p>Verify MuJoCo:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import mujoco; print(mujoco.__version__)&quot;</span>
-</code></pre></div>
-<hr />
-<h2 id="7-test-the-model-without-graphics_1">7. Test the model without graphics<a class="headerlink" href="#7-test-the-model-without-graphics_1" title="Permanent link">&para;</a></h2>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless<span class="w"> </span>--duration<span class="w"> </span><span class="m">0</span>.1
-</code></pre></div>
-<p>Expected final output:</p>
-<div class="highlight"><pre><span></span><code>Simulation completed at t=0.10 s
-</code></pre></div>
-<p>This confirms that:</p>
-<ul>
-<li>MuJoCo is installed;</li>
-<li>the XML model compiles;</li>
-<li>the physics loop works.</li>
-</ul>
-<hr />
-<h2 id="8-test-the-graphical-viewer_1">8. Test the graphical viewer<a class="headerlink" href="#8-test-the-graphical-viewer_1" title="Permanent link">&para;</a></h2>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span>--mjcf<span class="o">=</span>models/simple_humanoid.xml
-</code></pre></div>
-<p>A humanoid model should appear above the floor.</p>
-<p>Close the viewer before continuing.</p>
-<hr />
-<h1 id="part-ii-fundamental-mujoco-concepts_1">Part II — Fundamental MuJoCo concepts<a class="headerlink" href="#part-ii-fundamental-mujoco-concepts_1" title="Permanent link">&para;</a></h1>
-<h2 id="9-mjmodel-and-mjdata_1">9. <code>MjModel</code> and <code>MjData</code><a class="headerlink" href="#9-mjmodel-and-mjdata_1" title="Permanent link">&para;</a></h2>
-<p>A basic MuJoCo program begins with:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">mujoco</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">MjModel</span><span class="o">.</span><span class="n">from_xml_path</span><span class="p">(</span>
-    <span class="s2">&quot;models/simple_humanoid.xml&quot;</span>
-<span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">MjData</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="mjmodel_1"><code>MjModel</code><a class="headerlink" href="#mjmodel_1" title="Permanent link">&para;</a></h3>
-<p><code>MjModel</code> contains the compiled model definition.</p>
-<p>Examples include:</p>
-<ul>
-<li>body masses;</li>
-<li>joint types;</li>
-<li>actuator gains;</li>
-<li>geometry dimensions;</li>
-<li>friction coefficients;</li>
-<li>sensor definitions;</li>
-<li>simulation timestep.</li>
-</ul>
-<p>The model is mostly constant during a simulation.</p>
-<h3 id="mjdata_1"><code>MjData</code><a class="headerlink" href="#mjdata_1" title="Permanent link">&para;</a></h3>
-<p><code>MjData</code> contains the changing simulation state.</p>
-<p>Examples include:</p>
-<ul>
-<li>joint positions;</li>
-<li>joint velocities;</li>
-<li>actuator commands;</li>
-<li>body positions;</li>
-<li>contact information;</li>
-<li>sensor values;</li>
-<li>simulation time.</li>
-</ul>
-<hr />
-<h2 id="10-the-simulation-loop_1">10. The simulation loop<a class="headerlink" href="#10-the-simulation-loop_1" title="Permanent link">&para;</a></h2>
-<p>A simple loop is:</p>
-<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="n">simulation_is_running</span><span class="p">:</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">ctrl</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">control_command</span>
-    <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_step</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-</code></pre></div>
-<p><code>mj_step</code>:</p>
-<ol>
-<li>evaluates forces;</li>
-<li>solves contacts and constraints;</li>
-<li>calculates accelerations;</li>
-<li>integrates the state;</li>
-<li>advances simulation time.</li>
-</ol>
-<p>The simulation timestep is stored in:</p>
-<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">timestep</span>
-</code></pre></div>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;option</span><span class="w"> </span><span class="na">timestep=</span><span class="s">&quot;0.002&quot;</span>
-<span class="w">        </span><span class="na">gravity=</span><span class="s">&quot;0 0 -9.81&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>A timestep of <code>0.002</code> seconds corresponds to:</p>
-<p>[
-f = \frac{1}{0.002} = 500\ \text{Hz}
-]</p>
-<hr />
-<h1 id="part-iii-the-humanoid-model_1">Part III — The humanoid model<a class="headerlink" href="#part-iii-the-humanoid-model_1" title="Permanent link">&para;</a></h1>
-<h2 id="11-main-mjcf-sections_1">11. Main MJCF sections<a class="headerlink" href="#11-main-mjcf-sections_1" title="Permanent link">&para;</a></h2>
-<p>Open:</p>
-<div class="highlight"><pre><span></span><code>models/simple_humanoid.xml
-</code></pre></div>
-<p>The major sections are:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;mujoco&gt;</span>
-<span class="w">    </span><span class="nt">&lt;option/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;default/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;asset/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;worldbody/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;equality/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;actuator/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;sensor/&gt;</span>
-<span class="w">    </span><span class="nt">&lt;keyframe/&gt;</span>
-<span class="nt">&lt;/mujoco&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="12-bodies_1">12. Bodies<a class="headerlink" href="#12-bodies_1" title="Permanent link">&para;</a></h2>
-<p>A body represents a rigid coordinate frame in the kinematic tree.</p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;body</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pelvis&quot;</span><span class="w"> </span><span class="na">pos=</span><span class="s">&quot;0 0 0.92&quot;</span><span class="nt">&gt;</span>
-</code></pre></div>
-<p>A child body is positioned relative to its parent.</p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;body</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_shin&quot;</span><span class="w"> </span><span class="na">pos=</span><span class="s">&quot;0 0 -0.36&quot;</span><span class="nt">&gt;</span>
-</code></pre></div>
-<p>This means the shin frame is positioned 0.36 m below its parent body.</p>
-<p>The simplified hierarchy is:</p>
-<div class="highlight"><pre><span></span><code>pelvis
-├── torso
-│   ├── head
-│   ├── left_arm
-│   └── right_arm
-├── left_thigh
-│   └── left_shin
-│       └── left_foot
-└── right_thigh
-    └── right_shin
-        └── right_foot
-</code></pre></div>
-<hr />
-<h2 id="13-joints_1">13. Joints<a class="headerlink" href="#13-joints_1" title="Permanent link">&para;</a></h2>
-<p>A joint defines relative motion between a body and its parent.</p>
-<p>Example hinge joint:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_knee&quot;</span>
-<span class="w">       </span><span class="na">type=</span><span class="s">&quot;hinge&quot;</span>
-<span class="w">       </span><span class="na">axis=</span><span class="s">&quot;0 1 0&quot;</span>
-<span class="w">       </span><span class="na">range=</span><span class="s">&quot;0 2.1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>This joint:</p>
-<ul>
-<li>rotates around the local (y)-axis;</li>
-<li>has a minimum angle of 0 rad;</li>
-<li>has a maximum angle of 2.1 rad.</li>
-</ul>
-<p>Convert the maximum to degrees:</p>
-<p>[
-2.1 \cdot \frac{180}{\pi}
-\approx 120.3^\circ
-]</p>
-<hr />
-<h2 id="14-the-floating-base_1">14. The floating base<a class="headerlink" href="#14-the-floating-base_1" title="Permanent link">&para;</a></h2>
-<p>The pelvis has a free joint:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;freejoint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;root&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>A free joint allows:</p>
-<ul>
-<li>translation in (x);</li>
-<li>translation in (y);</li>
-<li>translation in (z);</li>
-<li>rotation around all three axes.</li>
-</ul>
-<p>A free joint occupies:</p>
-<ul>
-<li>7 entries in <code>qpos</code>;</li>
-<li>6 entries in <code>qvel</code>.</li>
-</ul>
-<h3 id="position-representation_1">Position representation<a class="headerlink" href="#position-representation_1" title="Permanent link">&para;</a></h3>
-<p>The free joint position uses:</p>
-<ul>
-<li>3 Cartesian coordinates;</li>
-<li>4 quaternion coordinates.</li>
-</ul>
-<p>Therefore:</p>
-<p>[
-n_{q,\mathrm{free}} = 3 + 4 = 7
-]</p>
-<h3 id="velocity-representation_1">Velocity representation<a class="headerlink" href="#velocity-representation_1" title="Permanent link">&para;</a></h3>
-<p>The free joint velocity uses:</p>
-<ul>
-<li>3 linear velocities;</li>
-<li>3 angular velocities.</li>
-</ul>
-<p>Therefore:</p>
-<p>[
-n_{v,\mathrm{free}} = 3 + 3 = 6
-]</p>
-<p>The teaching humanoid has:</p>
-<ul>
-<li>one free joint;</li>
-<li>twelve hinge joints.</li>
-</ul>
-<p>Therefore:</p>
-<p>[
-n_q = 7 + 12 = 19
-]</p>
-<p>[
-n_v = 6 + 12 = 18
-]</p>
-<hr />
-<h2 id="15-geoms_1">15. Geoms<a class="headerlink" href="#15-geoms_1" title="Permanent link">&para;</a></h2>
-<p>A geom can provide:</p>
-<ul>
-<li>visual shape;</li>
-<li>collision shape;</li>
-<li>mass;</li>
-<li>inertia;</li>
-<li>contact properties.</li>
-</ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;geom</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_foot_geom&quot;</span>
-<span class="w">      </span><span class="na">type=</span><span class="s">&quot;box&quot;</span>
-<span class="w">      </span><span class="na">size=</span><span class="s">&quot;0.12 0.05 0.03&quot;</span>
-<span class="w">      </span><span class="na">friction=</span><span class="s">&quot;0.9 0.005 0.0001&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>A box <code>size</code> specifies half-dimensions.</p>
-<p>Therefore, this foot has approximate full dimensions:</p>
-<p>[
-0.24 \times 0.10 \times 0.06\ \text{m}
-]</p>
-<hr />
-<h2 id="16-sites_1">16. Sites<a class="headerlink" href="#16-sites_1" title="Permanent link">&para;</a></h2>
-<p>A site is a reference location or volume.</p>
-<p>Sites are often used for:</p>
-<ul>
-<li>sensors;</li>
-<li>end-effector markers;</li>
-<li>contact measurement regions;</li>
-<li>visualization;</li>
-<li>force application reference points.</li>
-</ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;site</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_foot_touch_site&quot;</span>
-<span class="w">      </span><span class="na">type=</span><span class="s">&quot;box&quot;</span>
-<span class="w">      </span><span class="na">size=</span><span class="s">&quot;0.12 0.05 0.015&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<hr />
-<h2 id="17-actuators_1">17. Actuators<a class="headerlink" href="#17-actuators_1" title="Permanent link">&para;</a></h2>
-<p>The workshop uses position actuators.</p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;position</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_knee_act&quot;</span>
-<span class="w">          </span><span class="na">joint=</span><span class="s">&quot;left_knee&quot;</span>
-<span class="w">          </span><span class="na">kp=</span><span class="s">&quot;140&quot;</span>
-<span class="w">          </span><span class="na">ctrlrange=</span><span class="s">&quot;0 2.1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>The command is written to:</p>
-<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">ctrl</span>
-</code></pre></div>
-<p>For a position actuator, the control value acts as a desired joint position.</p>
-<p>However, the joint is not teleported to that position. The actuator generates force based on the actuator model.</p>
-<p>The resulting motion also depends on:</p>
-<ul>
-<li>inertia;</li>
-<li>gravity;</li>
-<li>damping;</li>
-<li>contact;</li>
-<li>actuator gain;</li>
-<li>constraints;</li>
-<li>timestep.</li>
-</ul>
-<hr />
-<h2 id="18-keyframes_1">18. Keyframes<a class="headerlink" href="#18-keyframes_1" title="Permanent link">&para;</a></h2>
-<p>Keyframes store predefined simulation states.</p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;keyframe&gt;</span>
-<span class="w">    </span><span class="nt">&lt;key</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;stand&quot;</span>
-<span class="w">         </span><span class="na">qpos=</span><span class="s">&quot;...&quot;</span>
-<span class="w">         </span><span class="na">ctrl=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
-
-<span class="w">    </span><span class="nt">&lt;key</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;crouch&quot;</span>
-<span class="w">         </span><span class="na">qpos=</span><span class="s">&quot;...&quot;</span>
-<span class="w">         </span><span class="na">ctrl=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/keyframe&gt;</span>
-</code></pre></div>
-<p>Reset to a keyframe:</p>
-<div class="highlight"><pre><span></span><code><span class="n">key_id</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_name2id</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span>
-    <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtObj</span><span class="o">.</span><span class="n">mjOBJ_KEY</span><span class="p">,</span>
-    <span class="s2">&quot;stand&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">mujoco</span><span class="o">.</span><span class="n">mj_resetDataKeyframe</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span>
-    <span class="n">data</span><span class="p">,</span>
-    <span class="n">key_id</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">mujoco</span><span class="o">.</span><span class="n">mj_forward</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-</code></pre></div>
-<p><code>mj_forward</code> recalculates derived quantities after manually changing the state.</p>
-<hr />
-<h2 id="19-pelvis-weld_1">19. Pelvis weld<a class="headerlink" href="#19-pelvis-weld_1" title="Permanent link">&para;</a></h2>
-<p>The model includes an equality constraint:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;equality&gt;</span>
-<span class="w">    </span><span class="nt">&lt;weld</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pelvis_weld&quot;</span>
-<span class="w">          </span><span class="na">body1=</span><span class="s">&quot;pelvis&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/equality&gt;</span>
-</code></pre></div>
-<p>This weld can connect the pelvis to the world.</p>
-<h3 id="fixed-base-mode_1">Fixed-base mode<a class="headerlink" href="#fixed-base-mode_1" title="Permanent link">&para;</a></h3>
-<p>Used in Exercises 1 and 2.</p>
-<p>The humanoid cannot fall.</p>
-<p>This allows students to focus on:</p>
-<ul>
-<li>model structure;</li>
-<li>joint coordinates;</li>
-<li>actuator commands;</li>
-<li>scripted posture changes.</li>
-</ul>
-<h3 id="floating-base-mode_1">Floating-base mode<a class="headerlink" href="#floating-base-mode_1" title="Permanent link">&para;</a></h3>
-<p>Used in Exercises 3 and 4.</p>
-<p>The weld is disabled from Python:</p>
-<div class="highlight"><pre><span></span><code><span class="n">weld_id</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_name2id</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span>
-    <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtObj</span><span class="o">.</span><span class="n">mjOBJ_EQUALITY</span><span class="p">,</span>
-    <span class="s2">&quot;pelvis_weld&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">data</span><span class="o">.</span><span class="n">eq_active</span><span class="p">[</span><span class="n">weld_id</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-</code></pre></div>
-<p>The humanoid can then:</p>
-<ul>
-<li>translate;</li>
-<li>rotate;</li>
-<li>slip;</li>
-<li>tip;</li>
-<li>fall.</li>
-</ul>
-<hr />
-<h1 id="part-iv-exercise-1-inspect-the-humanoid_1">Part IV — Exercise 1: Inspect the humanoid<a class="headerlink" href="#part-iv-exercise-1-inspect-the-humanoid_1" title="Permanent link">&para;</a></h1>
-<h2 id="20-objective_1">20. Objective<a class="headerlink" href="#20-objective_1" title="Permanent link">&para;</a></h2>
-<p>Understand how an MJCF description becomes an indexed numerical model.</p>
-<h2 id="21-run-the-exercise_1">21. Run the exercise<a class="headerlink" href="#21-run-the-exercise_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py
-</code></pre></div>
-<p>The script prints:</p>
-<ul>
-<li>body count;</li>
-<li>joint count;</li>
-<li>number of position coordinates;</li>
-<li>number of velocity coordinates;</li>
-<li>actuator count;</li>
-<li>sensor count;</li>
-<li>joint names;</li>
-<li>joint ranges;</li>
-<li><code>qpos</code> addresses;</li>
-<li>degree-of-freedom addresses;</li>
-<li>actuator names;</li>
-<li>sensor names.</li>
-</ul>
-<hr />
-<h2 id="22-student-task-inspect-the-model-dimensions_1">22. Student task: inspect the model dimensions<a class="headerlink" href="#22-student-task-inspect-the-model-dimensions_1" title="Permanent link">&para;</a></h2>
-<p>Expected values are approximately:</p>
-<div class="highlight"><pre><span></span><code>Bodies:               12
-Joints:               13
-Position coordinates: 19
-Velocity coordinates: 18
-Actuators:            12
-Sensors:              6
-Equality constraints: 1
-</code></pre></div>
-<p>Ask:</p>
-<ol>
-<li>Why are there more bodies than actuators?</li>
-<li>Why is <code>nq</code> different from <code>nv</code>?</li>
-<li>Why does the head have no actuator?</li>
-<li>Which joint represents the floating base?</li>
-</ol>
-<hr />
-<h2 id="23-student-task-inspect-joint-names_1">23. Student task: inspect joint names<a class="headerlink" href="#23-student-task-inspect-joint-names_1" title="Permanent link">&para;</a></h2>
-<p>A typical inspection loop is:</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">joint_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">njnt</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_id2name</span><span class="p">(</span>
-        <span class="n">model</span><span class="p">,</span>
-        <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtObj</span><span class="o">.</span><span class="n">mjOBJ_JOINT</span><span class="p">,</span>
-        <span class="n">joint_id</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="n">joint_id</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-</code></pre></div>
-<p>Students should identify:</p>
-<div class="highlight"><pre><span></span><code>root
-left_hip_yaw
-left_hip_roll
-left_hip_pitch
-left_knee
-left_ankle_pitch
-left_ankle_roll
-right_hip_yaw
-right_hip_roll
-right_hip_pitch
-right_knee
-right_ankle_pitch
-right_ankle_roll
-</code></pre></div>
-<hr />
-<h2 id="24-student-task-modify-a-material_1">24. Student task: modify a material<a class="headerlink" href="#24-student-task-modify-a-material_1" title="Permanent link">&para;</a></h2>
-<p>Find:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_mat&quot;</span>
-<span class="w">          </span><span class="na">rgba=</span><span class="s">&quot;0.25 0.65 0.35 1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>Change it to:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;material</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_mat&quot;</span>
-<span class="w">          </span><span class="na">rgba=</span><span class="s">&quot;0.8 0.2 0.8 1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>Restart:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py
-</code></pre></div>
-<p>The model is compiled when loaded. XML changes do not affect a model that is already running.</p>
-<hr />
-<h2 id="25-student-task-modify-one-joint-limit_1">25. Student task: modify one joint limit<a class="headerlink" href="#25-student-task-modify-one-joint-limit_1" title="Permanent link">&para;</a></h2>
-<p>Find:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_knee&quot;</span>
-<span class="w">       </span><span class="na">range=</span><span class="s">&quot;0 2.1&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>Change it temporarily:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_knee&quot;</span>
-<span class="w">       </span><span class="na">range=</span><span class="s">&quot;0 1.2&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>Restart the simulation and observe whether the crouching keyframe or commanded posture remains feasible.</p>
-<p>Restore the original value afterward.</p>
-<hr />
-<h2 id="26-exercise-1-discussion_1">26. Exercise 1 discussion<a class="headerlink" href="#26-exercise-1-discussion_1" title="Permanent link">&para;</a></h2>
-<p>Ask:</p>
-<ul>
-<li>Which parts are visual only?</li>
-<li>Which parts participate in collisions?</li>
-<li>Why does the pelvis need a free joint?</li>
-<li>Why are joint positions stored in an array?</li>
-<li>Why are names converted to integer IDs?</li>
-</ul>
-<h3 id="main-takeaway_4">Main takeaway<a class="headerlink" href="#main-takeaway_4" title="Permanent link">&para;</a></h3>
-<p>The XML is a human-readable model description. MuJoCo compiles it into numerical arrays used by the physics engine.</p>
-<hr />
-<h1 id="part-v-exercise-2-scripted-posture-control_1">Part V — Exercise 2: Scripted posture control<a class="headerlink" href="#part-v-exercise-2-scripted-posture-control_1" title="Permanent link">&para;</a></h1>
-<h2 id="27-objective_1">27. Objective<a class="headerlink" href="#27-objective_1" title="Permanent link">&para;</a></h2>
-<p>Command the humanoid to move smoothly between standing and crouching poses.</p>
-<h2 id="28-run-the-exercise_1">28. Run the exercise<a class="headerlink" href="#28-run-the-exercise_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_02_pose.py
-</code></pre></div>
-<p>The robot should repeatedly move:</p>
-<div class="highlight"><pre><span></span><code>standing → crouching → standing
-</code></pre></div>
-<p>The pelvis is fixed during this exercise.</p>
-<hr />
-<h2 id="29-actuator-order_1">29. Actuator order<a class="headerlink" href="#29-actuator-order_1" title="Permanent link">&para;</a></h2>
-<p>The control vector contains 12 values:</p>
-<div class="highlight"><pre><span></span><code>0  left hip yaw
-1  left hip roll
-2  left hip pitch
-3  left knee
-4  left ankle pitch
-5  left ankle roll
-6  right hip yaw
-7  right hip roll
-8  right hip pitch
-9  right knee
-10 right ankle pitch
-11 right ankle roll
-</code></pre></div>
-<p>A crouching reference may be:</p>
-<div class="highlight"><pre><span></span><code><span class="n">crouch</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-    <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-<span class="p">]</span>
-</code></pre></div>
-<p>For each leg:</p>
-<p>[
-q_{\mathrm{hip}}
-+
-q_{\mathrm{knee}}
-+
-q_{\mathrm{ankle}}
-=
--0.45 + 0.90 - 0.45 = 0
-]</p>
-<p>This helps keep the foot approximately parallel to the floor.</p>
-<hr />
-<h2 id="30-linear-interpolation_1">30. Linear interpolation<a class="headerlink" href="#30-linear-interpolation_1" title="Permanent link">&para;</a></h2>
-<p>The simplest interpolation is:</p>
-<p>[
-q_{\mathrm{ref}}(u)
-=
-q_{\mathrm{start}}
-+
-u
-\left(
-q_{\mathrm{goal}}
--
-q_{\mathrm{start}}
-\right)
-]</p>
-<p>where:</p>
-<p>[
-0 \leq u \leq 1
-]</p>
-<p>Python:</p>
-<div class="highlight"><pre><span></span><code><span class="n">q_ref</span> <span class="o">=</span> <span class="n">q_start</span> <span class="o">+</span> <span class="n">u</span> <span class="o">*</span> <span class="p">(</span><span class="n">q_goal</span> <span class="o">-</span> <span class="n">q_start</span><span class="p">)</span>
-</code></pre></div>
-<p>This creates a constant desired velocity during the segment, but the desired velocity changes abruptly at the beginning and end.</p>
-<hr />
-<h2 id="31-smoothstep-interpolation_1">31. Smoothstep interpolation<a class="headerlink" href="#31-smoothstep-interpolation_1" title="Permanent link">&para;</a></h2>
-<p>The workshop uses:</p>
-<p>[
-s(u)=3u^2-2u^3
-]</p>
-<p>Then:</p>
-<p>[
-q_{\mathrm{ref}}(u)
-=
-q_{\mathrm{start}}
-+
-s(u)
-\left(
-q_{\mathrm{goal}}
--
-q_{\mathrm{start}}
-\right)
-]</p>
-<p>Properties:</p>
-<p>[
-s(0)=0
-]</p>
-<p>[
-s(1)=1
-]</p>
-<p>[
-s'(0)=0
-]</p>
-<p>[
-s'(1)=0
-]</p>
-<p>Python:</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">smoothstep</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
-    <span class="k">return</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">value</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">value</span><span class="o">**</span><span class="mi">3</span>
-</code></pre></div>
-<hr />
-<h2 id="32-student-task-compare-linear-and-smooth-motion_1">32. Student task: compare linear and smooth motion<a class="headerlink" href="#32-student-task-compare-linear-and-smooth-motion_1" title="Permanent link">&para;</a></h2>
-<p>Replace:</p>
-<div class="highlight"><pre><span></span><code><span class="k">return</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">value</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">value</span><span class="o">**</span><span class="mi">3</span>
-</code></pre></div>
-<p>with:</p>
-<div class="highlight"><pre><span></span><code><span class="k">return</span> <span class="n">value</span>
-</code></pre></div>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_02_pose.py
-</code></pre></div>
-<p>Compare:</p>
-<ul>
-<li>movement onset;</li>
-<li>movement termination;</li>
-<li>visible oscillation;</li>
-<li>tracking error;</li>
-<li>apparent smoothness.</li>
-</ul>
-<p>Restore the smoothstep function afterward.</p>
-<hr />
-<h2 id="33-student-task-modify-actuator-gain_1">33. Student task: modify actuator gain<a class="headerlink" href="#33-student-task-modify-actuator-gain_1" title="Permanent link">&para;</a></h2>
-<p>Find the position actuator default:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;position</span><span class="w"> </span><span class="na">kp=</span><span class="s">&quot;140&quot;</span>
-<span class="w">          </span><span class="na">ctrllimited=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>Test:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;position</span><span class="w"> </span><span class="na">kp=</span><span class="s">&quot;40&quot;</span>
-<span class="w">          </span><span class="na">ctrllimited=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>Then:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;position</span><span class="w"> </span><span class="na">kp=</span><span class="s">&quot;300&quot;</span>
-<span class="w">          </span><span class="na">ctrllimited=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>Record:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Gain</th>
-<th>Tracking speed</th>
-<th>Tracking error</th>
-<th>Oscillation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">40</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: right;">140</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: right;">300</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="expected-observations_2">Expected observations<a class="headerlink" href="#expected-observations_2" title="Permanent link">&para;</a></h3>
-<p>Low gain:</p>
-<ul>
-<li>slower response;</li>
-<li>larger position error;</li>
-<li>softer movement.</li>
-</ul>
-<p>High gain:</p>
-<ul>
-<li>faster response;</li>
-<li>smaller static error;</li>
-<li>possibly stronger oscillation;</li>
-<li>larger forces;</li>
-<li>greater numerical sensitivity.</li>
-</ul>
-<hr />
-<h2 id="34-student-task-modify-joint-damping_1">34. Student task: modify joint damping<a class="headerlink" href="#34-student-task-modify-joint-damping_1" title="Permanent link">&para;</a></h2>
-<p>Find:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">damping=</span><span class="s">&quot;3&quot;</span>
-<span class="w">       </span><span class="na">armature=</span><span class="s">&quot;0.02&quot;</span>
-<span class="w">       </span><span class="na">limited=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>Test:</p>
-<div class="highlight"><pre><span></span><code>damping=&quot;0.3&quot;
-</code></pre></div>
-<p>Then:</p>
-<div class="highlight"><pre><span></span><code>damping=&quot;10&quot;
-</code></pre></div>
-<p>Record the effect.</p>
-<h3 id="expected-observations_3">Expected observations<a class="headerlink" href="#expected-observations_3" title="Permanent link">&para;</a></h3>
-<p>Low damping:</p>
-<ul>
-<li>more oscillation;</li>
-<li>longer settling;</li>
-<li>freer motion.</li>
-</ul>
-<p>High damping:</p>
-<ul>
-<li>reduced oscillation;</li>
-<li>slower motion;</li>
-<li>stronger resistance to rapid changes.</li>
-</ul>
-<hr />
-<h2 id="35-exercise-2-discussion_1">35. Exercise 2 discussion<a class="headerlink" href="#35-exercise-2-discussion_1" title="Permanent link">&para;</a></h2>
-<p>Ask:</p>
-<ol>
-<li>Does <code>data.ctrl</code> directly set <code>qpos</code>?</li>
-<li>Why does the actual position lag behind the reference?</li>
-<li>Why can high gains cause instability?</li>
-<li>Why did we fix the pelvis?</li>
-<li>Would the same command work if link masses were doubled?</li>
-</ol>
-<h3 id="main-takeaway_5">Main takeaway<a class="headerlink" href="#main-takeaway_5" title="Permanent link">&para;</a></h3>
-<p>An actuator command creates force. It does not directly replace the simulated joint state.</p>
-<hr />
-<h1 id="part-vi-discussion-and-short-break_1">Part VI — Discussion and short break<a class="headerlink" href="#part-vi-discussion-and-short-break_1" title="Permanent link">&para;</a></h1>
-<h2 id="36-suggested-questions_1">36. Suggested questions<a class="headerlink" href="#36-suggested-questions_1" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Why did we fix the pelvis during the first two exercises?</li>
-<li>What changes when the floating base is released?</li>
-<li>Can a robot follow all joint commands and still fall?</li>
-<li>Is joint-space tracking identical to balance control?</li>
-<li>Why can an upright pose be dynamically unstable?</li>
-</ol>
-<p>The central idea is:</p>
-<blockquote>
-<p>Good joint tracking does not automatically produce whole-body stability.</p>
-</blockquote>
-<hr />
-<h1 id="part-vii-exercise-3-contact-centre-of-mass-and-friction_1">Part VII — Exercise 3: Contact, centre of mass, and friction<a class="headerlink" href="#part-vii-exercise-3-contact-centre-of-mass-and-friction_1" title="Permanent link">&para;</a></h1>
-<h2 id="37-objective_1">37. Objective<a class="headerlink" href="#37-objective_1" title="Permanent link">&para;</a></h2>
-<p>Observe floor contact, foot forces, centre of mass, slipping, and load transfer.</p>
-<h2 id="38-run-the-default-experiment_1">38. Run the default experiment<a class="headerlink" href="#38-run-the-default-experiment_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.9
-</code></pre></div>
-<p>The script:</p>
-<ol>
-<li>loads the standing keyframe;</li>
-<li>disables the pelvis weld;</li>
-<li>enables contact visualization;</li>
-<li>reads foot contact sensors;</li>
-<li>reads the centre-of-mass sensor;</li>
-<li>applies a small lateral force;</li>
-<li>measures foot displacement.</li>
-</ol>
-<hr />
-<h2 id="39-viewer-locking_1">39. Viewer locking<a class="headerlink" href="#39-viewer-locking_1" title="Permanent link">&para;</a></h2>
-<p>When using the passive viewer, modify viewer state while holding the viewer lock:</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">viewer</span><span class="o">.</span><span class="n">lock</span><span class="p">():</span>
-    <span class="n">viewer</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span>
-        <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtVisFlag</span><span class="o">.</span><span class="n">mjVIS_CONTACTPOINT</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-
-    <span class="n">viewer</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span>
-        <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtVisFlag</span><span class="o">.</span><span class="n">mjVIS_CONTACTFORCE</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="n">viewer</span><span class="o">.</span><span class="n">sync</span><span class="p">()</span>
-</code></pre></div>
-<p>This avoids race conditions between the simulation thread and the viewer thread.</p>
-<hr />
-<h2 id="40-foot-touch-sensors_1">40. Foot touch sensors<a class="headerlink" href="#40-foot-touch-sensors_1" title="Permanent link">&para;</a></h2>
-<p>The XML contains:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;touch</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left_foot_force&quot;</span>
-<span class="w">       </span><span class="na">site=</span><span class="s">&quot;left_foot_touch_site&quot;</span><span class="nt">/&gt;</span>
-
-<span class="nt">&lt;touch</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right_foot_force&quot;</span>
-<span class="w">       </span><span class="na">site=</span><span class="s">&quot;right_foot_touch_site&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>The touch sensor returns a non-negative scalar representing the summed normal contact force associated with contacts in the sensor site.</p>
-<p>Read sensor data:</p>
-<div class="highlight"><pre><span></span><code><span class="n">sensor_id</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_name2id</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span>
-    <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtObj</span><span class="o">.</span><span class="n">mjOBJ_SENSOR</span><span class="p">,</span>
-    <span class="s2">&quot;left_foot_force&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">start</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sensor_adr</span><span class="p">[</span><span class="n">sensor_id</span><span class="p">]</span>
-<span class="n">dimension</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">sensor_dim</span><span class="p">[</span><span class="n">sensor_id</span><span class="p">]</span>
-
-<span class="n">left_force</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sensordata</span><span class="p">[</span>
-    <span class="n">start</span><span class="p">:</span><span class="n">start</span> <span class="o">+</span> <span class="n">dimension</span>
-<span class="p">]</span>
-</code></pre></div>
-<hr />
-<h2 id="41-centre-of-mass-sensor_1">41. Centre-of-mass sensor<a class="headerlink" href="#41-centre-of-mass-sensor_1" title="Permanent link">&para;</a></h2>
-<p>The XML contains:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;subtreecom</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;humanoid_com&quot;</span>
-<span class="w">            </span><span class="na">body=</span><span class="s">&quot;pelvis&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>The sensor returns:</p>
-<p>[
-p_{\mathrm{CoM}}
-=
-\begin{bmatrix}
-x_{\mathrm{CoM}}\
-y_{\mathrm{CoM}}\
-z_{\mathrm{CoM}}
-\end{bmatrix}
-]</p>
-<p>For a basic balance interpretation, use the horizontal projection:</p>
-<p>[
-p_{\mathrm{CoM,xy}}
-=
-\begin{bmatrix}
-x_{\mathrm{CoM}}\
-y_{\mathrm{CoM}}
-\end{bmatrix}
-]</p>
-<p>For static balance, the projected centre of mass should normally remain inside the support region formed by the contacting feet.</p>
-<p>This is only an introductory approximation. Dynamic balance also depends on:</p>
-<ul>
-<li>velocity;</li>
-<li>angular momentum;</li>
-<li>contact forces;</li>
-<li>centre of pressure;</li>
-<li>future motion.</li>
-</ul>
-<hr />
-<h2 id="42-student-task-compare-left-and-right-foot-force_1">42. Student task: compare left and right foot force<a class="headerlink" href="#42-student-task-compare-left-and-right-foot-force_1" title="Permanent link">&para;</a></h2>
-<p>Before the disturbance:</p>
-<div class="highlight"><pre><span></span><code>left force ≈ right force
-</code></pre></div>
-<p>During a lateral disturbance:</p>
-<div class="highlight"><pre><span></span><code>left force ≠ right force
-</code></pre></div>
-<p>Ask:</p>
-<ul>
-<li>Which foot becomes more loaded?</li>
-<li>Does the foot with greater force necessarily move less?</li>
-<li>Does force difference directly indicate body velocity?</li>
-</ul>
-<p>The answer to the last question is no. Contact force and body velocity are related through dynamics, but they are not the same quantity.</p>
-<hr />
-<h2 id="43-friction-parameters_1">43. Friction parameters<a class="headerlink" href="#43-friction-parameters_1" title="Permanent link">&para;</a></h2>
-<p>The floor geom contains:</p>
-<div class="highlight"><pre><span></span><code>friction=&quot;0.9<span class="w"> </span>0.005<span class="w"> </span>0.0001&quot;
-</code></pre></div>
-<p>The three components correspond to:</p>
-<ol>
-<li>sliding friction;</li>
-<li>torsional friction;</li>
-<li>rolling friction.</li>
-</ol>
-<p>For this workshop, the first value is the most important.</p>
-<hr />
-<h2 id="44-student-task-friction-experiment_1">44. Student task: friction experiment<a class="headerlink" href="#44-student-task-friction-experiment_1" title="Permanent link">&para;</a></h2>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.9
-</code></pre></div>
-<p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.3
-</code></pre></div>
-<p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span>--friction<span class="w"> </span><span class="m">0</span>.05
-</code></pre></div>
-<p>Record:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Sliding friction</th>
-<th style="text-align: right;">Left-foot displacement</th>
-<th style="text-align: right;">Right-foot displacement</th>
-<th>Visible slipping</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">0.90</td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: right;">0.30</td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>Expected trend:</p>
-<ul>
-<li>high friction resists sliding;</li>
-<li>low friction allows larger foot displacement;</li>
-<li>very low friction may produce sliding before strong body tilt.</li>
-</ul>
-<hr />
-<h2 id="45-student-task-modify-the-lateral-disturbance_1">45. Student task: modify the lateral disturbance<a class="headerlink" href="#45-student-task-modify-the-lateral-disturbance_1" title="Permanent link">&para;</a></h2>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--friction<span class="w"> </span><span class="m">0</span>.3<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--lateral-force<span class="w"> </span><span class="m">10</span>
-</code></pre></div>
-<p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_03_contacts.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--friction<span class="w"> </span><span class="m">0</span>.3<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--lateral-force<span class="w"> </span><span class="m">40</span>
-</code></pre></div>
-<p>Observe:</p>
-<ul>
-<li>load transfer;</li>
-<li>foot sliding;</li>
-<li>torso tilt;</li>
-<li>contact loss;</li>
-<li>whole-body translation.</li>
-</ul>
-<hr />
-<h2 id="46-contact-versus-stability_1">46. Contact versus stability<a class="headerlink" href="#46-contact-versus-stability_1" title="Permanent link">&para;</a></h2>
-<p>A humanoid can have both feet touching the floor and still be unstable.</p>
-<p>Possible situations include:</p>
-<ul>
-<li>centre of mass leaving the support region;</li>
-<li>insufficient friction;</li>
-<li>excessive angular velocity;</li>
-<li>one foot unloading;</li>
-<li>contact occurring only at an edge;</li>
-<li>feet sliding together.</li>
-</ul>
-<h3 id="main-takeaway_6">Main takeaway<a class="headerlink" href="#main-takeaway_6" title="Permanent link">&para;</a></h3>
-<p>Contact is not simply “on” or “off.” It has geometry, forces, friction, and motion.</p>
-<hr />
-<h1 id="part-viii-exercise-4-push-test-and-fall-detection_1">Part VIII — Exercise 4: Push test and fall detection<a class="headerlink" href="#part-viii-exercise-4-push-test-and-fall-detection_1" title="Permanent link">&para;</a></h1>
-<h2 id="47-objective_1">47. Objective<a class="headerlink" href="#47-objective_1" title="Permanent link">&para;</a></h2>
-<p>Apply a repeatable external disturbance and measure whether the humanoid falls.</p>
-<h2 id="48-run-the-push-test_1">48. Run the push test<a class="headerlink" href="#48-run-the-push-test_1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">30</span>
-</code></pre></div>
-<p>The script applies a horizontal force to the torso.</p>
-<hr />
-<h2 id="49-external-force-array_1">49. External force array<a class="headerlink" href="#49-external-force-array_1" title="Permanent link">&para;</a></h2>
-<p>MuJoCo provides:</p>
-<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">xfrc_applied</span>
-</code></pre></div>
-<p>Each body receives a six-component spatial force:</p>
-<div class="highlight"><pre><span></span><code>Fx Fy Fz Tx Ty Tz
-</code></pre></div>
-<p>Apply a force in the world (x)-direction:</p>
-<div class="highlight"><pre><span></span><code><span class="n">torso_id</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_name2id</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span>
-    <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtObj</span><span class="o">.</span><span class="n">mjOBJ_BODY</span><span class="p">,</span>
-    <span class="s2">&quot;torso&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">data</span><span class="o">.</span><span class="n">xfrc_applied</span><span class="p">[</span><span class="n">torso_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">30.0</span>
-</code></pre></div>
-<p>Clear the force afterward:</p>
-<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">xfrc_applied</span><span class="p">[</span><span class="n">torso_id</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span>
-</code></pre></div>
-<hr />
-<h2 id="50-push-timing_1">50. Push timing<a class="headerlink" href="#50-push-timing_1" title="Permanent link">&para;</a></h2>
-<p>The force is applied only during a defined interval:</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">push_start</span> <span class="o">&lt;=</span> <span class="n">data</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;</span> <span class="n">push_start</span> <span class="o">+</span> <span class="n">push_duration</span><span class="p">:</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">xfrc_applied</span><span class="p">[</span><span class="n">torso_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">push_force</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">xfrc_applied</span><span class="p">[</span><span class="n">torso_id</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mf">0.0</span>
-</code></pre></div>
-<p>Typical settings:</p>
-<div class="highlight"><pre><span></span><code>push_start    = 0.50 s
-push_duration = 0.15 s
-</code></pre></div>
-<hr />
-<h2 id="51-force-and-impulse_1">51. Force and impulse<a class="headerlink" href="#51-force-and-impulse_1" title="Permanent link">&para;</a></h2>
-<p>Force magnitude alone does not fully describe the disturbance.</p>
-<p>Impulse is:</p>
-<p>[
-J = F \Delta t
-]</p>
-<p>For a 30 N force applied for 0.15 s:</p>
-<p>[
-J = 30 \cdot 0.15
-  = 4.5\ \mathrm{N\,s}
-]</p>
-<p>For 40 N:</p>
-<p>[
-J = 40 \cdot 0.15
-  = 6.0\ \mathrm{N\,s}
-]</p>
-<hr />
-<h2 id="52-student-task-force-sweep_1">52. Student task: force sweep<a class="headerlink" href="#52-student-task-force-sweep_1" title="Permanent link">&para;</a></h2>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">20</span><span class="w"> </span>--headless
-python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">25</span><span class="w"> </span>--headless
-python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">30</span><span class="w"> </span>--headless
-python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">35</span><span class="w"> </span>--headless
-python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span>--force<span class="w"> </span><span class="m">40</span><span class="w"> </span>--headless
-</code></pre></div>
-<p>Record:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Force</th>
-<th style="text-align: right;">Impulse</th>
-<th>Fallen</th>
-<th style="text-align: right;">Maximum tilt</th>
-<th style="text-align: right;">Minimum pelvis height</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">20 N</td>
-<td style="text-align: right;">3.00 N·s</td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr>
-<td style="text-align: right;">25 N</td>
-<td style="text-align: right;">3.75 N·s</td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr>
-<td style="text-align: right;">30 N</td>
-<td style="text-align: right;">4.50 N·s</td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr>
-<td style="text-align: right;">35 N</td>
-<td style="text-align: right;">5.25 N·s</td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr>
-<td style="text-align: right;">40 N</td>
-<td style="text-align: right;">6.00 N·s</td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="53-fall-criterion-based-on-pelvis-height_1">53. Fall criterion based on pelvis height<a class="headerlink" href="#53-fall-criterion-based-on-pelvis-height_1" title="Permanent link">&para;</a></h2>
-<p>Get the pelvis position:</p>
-<div class="highlight"><pre><span></span><code><span class="n">pelvis_id</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_name2id</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span>
-    <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtObj</span><span class="o">.</span><span class="n">mjOBJ_BODY</span><span class="p">,</span>
-    <span class="s2">&quot;pelvis&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">pelvis_height</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xpos</span><span class="p">[</span><span class="n">pelvis_id</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-</code></pre></div>
-<p>Simple criterion:</p>
-<div class="highlight"><pre><span></span><code><span class="n">pelvis_height</span> <span class="o">&lt;</span> <span class="mf">0.55</span>
-</code></pre></div>
-<h3 id="advantages_1">Advantages<a class="headerlink" href="#advantages_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li>simple;</li>
-<li>easy to understand;</li>
-<li>computationally inexpensive.</li>
-</ul>
-<h3 id="limitations_1">Limitations<a class="headerlink" href="#limitations_1" title="Permanent link">&para;</a></h3>
-<ul>
-<li>a deep crouch may be classified as a fall;</li>
-<li>a leaning robot may remain above the threshold;</li>
-<li>body orientation is ignored.</li>
-</ul>
-<hr />
-<h2 id="54-fall-criterion-based-on-torso-orientation_1">54. Fall criterion based on torso orientation<a class="headerlink" href="#54-fall-criterion-based-on-torso-orientation_1" title="Permanent link">&para;</a></h2>
-<p>The body rotation matrix is stored in:</p>
-<div class="highlight"><pre><span></span><code><span class="n">data</span><span class="o">.</span><span class="n">xmat</span><span class="p">[</span><span class="n">torso_id</span><span class="p">]</span>
-</code></pre></div>
-<p>Reshape it:</p>
-<div class="highlight"><pre><span></span><code><span class="n">rotation</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xmat</span><span class="p">[</span><span class="n">torso_id</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></div>
-<p>The local torso (z)-axis expressed in world coordinates is the third column.</p>
-<p>For the workshop model:</p>
-<div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">=</span> <span class="n">rotation</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
-</code></pre></div>
-<p>For an upright torso:</p>
-<p>[
-z_{\mathrm{up}} \approx 1
-]</p>
-<p>For a horizontal torso:</p>
-<p>[
-z_{\mathrm{up}} \approx 0
-]</p>
-<p>A threshold of:</p>
-<div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.65</span>
-</code></pre></div>
-<p>corresponds approximately to:</p>
-<p>[
-\theta &gt;
-\cos^{-1}(0.65)
-\approx 49.5^\circ
-]</p>
-<hr />
-<h2 id="55-combined-fall-criterion_1">55. Combined fall criterion<a class="headerlink" href="#55-combined-fall-criterion_1" title="Permanent link">&para;</a></h2>
-<p>Use:</p>
-<div class="highlight"><pre><span></span><code><span class="n">fallen</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">pelvis_height</span> <span class="o">&lt;</span> <span class="mf">0.55</span>
-    <span class="ow">or</span> <span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.65</span>
-<span class="p">)</span>
-</code></pre></div>
-<p>This combines:</p>
-<ul>
-<li>body height;</li>
-<li>body orientation.</li>
-</ul>
-<p>It is more robust than either condition alone.</p>
-<hr />
-<h2 id="56-student-task-change-the-fall-threshold_1">56. Student task: change the fall threshold<a class="headerlink" href="#56-student-task-change-the-fall-threshold_1" title="Permanent link">&para;</a></h2>
-<p>Try:</p>
-<div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.85</span>
-</code></pre></div>
-<p>This corresponds to:</p>
-<p>[
-\theta &gt;
-\cos^{-1}(0.85)
-\approx 31.8^\circ
-]</p>
-<p>Then try:</p>
-<div class="highlight"><pre><span></span><code><span class="n">torso_up_z</span> <span class="o">&lt;</span> <span class="mf">0.30</span>
-</code></pre></div>
-<p>This corresponds to:</p>
-<p>[
-\theta &gt;
-\cos^{-1}(0.30)
-\approx 72.5^\circ
-]</p>
-<p>Discuss:</p>
-<ul>
-<li>false positives;</li>
-<li>false negatives;</li>
-<li>how the experimental definition changes the reported result.</li>
-</ul>
-<hr />
-<h2 id="57-student-task-compare-equal-impulses_1">57. Student task: compare equal impulses<a class="headerlink" href="#57-student-task-compare-equal-impulses_1" title="Permanent link">&para;</a></h2>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--force<span class="w"> </span><span class="m">40</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--push-duration<span class="w"> </span><span class="m">0</span>.10<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--headless
-</code></pre></div>
-<p>Impulse:</p>
-<p>[
-J = 40 \cdot 0.10
-  = 4.0\ \mathrm{N\,s}
-]</p>
-<p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--force<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--push-duration<span class="w"> </span><span class="m">0</span>.20<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--headless
-</code></pre></div>
-<p>Impulse:</p>
-<p>[
-J = 20 \cdot 0.20
-  = 4.0\ \mathrm{N\,s}
-]</p>
-<p>Ask:</p>
-<blockquote>
-<p>Will the resulting motion be identical?</p>
-</blockquote>
-<p>Not necessarily.</p>
-<p>Even with equal impulse:</p>
-<ul>
-<li>the force magnitude differs;</li>
-<li>the body moves during the push;</li>
-<li>contact conditions change;</li>
-<li>joint velocities change;</li>
-<li>the model is nonlinear.</li>
-</ul>
-<hr />
-<h2 id="58-student-task-compare-friction-during-the-push_1">58. Student task: compare friction during the push<a class="headerlink" href="#58-student-task-compare-friction-during-the-push_1" title="Permanent link">&para;</a></h2>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--force<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--friction<span class="w"> </span><span class="m">0</span>.9<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--headless
-</code></pre></div>
-<p>Then:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_04_push_test.py<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--force<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--friction<span class="w"> </span><span class="m">0</span>.1<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--headless
-</code></pre></div>
-<p>Determine whether failure occurs primarily through:</p>
-<ul>
-<li>sliding;</li>
-<li>tipping;</li>
-<li>contact loss;</li>
-<li>a combination of these.</li>
-</ul>
-<hr />
-<h2 id="59-final-engineering-challenge_1">59. Final engineering challenge<a class="headerlink" href="#59-final-engineering-challenge_1" title="Permanent link">&para;</a></h2>
-<p>Find the largest horizontal push that the humanoid can survive for five seconds.</p>
-<p>Students may modify:</p>
-<ul>
-<li>stance width;</li>
-<li>knee angle;</li>
-<li>actuator gain;</li>
-<li>joint damping;</li>
-<li>foot friction.</li>
-</ul>
-<p>Students may not modify:</p>
-<ul>
-<li>gravity;</li>
-<li>body masses;</li>
-<li>push duration;</li>
-<li>fall criterion.</li>
-</ul>
-<p>Suggested table:</p>
-<table>
-<thead>
-<tr>
-<th>Configuration</th>
-<th style="text-align: right;">Maximum force</th>
-<th>Fell?</th>
-<th style="text-align: right;">Maximum tilt</th>
-<th style="text-align: right;">Minimum pelvis height</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Default</td>
-<td style="text-align: right;"></td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr>
-<td>Wider stance</td>
-<td style="text-align: right;"></td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr>
-<td>Bent knees</td>
-<td style="text-align: right;"></td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr>
-<td>Higher damping</td>
-<td style="text-align: right;"></td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-<tr>
-<td>Final design</td>
-<td style="text-align: right;"></td>
-<td></td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;"></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h1 id="part-ix-unitree-g1-demonstration_1">Part IX — Unitree G1 demonstration<a class="headerlink" href="#part-ix-unitree-g1-demonstration_1" title="Permanent link">&para;</a></h1>
-<h2 id="60-purpose_1">60. Purpose<a class="headerlink" href="#60-purpose_1" title="Permanent link">&para;</a></h2>
-<p>The G1 demonstration shows that the same concepts transfer to a detailed commercial humanoid model.</p>
-<p>The detailed model still contains:</p>
-<ul>
-<li>bodies;</li>
-<li>joints;</li>
-<li>geoms;</li>
-<li>actuators;</li>
-<li>sensors;</li>
-<li>contacts;</li>
-<li>floating-base coordinates.</li>
-</ul>
-<hr />
-<h2 id="61-obtain-mujoco-menagerie_1">61. Obtain MuJoCo Menagerie<a class="headerlink" href="#61-obtain-mujoco-menagerie_1" title="Permanent link">&para;</a></h2>
-<p>Clone the repository:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/google-deepmind/mujoco_menagerie.git
-</code></pre></div>
-<p>Open the G1 model:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--mjcf<span class="w"> </span>mujoco_menagerie/unitree_g1/scene.xml
-</code></pre></div>
-<hr />
-<h2 id="62-student-observation-tasks_1">62. Student observation tasks<a class="headerlink" href="#62-student-observation-tasks_1" title="Permanent link">&para;</a></h2>
-<p>Ask students to identify:</p>
-<ol>
-<li>pelvis or trunk root;</li>
-<li>floating base;</li>
-<li>hip joints;</li>
-<li>knee joints;</li>
-<li>ankle joints;</li>
-<li>foot collision geometry;</li>
-<li>actuator definitions;</li>
-<li>keyframes;</li>
-<li>joint limits;</li>
-<li>differences from the simplified model.</li>
-</ol>
-<hr />
-<h2 id="63-discussion_1">63. Discussion<a class="headerlink" href="#63-discussion_1" title="Permanent link">&para;</a></h2>
-<p>Ask:</p>
-<ul>
-<li>Why is the G1 XML much longer?</li>
-<li>Which details are physical?</li>
-<li>Which details are visual?</li>
-<li>Which concepts are unchanged?</li>
-<li>Why is a simplified model useful for learning?</li>
-<li>Why is a detailed model useful for validation?</li>
-</ul>
-<h3 id="main-takeaway_7">Main takeaway<a class="headerlink" href="#main-takeaway_7" title="Permanent link">&para;</a></h3>
-<p>A realistic humanoid is more complex, but it is built from the same simulator concepts.</p>
-<hr />
-<h1 id="part-x-suggested-instructor-script_1">Part X — Suggested instructor script<a class="headerlink" href="#part-x-suggested-instructor-script_1" title="Permanent link">&para;</a></h1>
-<h2 id="64-opening-explanation_1">64. Opening explanation<a class="headerlink" href="#64-opening-explanation_1" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>In this workshop, we will not design an intelligent controller. Our goal is to understand what a humanoid simulator actually represents. We will inspect the model, command the joints, release the floating base, observe contact, change friction, and finally apply a controlled push.</p>
-</blockquote>
-<hr />
-<h2 id="65-before-exercise-1_1">65. Before Exercise 1<a class="headerlink" href="#65-before-exercise-1_1" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>The XML file is the human-readable description. MuJoCo compiles it into indexed arrays. The simulator does not repeatedly search for a joint by name during every dynamics calculation.</p>
-</blockquote>
-<hr />
-<h2 id="66-before-exercise-2_1">66. Before Exercise 2<a class="headerlink" href="#66-before-exercise-2_1" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>A position actuator does not teleport a joint. It creates force according to the difference between the command and the simulated state. The motion still depends on physics.</p>
-</blockquote>
-<hr />
-<h2 id="67-before-exercise-3_1">67. Before Exercise 3<a class="headerlink" href="#67-before-exercise-3_1" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Until now, the pelvis was fixed. This separated joint actuation from whole-body balance. We will now release the root and let the robot interact freely with the floor.</p>
-</blockquote>
-<hr />
-<h2 id="68-before-exercise-4_1">68. Before Exercise 4<a class="headerlink" href="#68-before-exercise-4_1" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>A push test is only useful if it is repeatable. We must define the force, duration, application point, friction, initial state, and fall criterion.</p>
-</blockquote>
-<hr />
-<h2 id="69-final-conclusion_1">69. Final conclusion<a class="headerlink" href="#69-final-conclusion_1" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>A valid pose is not automatically stable. A joint controller does not directly control the floating base. Humanoid simulation is the interaction of model structure, actuation, contacts, and measurable evaluation criteria.</p>
-</blockquote>
-<hr />
-<h1 id="part-xi-troubleshooting_1">Part XI — Troubleshooting<a class="headerlink" href="#part-xi-troubleshooting_1" title="Permanent link">&para;</a></h1>
-<h2 id="70-mujoco-is-not-installed_1">70. MuJoCo is not installed<a class="headerlink" href="#70-mujoco-is-not-installed_1" title="Permanent link">&para;</a></h2>
-<p>Error:</p>
-<div class="highlight"><pre><span></span><code>ModuleNotFoundError: No module named &#39;mujoco&#39;
-</code></pre></div>
-<p>Activate the environment:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-</code></pre></div>
-<p>Install:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
-</code></pre></div>
-<hr />
-<h2 id="71-test-without-graphics_1">71. Test without graphics<a class="headerlink" href="#71-test-without-graphics_1" title="Permanent link">&para;</a></h2>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless<span class="w"> </span>--duration<span class="w"> </span><span class="m">0</span>.1
-</code></pre></div>
-<p>If this works, the model and physics engine are functioning.</p>
-<hr />
-<h2 id="72-viewer-segmentation-fault_1">72. Viewer segmentation fault<a class="headerlink" href="#72-viewer-segmentation-fault_1" title="Permanent link">&para;</a></h2>
-<p>First test the standalone viewer:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>mujoco.viewer<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--mjcf<span class="o">=</span>models/simple_humanoid.xml
-</code></pre></div>
-<p>If the standalone viewer also crashes, the issue is likely related to:</p>
-<ul>
-<li>OpenGL;</li>
-<li>GLFW;</li>
-<li>graphics drivers;</li>
-<li>remote desktop;</li>
-<li>WSL graphics;</li>
-<li>mixed Conda and pip libraries.</li>
-</ul>
-<p>Use a clean virtual environment.</p>
-<p>Avoid mixing:</p>
-<ul>
-<li>Conda OpenGL libraries;</li>
-<li>system MuJoCo installations;</li>
-<li>pip MuJoCo installations.</li>
-</ul>
-<p>Run with fault reporting:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-X<span class="w"> </span>faulthandler<span class="w"> </span>exercise_01_inspect.py
-</code></pre></div>
-<hr />
-<h2 id="73-viewer-state-changes_1">73. Viewer-state changes<a class="headerlink" href="#73-viewer-state-changes_1" title="Permanent link">&para;</a></h2>
-<p>When using:</p>
-<div class="highlight"><pre><span></span><code><span class="n">mujoco</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">launch_passive</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-</code></pre></div>
-<p>protect viewer changes:</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">viewer</span><span class="o">.</span><span class="n">lock</span><span class="p">():</span>
-    <span class="n">viewer</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span>
-        <span class="n">mujoco</span><span class="o">.</span><span class="n">mjtVisFlag</span><span class="o">.</span><span class="n">mjVIS_CONTACTPOINT</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="n">viewer</span><span class="o">.</span><span class="n">sync</span><span class="p">()</span>
-</code></pre></div>
-<hr />
-<h2 id="74-xml-parse-error_1">74. XML parse error<a class="headerlink" href="#74-xml-parse-error_1" title="Permanent link">&para;</a></h2>
-<p>Run:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>exercise_01_inspect.py<span class="w"> </span>--headless
-</code></pre></div>
-<p>MuJoCo normally reports the XML line containing the problem.</p>
-<p>Common causes:</p>
-<ul>
-<li>missing closing tag;</li>
-<li>misspelled attribute;</li>
-<li>wrong number of keyframe values;</li>
-<li>invalid joint range;</li>
-<li>invalid body reference.</li>
-</ul>
-<hr />
-<h2 id="75-humanoid-immediately-falls_1">75. Humanoid immediately falls<a class="headerlink" href="#75-humanoid-immediately-falls_1" title="Permanent link">&para;</a></h2>
-<p>Check which exercise is running.</p>
-<p>Exercises 1 and 2 should use the pelvis weld.</p>
-<p>Exercises 3 and 4 should release the pelvis.</p>
-<p>A released humanoid without whole-body balance control may eventually fall even when no push is applied.</p>
-<hr />
-<h2 id="76-violent-oscillation_1">76. Violent oscillation<a class="headerlink" href="#76-violent-oscillation_1" title="Permanent link">&para;</a></h2>
-<p>Restore reasonable values:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;option</span><span class="w"> </span><span class="na">timestep=</span><span class="s">&quot;0.002&quot;</span>
-<span class="w">        </span><span class="na">integrator=</span><span class="s">&quot;implicitfast&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;joint</span><span class="w"> </span><span class="na">damping=</span><span class="s">&quot;3&quot;</span>
-<span class="w">       </span><span class="na">armature=</span><span class="s">&quot;0.02&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">&lt;position</span><span class="w"> </span><span class="na">kp=</span><span class="s">&quot;140&quot;</span><span class="nt">/&gt;</span>
-</code></pre></div>
-<p>Very high gain and low damping can create oscillation and large contact forces.</p>
-<hr />
-<h2 id="77-friction-change-has-little-visible-effect_1">77. Friction change has little visible effect<a class="headerlink" href="#77-friction-change-has-little-visible-effect_1" title="Permanent link">&para;</a></h2>
-<p>Ensure friction is changed for:</p>
-<ul>
-<li>the floor;</li>
-<li>the left foot;</li>
-<li>the right foot.</li>
-</ul>
-<p>Also increase the lateral force if the disturbance is too small.</p>
-<hr />
-<h2 id="78-touch-sensor-always-reads-zero_1">78. Touch sensor always reads zero<a class="headerlink" href="#78-touch-sensor-always-reads-zero_1" title="Permanent link">&para;</a></h2>
-<p>Check:</p>
-<ul>
-<li>whether the site overlaps the contact region;</li>
-<li>whether the feet actually contact the floor;</li>
-<li>whether the sensor name is correct;</li>
-<li>whether the sensor address is read correctly;</li>
-<li>whether the pelvis weld holds the feet slightly above the floor.</li>
-</ul>
-<hr />
-<h1 id="part-xii-assessment-questions_1">Part XII — Assessment questions<a class="headerlink" href="#part-xii-assessment-questions_1" title="Permanent link">&para;</a></h1>
-<h2 id="79-short-questions_1">79. Short questions<a class="headerlink" href="#79-short-questions_1" title="Permanent link">&para;</a></h2>
-<ol>
-<li>What is the difference between <code>MjModel</code> and <code>MjData</code>?</li>
-<li>Why does a free joint use 7 position values and 6 velocity values?</li>
-<li>What is the purpose of <code>mj_forward</code>?</li>
-<li>What does <code>data.ctrl</code> contain?</li>
-<li>Why is a position actuator not equivalent to assigning <code>qpos</code>?</li>
-<li>What does a touch sensor measure?</li>
-<li>Why does low friction increase slipping?</li>
-<li>Why is projected centre of mass only a static approximation?</li>
-<li>How can an external force be applied to a body?</li>
-<li>Why must a fall criterion be defined by the experimenter?</li>
-</ol>
-<hr />
-<h2 id="80-practical-assessment_1">80. Practical assessment<a class="headerlink" href="#80-practical-assessment_1" title="Permanent link">&para;</a></h2>
-<p>Ask students to:</p>
-<ol>
-<li>load the standing keyframe;</li>
-<li>command a crouching posture;</li>
-<li>release the pelvis weld;</li>
-<li>set friction to 0.2;</li>
-<li>apply a 25 N push for 0.2 s;</li>
-<li>report:</li>
-<li>whether the robot fell;</li>
-<li>maximum torso tilt;</li>
-<li>minimum pelvis height;</li>
-<li>left and right foot force;</li>
-<li>approximate foot displacement.</li>
-</ol>
-<hr />
-<h1 id="part-xiii-core-conclusions_1">Part XIII — Core conclusions<a class="headerlink" href="#part-xiii-core-conclusions_1" title="Permanent link">&para;</a></h1>
-<p>The workshop should end with these statements:</p>
-<ol>
-<li>
-<p><strong>A valid humanoid pose is not automatically dynamically stable.</strong></p>
-</li>
-<li>
-<p><strong>Joint commands create actuator forces; they do not directly replace the physical state.</strong></p>
-</li>
-<li>
-<p><strong>A floating base makes whole-body balance fundamentally different from fixed-base joint control.</strong></p>
-</li>
-<li>
-<p><strong>Contact includes geometry, normal forces, friction, and possible sliding.</strong></p>
-</li>
-<li>
-<p><strong>Simulation results depend on both the physical model and the experimental definition.</strong></p>
-</li>
-<li>
-<p><strong>A fall detector is an engineering criterion, not an automatic truth supplied by the simulator.</strong></p>
-</li>
-<li>
-<p><strong>The same principles apply to simplified humanoids and detailed models such as the Unitree G1.</strong></p>
-</li>
-</ol>
 
 
 
@@ -3705,7 +2034,7 @@ J = 20 \cdot 0.20
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
